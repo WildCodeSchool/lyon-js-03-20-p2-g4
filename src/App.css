@@ -1,3 +1,13 @@
 .App {
+  width: 100%;
   text-align: center;
+}
+
+.logo {
+  display: block;
+  margin: 30px auto;
+}
+
+h1 {
+  font-weight: 500;
 }

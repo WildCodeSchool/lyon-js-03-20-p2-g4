@@ -14,7 +14,7 @@ h1 {
 
 .borderBottom {
   display: block;
-  width: 30px;
+  width: 19px;
   margin: 40px auto 100px;
   border-bottom: 2px solid var(--darkTextColor);
 }

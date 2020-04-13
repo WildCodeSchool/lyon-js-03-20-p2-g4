@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import UsersInputs from "./UsersInputs.jsx";
 
 function App() {
   return (
     <div className="App">
-      <h1>Movie Match</h1>
+      <UsersInputs />
     </div>
   );
 }

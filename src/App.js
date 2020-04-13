@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'
+import './App.css';
 import HeaderHome from './HeaderHome.jsx';
 
 function App () {

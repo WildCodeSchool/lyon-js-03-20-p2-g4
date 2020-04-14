@@ -9,25 +9,23 @@
 .title {
   font-weight: 700;
   font-size: 36px;
-  color: var(--darkTextColor);
+  margin-top: 0;
 }
 
 .subtitle {
   font-weight: 500;
   font-size: 24px;
-  color: var(--darkTextColor);
+  margin-top: 0;
 }
 
 .content {
   font-weight: 300;
   font-size: 18px;
-  color: var(--darkTextColor);
 }
 
 .link {
   font-weight: 400;
   font-size: 18px;
-  color: var(--darkTextColor);
   text-decoration: none;
   background: linear-gradient( rgba(9, 18, 151, 0) 35%,rgba(102, 198, 155, 1) 80%, rgba(60,210,34,0) 60%);
   transition-duration: 0.2s;

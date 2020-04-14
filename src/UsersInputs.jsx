@@ -1,4 +1,5 @@
 import React from "react";
+import './UsersInputs.css'
 
 class UsersInputs extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class UsersInputs extends React.Component {
         <div className="form-group">
           <label htmlFor="user1"></label>
           <input
+            className="content"
             type="text"
             id="user1"
             name="user1"
@@ -37,6 +39,7 @@ class UsersInputs extends React.Component {
         <div className="form-group">
           <label htmlFor="user2"></label>
           <input
+            className="content"
             type="text"
             id="user2"
             name="user2"

@@ -7,6 +7,11 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
+function selectList(event) {
+  event.target.classList.toggle('selected-list'); 
+  const allLists = document.getElementsByClassName('clickable-list');
+}
+
 const items = [
   {
     source: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/cJ0wqaQ9KPzs3fROXUuaWgRg9Pj.jpg',
@@ -18,6 +23,12 @@ const items = [
     source: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/6VRhjfA495M6viOPL4aF1cIlGfE.jpg',
     altText: 'Bloodshot',
     caption: 'Bloodshot'
+  }
+  ,
+  {
+    source: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/iDbZafXG4y6wwOTfcSlEkN8pQLf.jpg',
+    altText: 'Bad Boys for Life',
+    caption: 'Bad Boys for Life'
   }
 ];
 
@@ -39,14 +50,15 @@ const MovieLists = (props) => {
 
   const slides = items.map((item) => {
     return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.source}
-      >
-        <img src={item.source} alt={item.altText} />
+        <CarouselItem
+          onExiting={() => setAnimating(true)}
+          onExited={() => setAnimating(false)}
+          key={item.source}
+        >
+          <div className="clickable-list" onClick={selectList}></div>
+        <img src={item.source} alt={item.altText}/>
         <CarouselCaption captionHeader={item.caption} />
-      </CarouselItem>
+        </CarouselItem>
     );
   });
   return (

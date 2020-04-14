@@ -4,33 +4,46 @@ import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselCaption
+  CarouselCaption,
+  ListGroup
 } from 'reactstrap';
-
-function selectList(event) {
-  event.target.classList.toggle('selected-list'); 
-  const allLists = document.getElementsByClassName('clickable-list');
-}
 
 const items = [
   {
     source: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/cJ0wqaQ9KPzs3fROXUuaWgRg9Pj.jpg',
     altText: 'Ad Astra',
-    caption: 'Ad Astra'
+    caption: 'Science-Fiction',
+    selected: false
   }
   ,
   {
     source: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/6VRhjfA495M6viOPL4aF1cIlGfE.jpg',
     altText: 'Bloodshot',
-    caption: 'Bloodshot'
+    caption: 'Action',
+    selected: false
   }
   ,
   {
     source: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/iDbZafXG4y6wwOTfcSlEkN8pQLf.jpg',
     altText: 'Bad Boys for Life',
-    caption: 'Bad Boys for Life'
+    caption: 'Navés',
+    selected: false,
   }
 ];
+
+
+function selectList(event) {
+  const selectedList = document.getElementsByClassName('selected-list');
+  const notSelectedList = document.getElementsByClassName('not-selected-list');
+  const allLists = document.getElementsByClassName('clickable-list');
+
+  for (let i = 0; i < allLists.length; i++) {
+    allLists[i].classList.add('not-selected-list');
+    allLists[i].classList.remove('selected-list');
+    event.target.classList.remove('not-selected-list')
+    event.target.classList.add('selected-list');
+  }
+}
 
 const MovieLists = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -55,11 +68,11 @@ const MovieLists = (props) => {
           onExited={() => setAnimating(false)}
           key={item.source}
         >
-          <div className="clickable-list" onClick={selectList}></div>
+          <div className="clickable-list not-selected-list" onClick={selectList}></div>
         <img src={item.source} alt={item.altText}/>
         <CarouselCaption captionHeader={item.caption} />
         </CarouselItem>
-    );
+    );  
   });
   return (
     <div className='list-container'>
@@ -75,7 +88,6 @@ const MovieLists = (props) => {
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
       </Carousel>
-
     </div>
 
   );

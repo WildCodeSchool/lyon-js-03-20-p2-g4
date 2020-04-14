@@ -4,14 +4,15 @@ class UsersInputs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user1: '',
-      user2: ''
+      user1: 'Tic',
+      user2: 'Tac'
     };
   }
 
   handleChange1 = (event) => {
     const user = event.target.value
     this.setState({user1: user})
+    console.log(this.state.user1)
   }
 
   handleChange2 = (event) => {
@@ -30,7 +31,7 @@ class UsersInputs extends React.Component {
             id="user1"
             name="user1"
             placeholder="Utilisateur 1"
-            value={this.state.user2}
+            value={this.state.user1}
             onChange={this.handleChange1}
           />
         </div>

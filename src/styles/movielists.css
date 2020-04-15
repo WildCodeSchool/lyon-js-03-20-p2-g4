@@ -36,7 +36,7 @@
 .list-container .carousel-inner {
     width:70%!important;
     margin:auto;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 .list-container .carousel-control-prev,.list-container .carousel-control-next {
     background-color:rgba(102, 198, 155, 1);

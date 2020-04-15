@@ -4,33 +4,7 @@
   --lightTextColor : #F6F6F6;
   --darkTextColor : #333333;
   --dangerColor : #FB6364;
-}
-
-.title {
-  font-weight: 700;
-  font-size: 36px;
-  margin-top: 0;
-}
-
-.subtitle {
-  font-weight: 500;
-  font-size: 24px;
-  margin-top: 0;
-}
-
-.content {
-  font-weight: 300;
-  font-size: 18px;
-}
-
-.link {
-  font-weight: 400;
-  font-size: 18px;
-  text-decoration: none;
-  background: linear-gradient( rgba(9, 18, 151, 0) 35%,rgba(102, 198, 155, 1) 80%, rgba(60,210,34,0) 60%);
-  transition-duration: 0.2s;
-}
-
-.link:hover {
-  color: black;
+  --shadow : 0px 2px 5px rgba(0, 0, 0, 0.25);
+  --shadowHover : 0px 5px 5px rgba(0, 0, 0, 0.25);
+  --radius : 10px;
 }

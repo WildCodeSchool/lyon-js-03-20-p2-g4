@@ -11,7 +11,7 @@ class UsersInputs extends React.Component {
     };
   }
 
-  handleChange = (event) => {
+  handleChange1 = (event) => {
     const user = event.target.value;
     this.setState({ user1: user });
   };

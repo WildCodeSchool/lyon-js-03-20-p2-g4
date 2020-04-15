@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import HeaderHome from './HeaderHome.jsx';
+import HeaderHome from './components/HeaderHome';
 
 function App () {
   return (

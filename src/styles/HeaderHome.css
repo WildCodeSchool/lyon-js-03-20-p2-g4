@@ -1,10 +1,10 @@
-.logo {
+.headerHome .logo {
   display: block;
   margin: 30px auto;
   width: 250px;
 }
 
-h1 {
+.headerHome h1 {
   font-weight: 500;
   font-size: 24px;
   margin-top: 50px;
@@ -12,7 +12,7 @@ h1 {
   color: var(--darkTextColor);
 }
 
-.borderBottom {
+.headerHome .borderBottom {
   display: block;
   width: 19px;
   margin: 40px auto 100px;

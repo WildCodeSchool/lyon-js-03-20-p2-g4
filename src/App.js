@@ -1,12 +1,22 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './pages/Home';
+import MatchRoom from './pages/MatchRoom';
+import Result from './pages/Result';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Movie Match</h1>
-    </div>
+    <Router>
+      <div className="App">
+        
+      </div>
+
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/matchroom" component={MatchRoom} />
+        <Route exact path="/result" component={Result} />
+      </Switch>
+    </Router>
   );
 }
 

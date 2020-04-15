@@ -27,7 +27,7 @@ class UsersInputs extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="usersInputs">
         <h2 className="subtitle">Qui participe ?</h2>
         <div className="form-group">
           <label htmlFor="user1"></label>
@@ -54,7 +54,7 @@ class UsersInputs extends React.Component {
           />
         </div>
         <Button txt="Valider" func={this.works} />
-      </React.Fragment>
+      </div>
     );
   }
 }

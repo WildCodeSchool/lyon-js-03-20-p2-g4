@@ -1,15 +1,15 @@
-import React from "react";
-import MovieLists from "../components/MovieLists";
-import UsersInputs from "../components/UsersInputs";
-import HeaderHome from "../components/HeaderHome";
-import Button from "../components/Button";
-import "../styles/Home.css";
+import React from 'react';
+import MovieLists from '../components/MovieLists';
+import UsersInputs from '../components/UsersInputs';
+import HeaderHome from '../components/HeaderHome';
+import Button from '../components/Button';
+import '../styles/Home.css';
 
 class Home extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      namesHidden: false,
+      namesHidden: false
     };
   }
 
@@ -18,15 +18,15 @@ class Home extends React.Component {
     this.setState({ namesHidden });
   };
 
-  render() {
+  render () {
     const { namesHidden } = this.state;
     return (
-      <div className="home">
+      <div className='home'>
         <HeaderHome />
         {!namesHidden ? (
-          <div className="centered">
+          <div className='centered'>
             <UsersInputs />
-            <Button txt="Valider" onClick={this.handleHide} />
+            <Button txt='Valider' onClick={this.handleHide} />
           </div>
         ) : (
           <MovieLists />

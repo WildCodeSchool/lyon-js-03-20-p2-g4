@@ -22,3 +22,13 @@
 .headerHome {
   text-align: center;
 }
+
+@media only screen and (max-width: 374px){
+  .headerHome .logo {
+    margin: 0 auto;
+  }
+
+  .headerHome .borderBottom {
+    display: none;
+  }
+}

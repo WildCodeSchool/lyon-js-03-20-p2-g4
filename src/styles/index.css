@@ -17,12 +17,14 @@ code {
 .title {
   font-weight: 700;
   font-size: 36px;
+  margin-top: 0;
   color: var(--darkTextColor);
 }
 
 .subtitle {
   font-weight: 500;
   font-size: 24px;
+  margin-top: 0;
   color: var(--darkTextColor);
 }
 

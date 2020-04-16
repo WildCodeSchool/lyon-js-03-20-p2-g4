@@ -24,6 +24,9 @@
       "pre-commit": "npm run lint"
     }
   },
+  "semistandard": {
+    "parser": "babel-eslint"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -40,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "husky": "^4.2.5",
     "semistandard": "^14.2.0"
   }

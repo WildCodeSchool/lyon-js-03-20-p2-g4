@@ -1,20 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class MatchRoom extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {};
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h2>Match Room page</h2>
-        <Link to="/">
+        <Link to='/'>
           <h2>Home</h2>
         </Link>
-        <Link to="/result">
+        <Link to='/result'>
           <h2>Result</h2>
         </Link>
       </div>

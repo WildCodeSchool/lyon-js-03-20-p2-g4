@@ -1,13 +1,13 @@
-import React from 'react';
-import '../styles/UsersInputs.css';
-import Button from './Button';
+import React from "react";
+import "../styles/UsersInputs.css";
+import Button from "./Button";
 
 class UsersInputs extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      user1: 'Tic',
-      user2: 'Tac'
+      user1: "Tic",
+      user2: "Tac",
     };
   }
 
@@ -22,38 +22,38 @@ class UsersInputs extends React.Component {
   };
 
   works = () => {
-    window.alert('it works ! write the method/function you need !');
+    window.alert("it works ! write the method/function you need !");
   };
 
-  render () {
+  render() {
     return (
-      <div className='usersInputs'>
-        <h2 className='subtitle'>Qui participe ?</h2>
-        <div className='form-group'>
-          <label htmlFor='user1' />
+      <div className="usersInputs">
+        <h2 className="subtitle">Qui participe ?</h2>
+        <div className="form-group">
+          <label htmlFor="user1" />
           <input
-            className='content'
-            type='text'
-            id='user1'
-            name='user1'
-            placeholder='Utilisateur 1'
+            className="content"
+            type="text"
+            id="user1"
+            name="user1"
+            placeholder="Utilisateur 1"
             defaultValue={this.state.user1}
             onChange={this.handleChange1}
           />
         </div>
-        <div className='form-group'>
-          <label htmlFor='user2' />
+        <div className="form-group">
+          <label htmlFor="user2" />
           <input
-            className='content'
-            type='text'
-            id='user2'
-            name='user2'
-            placeholder='Utilisateur 2'
+            className="content"
+            type="text"
+            id="user2"
+            name="user2"
+            placeholder="Utilisateur 2"
             defaultValue={this.state.user2}
             onChange={this.handleChange2}
           />
         </div>
-        <Button txt='Valider' func={this.works} />
+        <Button txt="Valider" onClick={this.works} />
       </div>
     );
   }

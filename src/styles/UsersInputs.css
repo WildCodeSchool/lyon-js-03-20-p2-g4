@@ -1,0 +1,16 @@
+.usersInputs .form-group input {
+  margin: 16px 0;
+  border: none;
+  border-radius: 2px;
+  background-color: white;
+  text-align: center;
+  padding: 10px 25px;
+}
+
+.usersInputs .button {
+  margin-top: 20px;
+}
+
+.usersInputs {
+  text-align: center;
+}

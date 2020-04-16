@@ -1,0 +1,19 @@
+.button {
+  background: var(--accentColor);
+  box-shadow: var(--shadow);
+  border-radius: 36px;
+  width: 220px;
+  height: 40px;
+  color: var(--lightTextColor);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  border: none;
+  transition-duration: 0.2s;
+}
+
+.button:hover {
+  background: #70d1a5;
+  cursor: pointer;
+  box-shadow: var(--shadowHover);
+}

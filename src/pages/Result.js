@@ -2,23 +2,24 @@ import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 class Result extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
-    this.state = {  }
+    this.state = { };
   }
-  render() { 
+
+  render () {
     return (
-            <div>
-                <h2>Result page</h2>
-                <Link to="/">
-                    <h2>Home</h2>
-                </Link>
-                <Link to="/matchroom">
-                    <h2>Match Room</h2>
-                </Link>
-            </div>
-      );
+      <div>
+        <h2>Result page</h2>
+        <Link to='/'>
+          <h2>Home</h2>
+        </Link>
+        <Link to='/matchroom'>
+          <h2>Match Room</h2>
+        </Link>
+      </div>
+    );
   }
 }
- 
+
 export default Result;

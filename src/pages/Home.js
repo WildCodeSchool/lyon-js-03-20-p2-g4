@@ -1,21 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import MovieLists from '../components/MovieLists';
+import UsersInputs from '../components/UsersInputs';
+import HeaderHome from '../components/HeaderHome';
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
-  render() { 
-    return (
-            <div>
-              <h2>Home</h2>
-                <Link to="/matchroom">
-                    <h2>Match Room</h2>
-                </Link>
-            </div>
-     );
-  }
+function Home () {
+  return (
+    <div>
+      <HeaderHome />
+      <UsersInputs />
+      <MovieLists />
+    </div>
+  );
 }
- 
+
 export default Home;

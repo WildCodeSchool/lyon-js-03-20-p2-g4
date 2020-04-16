@@ -1,11 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import './App.css';
+import HeaderHome from './components/HeaderHome';
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <h1>Movie Match</h1>
+    <div className='App'>
+      <HeaderHome />
     </div>
   );
 }

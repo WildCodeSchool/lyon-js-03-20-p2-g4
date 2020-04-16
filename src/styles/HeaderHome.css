@@ -1,0 +1,20 @@
+.headerHome .logo {
+  display: block;
+  margin: 30px auto;
+  width: 250px;
+}
+
+.headerHome h1 {
+  font-weight: 500;
+  font-size: 24px;
+  margin-top: 50px;
+  padding: 0 10px 0 10px;
+  color: var(--darkTextColor);
+}
+
+.headerHome .borderBottom {
+  display: block;
+  width: 19px;
+  margin: 40px auto 100px;
+  border-bottom: 2px solid var(--darkTextColor);
+}

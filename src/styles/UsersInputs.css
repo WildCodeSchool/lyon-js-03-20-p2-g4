@@ -14,3 +14,7 @@
 .usersInputs {
   text-align: center;
 }
+
+.usersInputs h2 {
+  margin-top: 100px;
+}

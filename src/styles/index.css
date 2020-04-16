@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap');
+@import url('./variables.css');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Rubik', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +12,37 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 36px;
+  margin-top: 0;
+  color: var(--darkTextColor);
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 24px;
+  margin-top: 0;
+  color: var(--darkTextColor);
+}
+
+.content {
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--darkTextColor);
+}
+
+.link {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--darkTextColor);
+  text-decoration: none;
+  background: linear-gradient( rgba(9, 18, 151, 0) 35%,rgba(102, 198, 155, 1) 80%, rgba(60,210,34,0) 60%);
+  transition-duration: 0.2s;
+}
+
+.link:hover {
+  color: black;
 }

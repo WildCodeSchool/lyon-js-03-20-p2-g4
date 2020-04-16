@@ -1,13 +1,11 @@
 import React from 'react';
 import './styles/App.css';
-import UsersInputs from './components/UsersInputs';
-import HeaderHome from './components/HeaderHome';
+import Home from './pages/home';
 
 function App () {
   return (
     <div className='App'>
-      <HeaderHome />
-      <UsersInputs />
+      <Home />
     </div>
   );
 }

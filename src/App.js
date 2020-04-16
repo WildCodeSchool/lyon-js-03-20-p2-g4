@@ -1,10 +1,12 @@
-import React from "react";
-import "./styles/App.css";
-import UsersInputs from "./components/UsersInputs";
+import React from 'react';
+import './styles/App.css';
+import UsersInputs from './components/UsersInputs';
+import HeaderHome from './components/HeaderHome';
 
-function App() {
+function App () {
   return (
-    <div className="App">
+    <div className='App'>
+      <HeaderHome />
       <UsersInputs />
     </div>
   );

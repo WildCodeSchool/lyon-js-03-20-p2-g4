@@ -1,0 +1,108 @@
+/* TITLES */
+.list-container {
+    padding:20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.list-container h2, .list-container .list-category {
+    color:#333333;
+}
+.list-container h2 {
+    font-size:24px;
+    font-weight:500;
+    text-align:center;
+    margin-block-end: 0px;
+    margin: 50px 0 50px 0;
+}
+.list-container .list-category {
+    text-transform:uppercase;
+    font-weight:700;
+    font-size:15px;
+    position:relative;
+    margin-block-end: 20px;
+}
+.list-container .list-category::after {
+    content:'';
+    width:calc(100% - 92px);
+    height:1px;
+    background-color:#333333;
+    top:50%;
+    transform:translateY(-50%);
+    position:absolute;
+    left:92px;
+}
+
+/* CAROUSEL */
+.list-container .carousel-inner {
+    width:70%!important;
+    margin:auto;
+    border-radius: 10px;
+}
+.list-container .carousel-control-prev,.list-container .carousel-control-next {
+    background-color:rgba(102, 198, 155, 1);
+    height: 80%;
+    top: 50%!important;
+    transform: translateY(-50%);
+    width: 12%!important;
+}
+.list-container .carousel-control-prev {
+    border-radius: 10px 0px 0px 10px;
+}
+.list-container .carousel-control-next {
+    border-radius: 0px 10px 10px 0px;
+}
+.list-container .carousel-item {
+    height: 135px;
+    position:relative;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    border: 3px solid white;
+}
+.list-container .carousel-item:hover {
+    background-size:100%;
+    border:3px solid #66C69B;
+}
+.list-container .carousel-caption {
+    text-shadow: 0 0 3px black;
+}
+.list-container .carousel-caption h3 {
+    margin-block-end:0px;
+    text-shadow: 0 0 3px black;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+.list-container .carousel-caption p {
+    margin-block-end:0px;
+    font-weight: lighter;
+    font-size: 16px;
+}
+.list-container .carousel-caption.d-none {
+    z-index: 9999999;
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    left: 0;
+    flex-direction: column;
+}
+.list-container .clickable-list {
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:999999;
+    transition:all 0.2s ease-in-out;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+.list-container .clickable-list.selected-list {
+    background: linear-gradient(to right, rgba(102, 198, 155, 0.7), rgba(102, 198, 155, 0.7));
+}
+.list-container .carousel-item img {
+    position: absolute;
+    height: 100%;
+}

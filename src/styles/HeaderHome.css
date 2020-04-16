@@ -15,10 +15,20 @@
 .headerHome .borderBottom {
   display: block;
   width: 19px;
-  margin: 40px auto 100px;
+  margin: 40px auto 0;
   border-bottom: 2px solid var(--darkTextColor);
 }
 
 .headerHome {
   text-align: center;
+}
+
+@media only screen and (max-width: 374px){
+  .headerHome .logo {
+    margin: 0 auto;
+  }
+
+  .headerHome .borderBottom {
+    display: none;
+  }
 }

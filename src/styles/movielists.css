@@ -106,3 +106,10 @@
     position: absolute;
     height: 100%;
 }
+
+@media only screen and (max-width: 374px){
+  .list-container h2 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+  }

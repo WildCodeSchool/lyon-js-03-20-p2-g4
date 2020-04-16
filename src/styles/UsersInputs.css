@@ -14,3 +14,13 @@
 .usersInputs {
   text-align: center;
 }
+
+.usersInputs h2 {
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 374px){
+  .usersInputs h2 {
+    margin-top: 50px;
+  }
+}

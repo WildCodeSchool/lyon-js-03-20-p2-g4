@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Result extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { };
+    this.state = {};
   }
 
   render () {

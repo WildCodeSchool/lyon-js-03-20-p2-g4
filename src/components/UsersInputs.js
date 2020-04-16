@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/UsersInputs.css';
-import Button from './Button';
 
 class UsersInputs extends React.Component {
   constructor (props) {
@@ -19,10 +18,6 @@ class UsersInputs extends React.Component {
   handleChange2 = (event) => {
     const user = event.target.value;
     this.setState({ user2: user });
-  };
-
-  works = () => {
-    window.alert('it works ! write the method/function you need !');
   };
 
   render () {
@@ -53,7 +48,6 @@ class UsersInputs extends React.Component {
             onChange={this.handleChange2}
           />
         </div>
-        <Button txt='Valider' func={this.works} />
       </div>
     );
   }

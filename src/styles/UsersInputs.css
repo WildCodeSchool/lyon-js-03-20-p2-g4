@@ -1,0 +1,26 @@
+.usersInputs .form-group input {
+  margin: 16px 0;
+  border: none;
+  border-radius: 2px;
+  background-color: white;
+  text-align: center;
+  padding: 10px 25px;
+}
+
+.usersInputs .button {
+  margin-top: 20px;
+}
+
+.usersInputs {
+  text-align: center;
+}
+
+.usersInputs h2 {
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 374px){
+  .usersInputs h2 {
+    margin-top: 50px;
+  }
+}

@@ -1,0 +1,8 @@
+.film-card-container {
+    height:500px;
+    width:300px;
+    margin:0 auto;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}

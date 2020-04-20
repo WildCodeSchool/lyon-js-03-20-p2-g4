@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import User1List from '../components/User1List';
 
 class MatchRoom extends React.Component {
   constructor (props) {
@@ -11,6 +12,7 @@ class MatchRoom extends React.Component {
     return (
       <div>
         <h2>Match Room page</h2>
+        <User1List />
         <Link to='/'>
           <h2>Home</h2>
         </Link>

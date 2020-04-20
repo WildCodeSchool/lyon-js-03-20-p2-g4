@@ -1,0 +1,17 @@
+.result .centered {
+  text-align: center;
+}
+
+.result h2.subtitle {
+  margin-top: 100px;
+  margin-bottom: 70px;
+  padding: 0 30px;
+}
+
+@media only screen and (max-height: 668px) {
+  .result h2.subtitle {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 0 20px;
+  }
+}

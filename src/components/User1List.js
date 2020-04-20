@@ -1,23 +1,14 @@
 import React from 'react';
 import FilmCard from './FilmCard';
+import '../styles/UserList.css';
 
-class User1List extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      currentFilmId: null
-    };
-  }
-
-  render () {
-    return (
-      <div>
-        <h2></h2>
-        <FilmCard />
-      </div>
-
-    );
-  }
+function User1List (props) {
+  return (
+    <div>
+      <h2 className='user-session'>Utilisateur : {props.user1}</h2>
+      <FilmCard />
+    </div>
+  );
 }
 
 export default User1List;

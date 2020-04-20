@@ -9,10 +9,11 @@ class MatchRoom extends React.Component {
   }
 
   render () {
+    const { user1 } = this.props;
     return (
       <div>
         <h2>Match Room page</h2>
-        <User1List />
+        <User1List user1={user1} />
         <Link to='/'>
           <h2>Home</h2>
         </Link>

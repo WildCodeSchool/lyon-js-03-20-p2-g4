@@ -1,9 +1,36 @@
-.film-card-container {
+.all-films-cards {
     height:500px;
     width:300px;
     margin:0 auto;
+    position:relative;
+    display:flex;
+    justify-content:center;
+}
+.all-films-cards div:nth-child(1), .all-films-cards div:nth-child(2), .all-films-cards div:nth-child(3) {
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;
     box-shadow:var(--shadow);
+    border-radius:var(--radius);
+}
+.all-films-cards div:nth-child(1) {
+    position:absolute;
+    top:6%;
+    height:95%;
+    width:100%;
+    z-index:999999;
+}
+.all-films-cards div:nth-child(2) {
+    position:absolute;
+    top:3%;
+    height:95%;
+    width:90%;
+    z-index:99999;
+}
+.all-films-cards div:nth-child(3) {
+    position:absolute;
+    top:0;
+    height:95%;
+    width:80%;
+    z-index:9999;
 }

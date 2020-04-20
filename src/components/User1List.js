@@ -15,7 +15,7 @@ class User1List extends React.Component {
         <FilmCard />
       </div>
 
-    )
+    );
   }
 }
 

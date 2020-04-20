@@ -1,10 +1,11 @@
 .all-films-cards {
-    height:500px;
-    width:300px;
+    width:80vw;
+    height:70vh;
     margin:0 auto;
     position:relative;
     display:flex;
     justify-content:center;
+    max-width:300px;
 }
 .all-films-cards div:nth-child(1), .all-films-cards div:nth-child(2), .all-films-cards div:nth-child(3) {
     background-position:center;
@@ -15,22 +16,38 @@
 }
 .all-films-cards div:nth-child(1) {
     position:absolute;
-    top:6%;
+    top:4%;
     height:95%;
     width:100%;
     z-index:999999;
 }
 .all-films-cards div:nth-child(2) {
     position:absolute;
-    top:3%;
+    top:2%;
     height:95%;
     width:90%;
     z-index:99999;
 }
 .all-films-cards div:nth-child(3) {
     position:absolute;
-    top:0;
+    top:0%;
     height:95%;
     width:80%;
     z-index:9999;
 }
+
+/* TABLETTE */
+@media all and (min-width:768px) and (max-width:1024px) and (orientation:portrait) {
+    .all-films-cards {
+        width:60vw;
+        max-width:550px;
+    }
+}
+
+/* IPHONE X */ 
+@media all and (height: 812px) and (orientation:portrait) {
+    .all-films-cards {
+        height:60vh;
+    }
+}
+ 

@@ -6,7 +6,7 @@ class FilmCard extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      index: 1
+      index: 0
     };
   }
 
@@ -17,9 +17,9 @@ class FilmCard extends React.Component {
     const posterPath3 = listAction.results[this.state.index + 2].poster_path;
     return (
       <div className='all-films-cards'>
-        <div key={film.id} className='film-card-container' style={{ backgroundImage: `url(http://image.tmdb.org/t/p/w342/${posterPath})` }} />
-        <div key={film.id} className='film-card-container' style={{ backgroundImage: `url(http://image.tmdb.org/t/p/w342/${posterPath2})` }} />  
-        <div key={film.id} className='film-card-container' style={{ backgroundImage: `url(http://image.tmdb.org/t/p/w342/${posterPath3})` }} />
+        <div key={film.id} className='film-card-container' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${posterPath})` }} />
+        <div key={film.id} className='film-card-container' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${posterPath2})` }} />
+        <div key={film.id} className='film-card-container' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${posterPath3})` }} />
       </div>
     );
   }

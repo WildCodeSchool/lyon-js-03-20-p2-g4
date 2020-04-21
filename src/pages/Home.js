@@ -26,7 +26,7 @@ class Home extends React.Component {
         {!namesHidden ? (
           <div className='centered'>
             <UsersInputs />
-            <Button txt='Valider' onClick={this.handleHide} />
+            <Button content='Valider' onClick={this.handleHide} className='button' />
           </div>
         ) : (
           <MovieLists />

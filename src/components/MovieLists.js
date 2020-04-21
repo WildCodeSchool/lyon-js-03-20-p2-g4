@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/movielists.css';
 import scienceFiction from '../images/science-fiction.jpg';
 import action from '../images/action.jpg';
@@ -78,14 +79,14 @@ const MovieLists = (props) => {
         key={item.source}
       >
         {/* Link to the next page */}
-        <a href={item.link}>
+        <Link to={item.link}>
           <div className='clickable-list' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${item.source})` }} />
-        </a>
+        </Link>
         {/* Link to the next page
                 We added it for picture link and text to make both of them clickable */}
-        <a href={item.link}>
+        <Link to={item.link}>
           <CarouselCaption captionText='choisir cette liste' captionHeader={item.caption} />
-        </a>
+        </Link>
         <img src={item.source} alt={item.altText} />
       </CarouselItem>
     );

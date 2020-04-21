@@ -103,10 +103,10 @@ class MatchRoom extends React.Component {
   }
 
   handleValidate = () => {
-    const user1List = this.state.user1List.slice()
+    const user1List = this.state.user1List.slice();
     if (this.state.index < this.state.list.length - 1) {
-      user1List.push(this.state.list[this.state.index].title)
-      this.setState({ user1List })
+      user1List.push(this.state.list[this.state.index].title);
+      this.setState({ user1List });
       this.setState({ index: (this.state.index + 1) });
     } else {
       this.setState({ finishedSession: true });
@@ -137,7 +137,7 @@ class MatchRoom extends React.Component {
         </div>
         <div className='session-button-container'>
           <Button content={<img src={Reject} alt='reject button' />} className='session-button reject' onClick={this.handleReject} />
-          <Button content={<img src={Validate} alt='validate button' />} className='session-button validate' onClick={this.handleValidate}/>
+          <Button content={<img src={Validate} alt='validate button' />} className='session-button validate' onClick={this.handleValidate} />
         </div>
       </div>
     );

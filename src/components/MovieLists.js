@@ -17,35 +17,35 @@ const items = [
     source: scienceFiction,
     altText: 'Science-Fiction',
     caption: 'Science-Fiction',
-    link: '',
+    link: '/matchroom',
     id: 878
   },
   {
     source: action,
     altText: 'Action',
     caption: 'Action',
-    link: '',
+    link: '/matchroom',
     id: 28
   },
   {
     source: policier,
     altText: 'Thriller',
     caption: 'Thriller',
-    link: '',
+    link: '/matchroom',
     id: 53
   },
   {
     source: superHero,
     altText: 'Super héro',
     caption: 'Super héro',
-    link: '',
+    link: '/matchroom',
     id: 14
   },
   {
     source: guerre,
     altText: 'Guerre',
     caption: 'Guerre',
-    link: '',
+    link: '/matchroom',
     id: 10752
   }
 ];

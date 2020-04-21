@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 class User2List extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {};
   }
-  render() {
+
+  render () {
     return (
       <div>
         <p>{this.props.user2} à vous de jouer !</p>

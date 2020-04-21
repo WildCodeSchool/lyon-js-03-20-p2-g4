@@ -1,11 +1,12 @@
-import React from "react";
-import Button from "./Button";
+import React from 'react';
+import Button from './Button';
 class User1List extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {};
   }
-  render() {
+
+  render () {
     return (
       <div>
         <p>{this.props.user1} à vous de jouer !</p>

@@ -107,7 +107,7 @@ class MatchRoom extends React.Component {
     if (this.state.index < this.state.list.length - 1) {
       user1List.push(this.state.list[this.state.index].title);
       this.setState({ user1List, index: (this.state.index + 1) });
-    } else if (this.state.index === this.state.list.length - 1){
+    } else if (this.state.index === this.state.list.length - 1) {
       user1List.push(this.state.list[this.state.index].title);
       this.setState({ user1List, index: (this.state.index + 1), finishedSession: true });
     }
@@ -122,7 +122,6 @@ class MatchRoom extends React.Component {
   }
 
   render () {
-    console.log(this.state.list);
     return (
       <div>
         <h2>Match Room page</h2>

@@ -7,8 +7,6 @@ class MatchRoom extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      user1: 'Tic',
-      user2: 'Tac',
       currentSession: 'user1'
     };
   }
@@ -19,6 +17,7 @@ class MatchRoom extends React.Component {
   };
 
   render () {
+    const { user1, user2 } = this.props;
     return (
       <div>
         <h2>Match Room page</h2>
@@ -29,9 +28,9 @@ class MatchRoom extends React.Component {
           <h2>Result</h2>
         </Link>
         {this.state.currentSession === 'user1' ? (
-          <User1List {...this.state} onClick={this.handleSession} />
+          <User1List user1={user1} {...this.state} onClick={this.handleSession} user2={user2} />
         ) : (
-          <User2List user2={this.state.user2} />
+          <User2List user2={user2} />
         )}
       </div>
     );

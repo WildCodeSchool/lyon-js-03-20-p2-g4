@@ -106,10 +106,10 @@ class MatchRoom extends React.Component {
     const user1List = this.state.user1List.slice();
     if (this.state.index < this.state.list.length - 1) {
       user1List.push(this.state.list[this.state.index].title);
-      this.setState({ user1List });
-      this.setState({ index: (this.state.index + 1) });
-    } else {
-      this.setState({ finishedSession: true });
+      this.setState({ user1List, index: (this.state.index + 1) });
+    } else if (this.state.index === this.state.list.length - 1){
+      user1List.push(this.state.list[this.state.index].title);
+      this.setState({ user1List, index: (this.state.index + 1), finishedSession: true });
     }
   }
 

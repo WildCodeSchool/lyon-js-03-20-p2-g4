@@ -18,7 +18,7 @@ class Result extends React.Component {
           <HeaderSmall />
           <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
           <Link to='/matchroom'>
-            <Button txt="Continuer d'explorer la liste" />
+            <Button content="Continuer d'explorer la liste" />
           </Link>
         </div>
         <MovieLists />

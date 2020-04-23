@@ -18,7 +18,7 @@ class User1List extends React.Component {
           <h2 className='subtitle'>{`À vous ${this.props.user1}`}</h2>
         </div>
         <h2 className='user-session'>Utilisateur : {this.props.user1}</h2>
-        {this.state.finishedSession ? <Button txt={`Lancer session ${this.props.user2}`} onClick={this.props.onClick} /> : <FilmCard />}
+        {this.state.finishedSession ? <Button content={`Lancer session ${this.props.user2}`} onClick={this.props.onClick} /> : <FilmCard />}
       </div>
     );
   }

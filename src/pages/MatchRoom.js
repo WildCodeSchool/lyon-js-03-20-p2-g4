@@ -30,7 +30,7 @@ class MatchRoom extends React.Component {
         {this.state.currentSession === 'user1' ? (
           <User1List user1={user1} {...this.state} onClick={this.handleSession} user2={user2} />
         ) : (
-          <User2List user2={user2} />
+          <User2List user2={user2} {...this.state} />
         )}
       </div>
     );

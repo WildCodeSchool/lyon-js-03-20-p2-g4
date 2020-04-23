@@ -2,7 +2,7 @@
   background: var(--accentColor);
   box-shadow: var(--shadow);
   border-radius: 36px;
-  width: 220px;
+  padding: 0 20px;
   height: 40px;
   color: var(--lightTextColor);
   font-weight: 500;
@@ -21,7 +21,7 @@
   width:100%;
   max-width:300px;
   margin:auto;
-  height:400px;
+  height:200px;
   display:flex;
   justify-content:space-between;
   align-items:center;

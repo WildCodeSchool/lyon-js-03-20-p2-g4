@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../components/Button';
-import Validate from '../images/validate.svg';
-import Reject from '../images/reject.svg';
+import User1List from '../components/User1List';
+import User2List from '../components/User2List';
+import HeaderSmall from '../components/HeaderSmall';
 
 const initialList = [
   {
@@ -98,7 +98,8 @@ class MatchRoom extends React.Component {
       user1List: [],
       user2List: [],
       index: 0,
-      finishedSession: false
+      finishedSession: false,
+      currentSession: 'user1'
     };
   }
 
@@ -121,23 +122,25 @@ class MatchRoom extends React.Component {
     }
   }
 
+  handleSession = () => {
+    const currentSession = 'user2';
+    this.setState({ currentSession });
+  };
+
   render () {
+    const { user1, user2 } = this.props;
     return (
       <div>
-        <h2>Match Room page</h2>
-        <Link to='/'>
-          <h2>Home</h2>
-        </Link>
+        <HeaderSmall />
         <Link to='/result'>
           <h2>Result</h2>
 
         </Link>
-        <div>{this.state.finishedSession ? <p>Vous avez terminé votre session</p> : this.state.list[this.state.index].title}
-        </div>
-        <div className='session-button-container'>
-          <Button content={<img src={Reject} alt='reject button' />} className='session-button reject' onClick={this.handleReject} />
-          <Button content={<img src={Validate} alt='validate button' />} className='session-button validate' onClick={this.handleValidate} />
-        </div>
+        {this.state.currentSession === 'user1' ? (
+          <User1List user1={user1} {...this.state} onHandleSession={this.handleSession} onHandleReject={this.handleReject} onHandleValidate={this.handleValidate} user2={user2} />
+        ) : (
+          <User2List user2={user2} />
+        )}
       </div>
     );
   }

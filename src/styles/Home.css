@@ -1,3 +1,7 @@
 .home .centered {
   text-align: center;
 }
+
+.home Button {
+  width: 220px;
+}

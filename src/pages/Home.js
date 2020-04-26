@@ -25,7 +25,7 @@ class Home extends React.Component {
         <HeaderHome />
         {!namesHidden ? (
           <div className='centered'>
-            <UsersInputs />
+            <UsersInputs {...this.props} />
             <Button txt='Valider' onClick={this.handleHide} />
           </div>
         ) : (

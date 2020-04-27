@@ -1,54 +1,54 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../styles/movielists.css";
-import scienceFiction from "../images/science-fiction.jpg";
-import action from "../images/action.jpg";
-import policier from "../images/policier.jpg";
-import superHero from "../images/super-hero.jpg";
-import guerre from "../images/guerre.jpg";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/movielists.css';
+import scienceFiction from '../images/science-fiction.jpg';
+import action from '../images/action.jpg';
+import policier from '../images/policier.jpg';
+import superHero from '../images/super-hero.jpg';
+import guerre from '../images/guerre.jpg';
 import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselCaption,
-} from "reactstrap";
+  CarouselCaption
+} from 'reactstrap';
 
 const items = [
   {
     source: action,
-    altText: "Action",
-    caption: "Action",
-    link: "/matchroom/28",
-    id: 28,
+    altText: 'Action',
+    caption: 'Action',
+    link: '/matchroom/28',
+    id: 28
   },
   {
     source: scienceFiction,
-    altText: "Science-Fiction",
-    caption: "Science-Fiction",
-    link: "/matchroom/878",
-    id: 878,
+    altText: 'Science-Fiction',
+    caption: 'Science-Fiction',
+    link: '/matchroom/878',
+    id: 878
   },
   {
     source: policier,
-    altText: "Thriller",
-    caption: "Thriller",
-    link: "/matchroom/53",
-    id: 53,
+    altText: 'Thriller',
+    caption: 'Thriller',
+    link: '/matchroom/53',
+    id: 53
   },
   {
     source: superHero,
-    altText: "Super héro",
-    caption: "Super héro",
-    link: "/matchroom/14",
-    id: 14,
+    altText: 'Super héro',
+    caption: 'Super héro',
+    link: '/matchroom/14',
+    id: 14
   },
   {
     source: guerre,
-    altText: "Guerre",
-    caption: "Guerre",
-    link: "/matchroom/10752",
-    id: 10752,
-  },
+    altText: 'Guerre',
+    caption: 'Guerre',
+    link: '/matchroom/10752',
+    id: 10752
+  }
 ];
 
 /* Carousel */
@@ -81,9 +81,9 @@ const MovieLists = (props) => {
         {/* Link to the next page */}
         <Link to={item.link}>
           <div
-            className="clickable-list"
+            className='clickable-list'
             style={{
-              backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${item.source})`,
+              backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${item.source})`
             }}
           />
         </Link>
@@ -91,7 +91,7 @@ const MovieLists = (props) => {
                 We added it for picture link and text to make both of them clickable */}
         <Link to={item.link}>
           <CarouselCaption
-            captionText="choisir cette liste"
+            captionText='choisir cette liste'
             captionHeader={item.caption}
           />
         </Link>
@@ -100,20 +100,20 @@ const MovieLists = (props) => {
     );
   });
   return (
-    <div className="list-container">
+    <div className='list-container'>
       <h2>Choisissez une liste de films</h2>
-      <h3 className="list-category">Par genre</h3>
+      <h3 className='list-category'>Par genre</h3>
 
       <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         {slides}
         <CarouselControl
-          direction="prev"
-          directionText="Previous"
+          direction='prev'
+          directionText='Previous'
           onClickHandler={previous}
         />
         <CarouselControl
-          direction="next"
-          directionText="Next"
+          direction='next'
+          directionText='Next'
           onClickHandler={next}
         />
       </Carousel>
@@ -124,7 +124,7 @@ const MovieLists = (props) => {
 // To disable the automatic sliding of images
 // See React Strap Carousel properties for more details: https://reactstrap.github.io/components/carousel/#app
 Carousel.defaultProps = {
-  interval: false,
+  interval: false
 };
 
 export default MovieLists;

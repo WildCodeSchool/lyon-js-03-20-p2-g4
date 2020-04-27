@@ -1,40 +1,39 @@
 import React from 'react';
-import listAction from './listAction.json';
 import '../styles/FilmCard.css';
 
 class FilmCard extends React.Component {
   render () {
     const posterPath = (
       <div
-        key={listAction.results[this.props.index].poster_path}
+        key={this.props.apiList[this.props.index].id}
         className='film-card-container'
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
-            listAction.results[this.props.index].poster_path
+            this.props.apiList[this.props.index].poster_path
           })`
         }}
       />
     );
-    const posterPath2 = listAction.results[this.props.index + 1] ? (
+    const posterPath2 = this.props.apiList[this.props.index + 1] ? (
       <div
-        key={listAction.results[this.props.index + 1].poster_path}
+        key={this.props.apiList[this.props.index + 1].id}
         className='film-card-container'
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
-            listAction.results[this.props.index + 1].poster_path
+            this.props.apiList[this.props.index + 1].poster_path
           })`
         }}
       />
     ) : (
       <div className='empty-card' />
     );
-    const posterPath3 = listAction.results[this.props.index + 2] ? (
+    const posterPath3 = this.props.apiList[this.props.index + 2] ? (
       <div
-        key={listAction.results[this.props.index + 2].poster_path}
+        key={this.props.apiList[this.props.index + 2].id}
         className='film-card-container'
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
-            listAction.results[this.props.index + 2].poster_path
+            this.props.apiList[this.props.index + 2].poster_path
           })`
         }}
       />

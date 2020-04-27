@@ -36,6 +36,9 @@
     width:80%;
     z-index:9999;
 }
+.all-films-cards .empty-card {
+    display:none;
+}
 
 /* TABLETTE */
 @media all and (min-width:768px) and (max-width:1024px) and (orientation:portrait) {

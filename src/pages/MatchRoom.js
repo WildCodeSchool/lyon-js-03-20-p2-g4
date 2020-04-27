@@ -99,11 +99,10 @@ class MatchRoom extends React.Component {
   };
 
   handleReject = () => {
-    if (this.state.index < this.state.list.length - 1) {
-      this.setState({ index: this.state.index + 1 });
-    } else {
-      return this.setState({ finishedSession: true });
-    }
+    this.setState({
+      index: this.state.index + 1,
+      finishedSession: this.state.index === this.state.list.length - 1
+    });
   };
 
   handleSession = () => {

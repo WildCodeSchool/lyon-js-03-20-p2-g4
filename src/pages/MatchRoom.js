@@ -1,11 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import User1List from '../components/User1List';
-import User2List from '../components/User2List';
-import HeaderSmall from '../components/HeaderSmall';
+import React from "react";
+import { Link } from "react-router-dom";
+import User1List from "../components/User1List";
+import User2List from "../components/User2List";
+import HeaderSmall from "../components/HeaderSmall";
+import ApiKey from "../ApiKey";
 
 class MatchRoom extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       apiList: [],
@@ -13,7 +14,7 @@ class MatchRoom extends React.Component {
       user2List: [],
       index: 0,
       finishedSession: false,
-      currentSession: 'user1'
+      currentSession: "user1",
     };
   }
 
@@ -23,19 +24,19 @@ class MatchRoom extends React.Component {
     this.setState({
       user1List,
       index: this.state.index + 1,
-      finishedSession: this.state.index === this.state.apiList.length - 1
+      finishedSession: this.state.index === this.state.apiList.length - 1,
     });
   };
 
   handleReject = () => {
     this.setState({
       index: this.state.index + 1,
-      finishedSession: this.state.index === this.state.apiList.length - 1
+      finishedSession: this.state.index === this.state.apiList.length - 1,
     });
   };
 
   handleSession = () => {
-    const currentSession = 'user2';
+    const currentSession = "user2";
     this.setState({ currentSession });
   };
 
@@ -43,7 +44,7 @@ class MatchRoom extends React.Component {
     const genreId = this.props.match.params.id;
     const apiList = await window
       .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=fcbb1bd6a2b486386efe153e5874f9ee&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
       )
       .then((response) => {
         return response
@@ -51,25 +52,25 @@ class MatchRoom extends React.Component {
           .then((data) => {
             return data.results;
           })
-          .catch(() => console.error('api not responding with the list'));
+          .catch(() => console.error("api not responding with the list"));
       });
     this.setState({ apiList });
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.getData();
   }
 
-  render () {
+  render() {
     const { user1, user2 } = this.props;
     if (this.state.apiList[0] !== undefined) {
       return (
         <div>
           <HeaderSmall />
-          <Link to='/result'>
+          <Link to="/result">
             <h2>Result</h2>
           </Link>
-          {this.state.currentSession === 'user1' ? (
+          {this.state.currentSession === "user1" ? (
             <User1List
               user1={user1}
               {...this.state}

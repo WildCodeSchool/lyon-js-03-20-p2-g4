@@ -24,6 +24,7 @@ class User1List extends React.Component {
         ) : (
           <>
             <h2 className='user-session'>Utilisateur : {this.props.user1}</h2>
+
             <FilmCard index={this.props.index} apiList={this.props.apiList} />
             <div className='session-button-container'>
               <Button

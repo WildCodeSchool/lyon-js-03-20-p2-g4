@@ -15,6 +15,8 @@ class MatchRoom extends React.Component {
       index: 0,
       finishedSession: false,
       currentSession: "user1",
+      listIsLoading: true,
+      fetchListError: false,
     };
   }
 
@@ -40,9 +42,9 @@ class MatchRoom extends React.Component {
     this.setState({ currentSession });
   };
 
-  getData = async () => {
+  getData = () => {
     const genreId = this.props.match.params.id;
-    const apiList = await window
+    window
       .fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
       )
@@ -50,11 +52,14 @@ class MatchRoom extends React.Component {
         return response
           .json()
           .then((data) => {
-            return data.results;
+            console.log(data);
+            this.setState({ apiList: data.results, listIsLoading: false });
           })
-          .catch(() => console.error("api not responding with the list"));
+          .catch(() => {
+            //console.error('api not responding with the list')
+            this.setState({ listIsLoading: false, fetchListError: true });
+          });
       });
-    this.setState({ apiList });
   };
 
   componentDidMount() {
@@ -63,29 +68,39 @@ class MatchRoom extends React.Component {
 
   render() {
     const { user1, user2 } = this.props;
-    if (this.state.apiList[0] !== undefined) {
+    if (this.state.listIsLoading) {
       return (
         <div>
           <HeaderSmall />
           <Link to="/result">
             <h2>Result</h2>
           </Link>
-          {this.state.currentSession === "user1" ? (
-            <User1List
-              user1={user1}
-              {...this.state}
-              onHandleSession={this.handleSession}
-              onHandleReject={this.handleReject}
-              onHandleValidate={this.handleValidate}
-              user2={user2}
-            />
-          ) : (
-            <User2List user2={user2} />
-          )}
+          <p>En cours de chargement ...</p>
+        </div>
+      );
+    } else if (this.state.fetchListError) {
+      return (
+        <div>
+          <HeaderSmall />
+          <Link to="/result">
+            <h2>Result</h2>
+          </Link>
+          <p>Erreur lors du chargement</p>
         </div>
       );
     } else {
-      return <p>Loading ...</p>;
+      return this.state.currentSession === "user1" ? (
+        <User1List
+          user1={user1}
+          {...this.state}
+          onHandleSession={this.handleSession}
+          onHandleReject={this.handleReject}
+          onHandleValidate={this.handleValidate}
+          user2={user2}
+        />
+      ) : (
+        <User2List user2={user2} />
+      );
     }
   }
 }

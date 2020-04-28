@@ -44,8 +44,9 @@ class MatchRoom extends React.Component {
 
   handleReturn = () => {
     const user1List = this.state.user1List.slice();
-    this.setState({ index: this.state.index - 1 });
-    if (user1List.includes(this.state.apiList[this.state.index - 1])) {
+    const currentId = this.state.index;
+    this.setState({ index: currentId - 1 });
+    if (user1List.includes(this.state.apiList[currentId - 1])) {
       user1List.pop();
       this.setState({ user1List });
     }

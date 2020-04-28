@@ -15,38 +15,38 @@ import {
 
 const items = [
   {
-    source: scienceFiction,
-    altText: 'Science-Fiction',
-    caption: 'Science-Fiction',
-    link: '/matchroom',
-    id: 878
-  },
-  {
     source: action,
     altText: 'Action',
     caption: 'Action',
-    link: '/matchroom',
+    link: '/matchroom/28',
     id: 28
+  },
+  {
+    source: scienceFiction,
+    altText: 'Science-Fiction',
+    caption: 'Science-Fiction',
+    link: '/matchroom/878',
+    id: 878
   },
   {
     source: policier,
     altText: 'Thriller',
     caption: 'Thriller',
-    link: '/matchroom',
+    link: '/matchroom/53',
     id: 53
   },
   {
     source: superHero,
     altText: 'Super héro',
     caption: 'Super héro',
-    link: '/matchroom',
+    link: '/matchroom/14',
     id: 14
   },
   {
     source: guerre,
     altText: 'Guerre',
     caption: 'Guerre',
-    link: '/matchroom',
+    link: '/matchroom/10752',
     id: 10752
   }
 ];
@@ -80,12 +80,20 @@ const MovieLists = (props) => {
       >
         {/* Link to the next page */}
         <Link to={item.link}>
-          <div className='clickable-list' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${item.source})` }} />
+          <div
+            className='clickable-list'
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${item.source})`
+            }}
+          />
         </Link>
         {/* Link to the next page
                 We added it for picture link and text to make both of them clickable */}
         <Link to={item.link}>
-          <CarouselCaption captionText='choisir cette liste' captionHeader={item.caption} />
+          <CarouselCaption
+            captionText='choisir cette liste'
+            captionHeader={item.caption}
+          />
         </Link>
         <img src={item.source} alt={item.altText} />
       </CarouselItem>
@@ -96,17 +104,20 @@ const MovieLists = (props) => {
       <h2>Choisissez une liste de films</h2>
       <h3 className='list-category'>Par genre</h3>
 
-      <Carousel
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-      >
+      <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         {slides}
-        <CarouselControl direction='prev' directionText='Previous' onClickHandler={previous} />
-        <CarouselControl direction='next' directionText='Next' onClickHandler={next} />
+        <CarouselControl
+          direction='prev'
+          directionText='Previous'
+          onClickHandler={previous}
+        />
+        <CarouselControl
+          direction='next'
+          directionText='Next'
+          onClickHandler={next}
+        />
       </Carousel>
     </div>
-
   );
 };
 

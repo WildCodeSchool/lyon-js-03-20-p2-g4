@@ -17,3 +17,32 @@
   cursor: pointer;
   box-shadow: var(--shadowHover);
 }
+.session-button-container {
+  width:100%;
+  max-width:300px;
+  margin:auto;
+  height:200px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.session-button-container .session-button {
+  width:100px;
+  height:100px;
+  border-radius:100%;
+  opacity:0.8;
+  transition:all 0.2s ease-in-out;
+  background-color:white;
+  box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
+  border:none;
+}
+.session-button-container .session-button img {
+  width:24px;
+  height:24px;
+}
+.session-button-container .session-button:hover {
+  opacity:1;
+  box-shadow:0 0 7px rgba(0, 0, 0, 0.2);
+
+}
+

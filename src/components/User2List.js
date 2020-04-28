@@ -2,16 +2,10 @@ import React from 'react';
 import FilmCard from './FilmCard';
 import '../styles/UserList.css';
 import Button from './Button';
-import { Link } from 'react-router-dom';
+import Validate from '../images/validate.svg';
+import Reject from '../images/reject.svg';
 
 class User2List extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      finishedSession: false
-    };
-  }
-
   render () {
     return (
       <div className='user-list-container'>
@@ -19,11 +13,22 @@ class User2List extends React.Component {
           <h2 className='subtitle'>{`À vous ${this.props.user2}`}</h2>
         </div>
         <h2 className='user-session'>Utilisateur : {this.props.user2}</h2>
-        {this.state.finishedSession ? <Link to="/result"><Button content={"Voir le résultat"} /></Link> : <FilmCard />}
+        <FilmCard index={this.props.index} apiList={this.props.apiList} />
+        <div className='session-button-container'>
+          <Button
+            content={<img src={Reject} alt='reject button' />}
+            className='session-button reject'
+            onClick={this.props.onHandleReject}
+          />
+          <Button
+            content={<img src={Validate} alt='validate button' />}
+            className='session-button validate'
+            onClick={this.props.onHandleValidate}
+          />
+        </div>
       </div>
     );
   }
 }
 
 export default User2List;
-

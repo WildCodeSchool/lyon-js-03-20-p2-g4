@@ -21,13 +21,23 @@ class MatchRoom extends React.Component {
   }
 
   handleValidate = () => {
-    const user1List = this.state.user1List.slice();
-    user1List.push(this.state.apiList[this.state.index]);
-    this.setState({
-      user1List,
-      index: this.state.index + 1,
-      finishedSession: this.state.index === this.state.apiList.length - 1
-    });
+    if (this.state.currentSession === 'user1') {
+      const user1List = this.state.user1List.slice();
+      user1List.push(this.state.apiList[this.state.index]);
+      this.setState({
+        user1List,
+        index: this.state.index + 1,
+        finishedSession: this.state.index === this.state.apiList.length - 1
+      });
+    } else {
+      const user2List = this.state.user1List.slice();
+      user2List.push(this.state.apiList[this.state.index]);
+      this.setState({
+        user2List,
+        index: this.state.index + 1,
+        finishedSession: this.state.index === this.state.apiList.length - 1
+      });
+    }
   };
 
   handleReject = () => {

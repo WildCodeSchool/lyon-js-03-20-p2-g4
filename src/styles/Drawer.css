@@ -16,7 +16,6 @@
     background-color:rgba(0, 0, 0, 0.5);
 }
 .drawer-container .drawer-movie-all-info-container {
-    border-radius: var(--radius) var(--radius) 0 0;
     height:90%;
     width:100%;
     top:10%;
@@ -25,15 +24,30 @@
     position:relative;
     z-index:3
 }
-.drawer-container .drawer-movie-all-info-container .banner-link-rating-container {
+.drawer-container .close-drawer {
     position:sticky;
+    content:'';
+    top:12%;
+    height:50px;
+    width:100%;
+    background-color:white;
+    border-radius:var(--radius) var(--radius) 0 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.drawer-container .close-drawer span {
+    width:40px;
+    height:6px;
+    border-radius:var(--radius);
+    background-color:rgba(0, 0, 0, 0.2);
+    margin-top:-3%;
+}
+.drawer-container .drawer-movie-all-info-container .banner-link-rating-container {
     top:0;
     height:300px;
     width:100%;
     transition:height 0.2s ease-in-out;
-}
-.drawer-container .drawer-movie-all-info-container .banner-link-rating-container.scrolled {
-    height:100px;
 }
 .drawer-container .drawer-movie-all-info-container .button {
   width: fit-content;
@@ -56,25 +70,11 @@
 }
 
 .drawer-container .drawer-movie-all-info-container .drawer-movie-banner {
-    height:80%;
+    height:30%;
     width:100%;
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;
-    border-radius: var(--radius) var(--radius) 0 0;
-}
-.drawer-container .drawer-movie-all-info-container .drawer-movie-banner .drawer-close {
-    background-image:url("../images/close-draw.png");
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%) rotate(90deg);
-    display:block;
-    width:20px;
-    height:20px;
-    top:10px;
 }
 .drawer-container .drawer-movie-all-info-container .drawer-rating-container .star {
     width:18px;
@@ -102,6 +102,8 @@
     align-items:center;
     padding: 20px 15px 20px 10px;
     background-color:white;
+    position:sticky;
+    top:0;
 }
 .drawer-container .drawer-movie-all-info-container .drawer-link-rating .drawer-rating-container {
     width:150px;

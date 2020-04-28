@@ -110,6 +110,14 @@ class MatchRoom extends React.Component {
     this.setState({ currentSession });
   };
 
+  handleReturn = () => {
+    const user1List = this.state.user1List.slice();
+    this.setState({ index: this.state.index - 1 });
+    if (user1List.include(this.state.list[this.state.index - 1])) {
+      user1List.pop();
+    }
+  };
+
   render () {
     const { user1, user2 } = this.props;
     return (
@@ -125,6 +133,7 @@ class MatchRoom extends React.Component {
             onHandleSession={this.handleSession}
             onHandleReject={this.handleReject}
             onHandleValidate={this.handleValidate}
+            onHandleReturn={this.handleReturn}
             user2={user2}
           />
         ) : (

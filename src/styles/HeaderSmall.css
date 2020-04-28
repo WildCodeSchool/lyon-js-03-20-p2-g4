@@ -1,3 +1,6 @@
+.headerSmall {
+  margin-top:-10px;
+}
 .headerSmall .logo {
   display: block;
   margin: 30px auto;

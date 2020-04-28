@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button.js';
 import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
+import Drawer from '../components/Drawer';
 
 class Result extends React.Component {
   constructor (props) {
@@ -22,6 +23,7 @@ class Result extends React.Component {
           </Link>
         </div>
         <MovieLists />
+        <Drawer />
       </div>
     );
   }

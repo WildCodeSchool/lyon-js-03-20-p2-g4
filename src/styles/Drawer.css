@@ -1,0 +1,41 @@
+.drawer-container {
+    height:100vh;
+    width:100vw;
+    position:absolute;
+    z-index: 9999999999;
+    margin:auto;
+    top:0;
+    left:0;
+}
+.drawer-container .drawer-overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+.drawer-container .drawer-movie-info-container {
+    border-radius: var(--radius) var(--radius) 0 0;
+    height:80%;
+    width:100%;
+    top:20%;
+    background-color:white;
+    overflow-y:auto;
+    position:relative;
+    z-index:3
+}
+
+.drawer-container .drawer-movie-info-container .button {
+  width: fit-content;
+  line-height:28px;
+  height:30px;
+}
+
+.drawer-container .drawer-movie-info-container .drawer-movie-banner {
+    position:absolute;
+    height:20%;
+    width:100%;
+    top:0;
+    left:0;
+}

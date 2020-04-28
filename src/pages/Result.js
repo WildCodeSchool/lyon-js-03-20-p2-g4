@@ -6,6 +6,7 @@ import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
 import Drawer from '../components/Drawer';
 
+
 class Result extends React.Component {
   constructor (props) {
     super(props);

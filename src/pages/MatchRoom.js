@@ -114,7 +114,6 @@ class MatchRoom extends React.Component {
     const user1List = this.state.user1List.slice();
     this.setState({ index: this.state.index - 1 });
     if (user1List.includes(this.state.list[this.state.index - 1])) {
-      console.log('film existant dans la liste 1');
       user1List.pop();
       this.setState({ user1List });
     }

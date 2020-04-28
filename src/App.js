@@ -31,11 +31,20 @@ class App extends React.Component {
         <div className='App'>
           <Switch>
             <Route exact path='/'>
-              <Home user1={user1} user2={user2} onChange1={this.handleChange1} onChange2={this.handleChange2} />
+              <Home
+                user1={user1}
+                user2={user2}
+                onChange1={this.handleChange1}
+                onChange2={this.handleChange2}
+              />
             </Route>
-            <Route exact path='/matchroom'>
-              <MatchRoom user1={user1} user2={user2} />
-            </Route>
+            <Route
+              exact
+              path='/matchroom/:id'
+              render={(routeProps) => (
+                <MatchRoom {...this.state} {...routeProps} />
+              )}
+            />
             <Route exact path='/result'>
               <Result />
             </Route>

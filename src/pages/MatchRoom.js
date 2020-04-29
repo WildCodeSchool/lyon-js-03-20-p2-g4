@@ -49,8 +49,12 @@ class MatchRoom extends React.Component {
 
   handleSession = () => {
     const currentSession = 'user2';
-    this.setState({ currentSession, index: 0 });
+    this.setState({ currentSession, index: 0, finishedSession: false });
   };
+
+  handleResults = () => {
+    return (<Link to='/result' />);
+  }
 
   getData = () => {
     const genreId = this.props.match.params.id;
@@ -114,6 +118,7 @@ class MatchRoom extends React.Component {
           {...this.state}
           onHandleReject={this.handleReject}
           onHandleValidate={this.handleValidate}
+          onHandleResults={this.handleResults}
         />
       );
     }

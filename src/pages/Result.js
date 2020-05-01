@@ -9,9 +9,16 @@ import Drawer from '../components/Drawer';
 class Result extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      getInfo: true,
+    };
   }
 
+  closeDrawer = () => {
+    this.setState({ getInfo: false })
+  }
+
+  
   render () {
     return (
       <div className='result'>
@@ -23,7 +30,7 @@ class Result extends React.Component {
           </Link>
         </div>
         <MovieLists />
-        <Drawer />
+        <Drawer getInfo={this.state.getInfo} closeDrawer={this.closeDrawer} />
       </div>
     );
   }

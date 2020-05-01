@@ -1,25 +1,40 @@
 .drawer-container {
-    height:100vh;
     width:100vw;
+    max-width: 500px;
     position:absolute;
     z-index: 9999999999;
     margin:auto;
-    top:0;
-    left:0;
-    overflow-y: hidden;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    overflow: hidden;
+    transition:all 0.4s ease-in-out;
 }
-.drawer-container .drawer-overlay {
+.drawer-container.closed {
+    height:0;
+}
+.drawer-container.opened {
+    height:90%;
+}
+.drawer-overlay {
     position:absolute;
     top:0;
     left:0;
     height:100%;
     width:100%;
     background-color:rgba(0, 0, 0, 0.5);
+    z-index:-1;
+    opacity:0;
+    transition:all 0.4s ease-in-out;
+}
+.drawer-overlay.displayed {
+    opacity:1;
+    z-index:999999999;
 }
 .drawer-container .drawer-movie-all-info-container {
-    height:90%;
+    height:100%;
     width:100%;
-    top:10%;
+    top:0;
     background-color:white;
     overflow-y:auto;
     position:relative;
@@ -28,7 +43,7 @@
 .drawer-container .close-drawer {
     position:sticky;
     content:'';
-    top:10%;
+    top:0;
     height:35px;
     width:100%;
     background-color:white;
@@ -137,7 +152,7 @@
 }
 .drawer-container .drawer-movie-all-info-container .drawer-movie-casting .drawer-actor-container {
     display:flex;
-    justify-content:flex-start;
+    justify-content:center;
     flex-wrap:wrap;
 }
 .drawer-container .drawer-movie-all-info-container .drawer-movie-casting .drawer-actor {
@@ -152,4 +167,10 @@
     width:100px;
     border-radius:var(--radius);
     box-shadow:0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@media all and (min-width:1024px) {
+    .drawer-container .drawer-movie-all-info-container {
+        height: calc(100% - 35px);
+    }
 }

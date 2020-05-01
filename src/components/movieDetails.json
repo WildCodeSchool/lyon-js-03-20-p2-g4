@@ -1,0 +1,99 @@
+{
+  "adult": false,
+  "backdrop_path": "/stmYfCUGd8Iy6kAMBr6AmWqx8Bq.jpg",
+  "belongs_to_collection": null,
+  "budget": 85000000,
+  "genres": [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 878,
+      "name": "Science-Fiction"
+    },
+    {
+      "id": 35,
+      "name": "Comédie"
+    },
+    {
+      "id": 10751,
+      "name": "Familial"
+    }
+  ],
+  "homepage": "https://www.paramountmovies.com/movies/sonic-the-hedgehog",
+  "id": 454626,
+  "imdb_id": "tt3794354",
+  "original_language": "en",
+  "original_title": "Sonic the Hedgehog",
+  "overview": "L'histoire du hérisson bleu le plus rapide du monde qui arrive sur Terre, sa nouvelle maison. Sonic et son nouveau meilleur ami Tom font équipe pour sauver la planète du diabolique Dr. Robotnik, bien déterminé à régner sur le monde entier.",
+  "popularity": 169.746,
+  "poster_path": "/qi6qwClvTfZJiI5GhsKbtkqg28W.jpg",
+  "production_companies": [
+    {
+      "id": 333,
+      "logo_path": "/5xUJfzPZ8jWJUDzYtIeuPO4qPIa.png",
+      "name": "Original Film",
+      "origin_country": "US"
+    },
+    {
+      "id": 10644,
+      "logo_path": "/ocLZIdYJBppuCt1rhYEb2jbpt5F.png",
+      "name": "Blur Studios",
+      "origin_country": "US"
+    },
+    {
+      "id": 77884,
+      "logo_path": "/dP2lxVNctD5Cried0IWVqgrO2o9.png",
+      "name": "Marza Animation Planet",
+      "origin_country": "JP"
+    },
+    {
+      "id": 4,
+      "logo_path": "/fycMZt242LVjagMByZOLUGbCvv3.png",
+      "name": "Paramount",
+      "origin_country": "US"
+    },
+    {
+      "id": 113750,
+      "logo_path": "/A3QVZ9Ah0yI2d2GiXUFpdlbTgyr.png",
+      "name": "SEGA",
+      "origin_country": "JP"
+    },
+    {
+      "id": 8582,
+      "logo_path": null,
+      "name": "Canadian Film or Video Production Tax Credit Fund (CPTC)",
+      "origin_country": "CA"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "CA",
+      "name": "Canada"
+    },
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    },
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2020-02-12",
+  "revenue": 265493652,
+  "runtime": 100,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "Passez à la vitesse supérieure.",
+  "title": "Sonic, le film",
+  "video": false,
+  "vote_average": 7.6,
+  "vote_count": 3295
+}

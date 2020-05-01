@@ -6,10 +6,27 @@ class Drawer extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      people: [],
+      dataLoaded: false,
+      director: [],
     };
   }
 
+  getPeople = async () => {
+    const people = await window.fetch(`https://api.themoviedb.org/3/movie/${listAction.results[0].id}/credits?api_key=fcbb1bd6a2b486386efe153e5874f9ee`)
+      .then(response => response.json())
+      .then(data => data);
+    this.setState({ people, dataLoaded: true });
+  }
+
+  componentDidMount () {
+    this.getPeople();
+  }
+
   render () {
+    /* const runtime = listAction.results[0].runtime;
+    const heures = Math.floor(runtime / 60);
+    const minutes = runtime % 60; */
     const voteAverage = (Math.round((listAction.results[0].vote_average / 2) * 10) / 10);
     const stars = [];
     const starsDisplay = (rating) => {
@@ -62,39 +79,25 @@ class Drawer extends React.Component {
           </div>
           <div className='drawer-movie-info-container'>
             <h4>{listAction.results[0].title}</h4>
-            <span>{`De [realisateur] - [genre] - [durée] - ${listAction.results[0].release_date}`}</span>
+            <span>{`De ${this.state.dataLoaded ? (this.state.people.crew.filter(director => {
+              return director.job === "Director"
+              }))[0].name : '...'} - [genre] - [durée] - ${listAction.results[0].release_date}`}</span>
             <p>{listAction.results[0].overview}</p>
           </div>
           <div className='drawer-movie-casting'>
             <h5>Casting</h5>
             <div className='drawer-actor-container'>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
-              <div className='drawer-actor'>
-                <img src='#' alt='[actor name]' />
-              </div>
+              {this.state.dataLoaded ? this.state.people.cast.map(casting => {
+                return (
+                  <div className='drawer-actor' key={casting.id}>
+                    <img src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`} alt={casting.name} />
+                  </div>
+                );
+              }) : (
+                <div className='drawer-actor'>
+                  <p>Loading ...</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

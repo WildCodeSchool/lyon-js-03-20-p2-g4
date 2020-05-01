@@ -1,4 +1,4 @@
-..drawer-container {
+.drawer-container {
     height:100vh;
     width:100vw;
     position:absolute;
@@ -28,7 +28,7 @@
 .drawer-container .close-drawer {
     position:sticky;
     content:'';
-    top:0;
+    top:10%;
     height:35px;
     width:100%;
     background-color:white;
@@ -36,7 +36,6 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    z-index:999999999999;
 }
 .drawer-container .close-drawer span {
     width:40px;
@@ -71,7 +70,7 @@
 }
 
 .drawer-container .drawer-movie-all-info-container .drawer-movie-banner {
-    height:150px;
+    height:30%;
     width:100%;
     background-position:center;
     background-size:cover;

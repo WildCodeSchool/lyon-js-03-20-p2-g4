@@ -8,7 +8,7 @@ class Drawer extends React.Component {
     this.state = {
       people: [],
       dataLoaded: false,
-      director: [],
+      director: []
     };
   }
 
@@ -80,8 +80,9 @@ class Drawer extends React.Component {
           <div className='drawer-movie-info-container'>
             <h4>{listAction.results[0].title}</h4>
             <span>{`De ${this.state.dataLoaded ? (this.state.people.crew.filter(director => {
-              return director.job === "Director"
-              }))[0].name : '...'} - [genre] - [durée] - ${listAction.results[0].release_date}`}</span>
+              return director.job === 'Director';
+              }))[0].name : '...'} - [genre] - [durée] - ${listAction.results[0].release_date}`}
+            </span>
             <p>{listAction.results[0].overview}</p>
           </div>
           <div className='drawer-movie-casting'>

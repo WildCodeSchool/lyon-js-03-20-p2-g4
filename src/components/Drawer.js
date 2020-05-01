@@ -11,7 +11,7 @@ class Drawer extends React.Component {
       movieDetailsLoaded: false,
       movieVideoLoaded: false,
       director: [],
-      movieDetails : [],
+      movieDetails: [],
       movieVideo: [],
       runTimeHM: ''
     };
@@ -21,14 +21,14 @@ class Drawer extends React.Component {
     const people = await window.fetch(`https://api.themoviedb.org/3/movie/${listAction.results[0].id}/credits?api_key=fcbb1bd6a2b486386efe153e5874f9ee`)
       .then(response => response.json())
       .then(data => data);
-    this.setState({ people, peopleLoaded : true });
+    this.setState({ people, peopleLoaded: true });
   }
 
   getMovieDetails = async () => {
     const movieDetails = await window.fetch(`https://api.themoviedb.org/3/movie/${listAction.results[0].id}?api_key=fcbb1bd6a2b486386efe153e5874f9ee`)
-    .then(response => response.json())
-    .then(data => data);
-  this.setState({ movieDetails, movieDetailsLoaded : true })
+      .then(response => response.json())
+      .then(data => data);
+    this.setState({ movieDetails, movieDetailsLoaded: true });
   }
 
   transformDuration = (duration) => {
@@ -40,9 +40,9 @@ class Drawer extends React.Component {
 
   getMovieVideo = async () => {
     const movieVideo = await window.fetch(`https://api.themoviedb.org/3/movie/${listAction.results[0].id}/videos?api_key=fcbb1bd6a2b486386efe153e5874f9ee&language=fr-FR`)
-    .then(response => response.json())
-    .then(data => data.results[0].key);
-  this.setState({ movieVideo, movieVideoLoaded: true })
+      .then(response => response.json())
+      .then(data => data.results[0].key);
+    this.setState({ movieVideo, movieVideoLoaded: true });
   }
 
   componentDidMount () {
@@ -52,15 +52,15 @@ class Drawer extends React.Component {
   }
 
   render () {
-    //Get movie rating
+    // Get movie rating
     const voteAverage = (Math.round((listAction.results[0].vote_average / 2) * 10) / 10);
     const stars = [];
     const starsDisplay = (rating) => {
       for (let i = 0; i < 5; i++) {
         if (rating >= 1) {
-          stars.push([i ,1]);
+          stars.push([i, 1]);
         } else if (rating > 0 && rating < 1) {
-          stars.push([i , 0.5]);
+          stars.push([i, 0.5]);
         } else {
           stars.push([i, 0]);
         }
@@ -71,12 +71,11 @@ class Drawer extends React.Component {
 
     const getStars = starsDisplay(voteAverage);
 
-
     return (
       <>
-        <div className={this.props.getInfo ? 'drawer-overlay displayed' : 'drawer-overlay'} onClick={this.props.closeDrawer} />
+        <div className={this.props.getInfo ? 'drawer-overlay displayed' : 'drawer-overlay'} onClick={this.props.handleCloseDrawer} />
         <div className={this.props.getInfo ? 'drawer-container opened' : 'drawer-container closed'}>
-          <div className='close-drawer' onClick={this.props.closeDrawer}><span /></div>
+          <div className='close-drawer' onClick={this.props.handleCloseDrawer}><span /></div>
           <div className='drawer-movie-all-info-container'>
             <div
               className='drawer-movie-banner' style={{
@@ -86,7 +85,7 @@ class Drawer extends React.Component {
               }}
             />
             <div className='drawer-link-rating'>
-              <a href={`https://www.youtube.com/watch?v=${this.state.movieVideo}` } target='_blank' rel='noopener noreferrer'>
+              <a href={`https://www.youtube.com/watch?v=${this.state.movieVideo}`} target='_blank' rel='noopener noreferrer'>
                 <div className='button'>
                   <span className='drawer-play-icon' />
                                           Bande annonce
@@ -95,7 +94,7 @@ class Drawer extends React.Component {
               <div className='drawer-rating-container'>
                 {getStars.map(star => {
                   if (star[1] === 1) {
-                    return <span key={star[0]} className='star full'/>;
+                    return <span key={star[0]} className='star full' />;
                   } else if (star[1] === 0.5) {
                     return <span key={star[0]} className='star half' />;
                   } else {

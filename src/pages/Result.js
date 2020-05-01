@@ -10,15 +10,14 @@ class Result extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      getInfo: true,
+      getInfo: true
     };
   }
 
   closeDrawer = () => {
-    this.setState({ getInfo: false })
+    this.setState({ getInfo: false });
   }
 
-  
   render () {
     return (
       <div className='result'>
@@ -30,7 +29,7 @@ class Result extends React.Component {
           </Link>
         </div>
         <MovieLists />
-        <Drawer getInfo={this.state.getInfo} closeDrawer={this.closeDrawer} />
+        <Drawer getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} />
       </div>
     );
   }

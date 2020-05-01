@@ -7,7 +7,7 @@ import Reject from '../images/reject.svg';
 import { Link } from 'react-router-dom';
 
 class User2List extends React.Component {
-  render() {
+  render () {
     return (
       <div className='user-list-container'>
         <div className='pop-up-user-session'>
@@ -15,11 +15,12 @@ class User2List extends React.Component {
         </div>
         {this.props.finishedSession ? (
           <div className='centered'>
-            <Button
-              content='Voir les résultats'
-              className='button'
-              onClick={this.props.onHandleResults}
-            />
+            <Link to='/result'>
+              <Button
+                content='Voir les résultats'
+                className='button'
+              />
+            </Link>
           </div>
         ) : (
           <>

@@ -30,7 +30,7 @@ class MatchRoom extends React.Component {
         finishedSession: this.state.index === this.state.apiList.length - 1
       });
     } else {
-      const user2List = this.state.user1List.slice();
+      const user2List = this.state.user2List.slice();
       user2List.push(this.state.apiList[this.state.index]);
       this.setState({
         user2List,
@@ -51,10 +51,6 @@ class MatchRoom extends React.Component {
     const currentSession = 'user2';
     this.setState({ currentSession, index: 0, finishedSession: false });
   };
-
-  handleResults = () => {
-    return (<Link to='/result' />);
-  }
 
   getData = () => {
     const genreId = this.props.match.params.id;

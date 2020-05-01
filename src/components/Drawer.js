@@ -90,9 +90,11 @@ class Drawer extends React.Component {
             <div className='drawer-actor-container'>
               {this.state.dataLoaded ? this.state.people.cast.map(casting => {
                 return (
-                  <div className='drawer-actor' key={casting.id}>
-                    <img src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`} alt={casting.name} />
-                  </div>
+                  <a href={`https://www.google.com/search?q=${casting.name}`} target='_blank' rel='noopener noreferrer' key={casting.id}>
+                    <div className='drawer-actor'>
+                      <img src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`} alt={casting.name} />
+                    </div>
+                  </a>
                 );
               }) : (
                 <div className='drawer-actor'>

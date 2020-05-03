@@ -11,7 +11,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "semistandard": "^14.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,7 +46,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "husky": "^4.2.5",
-    "semistandard": "^14.2.0"
+    "husky": "^4.2.5"
   }
 }

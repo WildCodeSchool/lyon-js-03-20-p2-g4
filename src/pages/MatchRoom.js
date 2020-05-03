@@ -21,13 +21,23 @@ class MatchRoom extends React.Component {
   }
 
   handleValidate = () => {
-    const user1List = this.state.user1List.slice();
-    user1List.push(this.state.apiList[this.state.index]);
-    this.setState({
-      user1List,
-      index: this.state.index + 1,
-      finishedSession: this.state.index === this.state.apiList.length - 1
-    });
+    if (this.state.currentSession === 'user1') {
+      const user1List = this.state.user1List.slice();
+      user1List.push(this.state.apiList[this.state.index]);
+      this.setState({
+        user1List,
+        index: this.state.index + 1,
+        finishedSession: this.state.index === this.state.apiList.length - 1
+      });
+    } else {
+      const user2List = this.state.user2List.slice();
+      user2List.push(this.state.apiList[this.state.index]);
+      this.setState({
+        user2List,
+        index: this.state.index + 1,
+        finishedSession: this.state.index === this.state.apiList.length - 1
+      });
+    }
   };
 
   handleReject = () => {
@@ -39,8 +49,14 @@ class MatchRoom extends React.Component {
 
   handleSession = () => {
     const currentSession = 'user2';
-    this.setState({ currentSession });
+    this.setState({ currentSession, index: 0, finishedSession: false });
   };
+
+  handleResult = () => {
+    const user1ListResult = this.state.user1List;
+    const user2ListResult = this.state.user2List;
+
+  }
 
   getData = () => {
     const genreId = this.props.match.params.id;
@@ -99,7 +115,12 @@ class MatchRoom extends React.Component {
           user2={user2}
         />
       ) : (
-        <User2List user2={user2} />
+        <User2List
+          user2={user2}
+          {...this.state}
+          onHandleReject={this.handleReject}
+          onHandleValidate={this.handleValidate}
+        />
       );
     }
   }

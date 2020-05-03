@@ -73,8 +73,6 @@ class MatchRoom extends React.Component {
   };
 
   handleResult = () => {
-/*     const user1ListResult = this.state.user1List;
-    const user2ListResult = this.state.user2List; */
   }
 
   getData = () => {

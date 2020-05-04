@@ -4,6 +4,7 @@ import User1List from '../components/User1List';
 import User2List from '../components/User2List';
 import HeaderSmall from '../components/HeaderSmall';
 import ApiKey from '../ApiKey';
+import { intersection } from 'lodash';
 
 class MatchRoom extends React.Component {
   constructor (props) {
@@ -12,6 +13,7 @@ class MatchRoom extends React.Component {
       apiList: [],
       user1List: [],
       user2List: [],
+      matchList: [],
       index: 0,
       finishedSession: false,
       currentSession: 'user1',
@@ -31,12 +33,15 @@ class MatchRoom extends React.Component {
       });
     } else {
       const user2List = this.state.user2List.slice();
+      const user1List = this.state.user1List;
       user2List.push(this.state.apiList[this.state.index]);
       this.setState({
         user2List,
         index: this.state.index + 1,
         finishedSession: this.state.index === this.state.apiList.length - 1
       });
+      const matchList = intersection(user1List,user2List);
+      this.setState({ matchList });
     }
   };
 
@@ -53,9 +58,9 @@ class MatchRoom extends React.Component {
   };
 
   handleResult = () => {
-    const user1ListResult = this.state.user1List;
-    const user2ListResult = this.state.user2List;
-
+    
+    const matchList = [];
+    this.setState({ matchList })
   }
 
   getData = () => {

@@ -20,8 +20,8 @@ class User2List extends React.Component {
                 content='Voir les résultats'
                 className='button'
                 onClick={() => {
-                  this.props.getMatchList(this.props.matchList)}
-                }
+                  this.props.getMatchList(this.props.matchList);
+                }}
               />
             </Link>
           </div>

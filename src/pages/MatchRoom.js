@@ -4,6 +4,7 @@ import User1List from '../components/User1List';
 import User2List from '../components/User2List';
 import HeaderSmall from '../components/HeaderSmall';
 import ApiKey from '../ApiKey';
+import intersection from 'lodash/intersection';
 
 class MatchRoom extends React.Component {
   constructor (props) {
@@ -12,6 +13,7 @@ class MatchRoom extends React.Component {
       apiList: [],
       user1List: [],
       user2List: [],
+      matchList: [],
       index: 0,
       finishedSession: false,
       currentSession: 'user1',
@@ -31,12 +33,15 @@ class MatchRoom extends React.Component {
       });
     } else {
       const user2List = this.state.user2List.slice();
+      const user1List = this.state.user1List;
       user2List.push(this.state.apiList[this.state.index]);
       this.setState({
         user2List,
         index: this.state.index + 1,
         finishedSession: this.state.index === this.state.apiList.length - 1
       });
+      const matchList = intersection(user1List, user2List);
+      this.setState({ matchList });
     }
   };
 
@@ -64,15 +69,24 @@ class MatchRoom extends React.Component {
 
   handleReturn2 = () => {
     const user2List = this.state.user2List.slice();
+    const user1List = this.state.user1List.slice();
     const currentId = this.state.index;
     this.setState({ index: currentId - 1 });
-    if (user2List.includes(this.state.apiList[currentId - 1])) {
+    const matchList = intersection(user1List, user2List);
+    if (user2List.includes(this.state.apiList[currentId - 1]) && matchList.includes(this.state.apiList[currentId - 1])) {
+      user2List.pop();
+      matchList.pop();
+      this.setState({ user2List, matchList });
+    }
+    else if (user2List.includes(this.state.apiList[currentId - 1])) {
       user2List.pop();
       this.setState({ user2List });
     }
   };
 
   handleResult = () => {
+    const matchList = [];
+    this.setState({ matchList });
   }
 
   getData = () => {
@@ -139,6 +153,7 @@ class MatchRoom extends React.Component {
           onHandleReject={this.handleReject}
           onHandleValidate={this.handleValidate}
           onHandleReturn={this.handleReturn2}
+          getMatchList={this.props.getMatchList}
         />
       );
     }

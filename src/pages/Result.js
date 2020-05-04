@@ -8,7 +8,9 @@ import '../styles/Result.css';
 class Result extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      matchList: this.props.matchList
+    };
   }
 
   render () {

@@ -124,6 +124,7 @@ class MatchRoom extends React.Component {
           {...this.state}
           onHandleReject={this.handleReject}
           onHandleValidate={this.handleValidate}
+          getMatchList={this.props.getMatchList}
         />
       );
     }

@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       user1: 'Tic',
       user2: 'Tac',
-      matchList: [],
+      matchList: []
     };
   }
 

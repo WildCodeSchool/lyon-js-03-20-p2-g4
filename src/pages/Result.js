@@ -18,11 +18,11 @@ class Result extends React.Component {
   }
 
   closeDrawer = () => {
-    this.setState({ getInfo: false });  
-    };
+    this.setState({ getInfo: false });
+  };
 
-  getDrawer = (e) => {
-    this.setState({ filmId: e.target.id, getInfo: true, renderedDrawer: true});
+  handleGetDrawer = (e) => {
+    this.setState({ filmId: e.target.id, getInfo: true, renderedDrawer: true });
   }
 
   render () {
@@ -53,12 +53,12 @@ class Result extends React.Component {
                       style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` }}
                       key={film.id}
                       id={film.id}
-                      onClick={this.getDrawer}
+                      onClick={this.handleGetDrawer}
                     />
                   );
                 })}
               </div>
-              {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId}/>}
+              {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
             </div>
           </>
         )}

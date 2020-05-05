@@ -98,11 +98,9 @@ class MatchRoom extends React.Component {
         return response
           .json()
           .then((data) => {
-            console.log(data);
             this.setState({ apiList: data.results, listIsLoading: false });
           })
           .catch(() => {
-            // console.error('api not responding with the list')
             this.setState({ listIsLoading: false, fetchListError: true });
           });
       });

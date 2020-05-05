@@ -40,6 +40,7 @@
     position:relative;
     z-index:3;
     text-align:left;
+    scroll-behavior: smooth;
 }
 .drawer-container .close-drawer {
     position:sticky;
@@ -123,6 +124,9 @@
     top:-2px;
     z-index:999999;
 }
+.drawer-container .drawer-movie-all-info-container .drawer-link-rating a:hover {
+    text-decoration:none;
+}
 .drawer-container .drawer-movie-all-info-container .drawer-link-rating .drawer-rating-container {
     width:130px;
     height:50px;
@@ -152,6 +156,14 @@
 .drawer-container .drawer-movie-all-info-container .drawer-movie-casting h5 {
     text-transform:uppercase;
     margin-bottom:30px;
+}
+.drawer-container .drawer-movie-all-info-container .drawer-movie-casting .drawer-actor-container .drawer-actor-img-name-container {
+    width: 114px;
+    height: 214px;
+}
+.drawer-container .drawer-movie-all-info-container .drawer-movie-casting .drawer-actor-container .drawer-actor-img-name-container p {
+    text-align:center;
+    font-size:15px;
 }
 .drawer-container .drawer-movie-all-info-container .drawer-movie-casting .drawer-actor-container {
     display:flex;

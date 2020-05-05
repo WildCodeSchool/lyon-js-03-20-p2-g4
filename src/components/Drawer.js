@@ -36,7 +36,7 @@ class Drawer extends React.Component {
     const runTimeHours = Math.floor(duration / 60);
     let runTimeMinutes = duration % 60;
     if (runTimeMinutes < 10) {
-      runTimeMinutes = '0' + runTimeMinutes
+      runTimeMinutes = '0' + runTimeMinutes;
     }
     const runTimeHM = runTimeHours + 'h' + runTimeMinutes;
     return runTimeHM;
@@ -90,7 +90,7 @@ class Drawer extends React.Component {
           <div className='close-drawer' onClick={this.props.handleCloseDrawer}><span /></div>
           {this.state.movieDetailsLoaded && this.state.movieVideoLoaded && this.state.peopleLoaded
             ? (
-              <div className='drawer-movie-all-info-container'>
+              <div className='drawer-movie-all-info-container' id='drawer-movie-all-info-container'>
                 <div
                   className='drawer-movie-banner' style={{
                     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
@@ -140,11 +140,14 @@ class Drawer extends React.Component {
                   <div className='drawer-actor-container'>
                     {this.state.peopleLoaded ? this.state.people.cast.map(casting => {
                       return (
-                        <a href={`https://www.google.com/search?q=${casting.name}`} target='_blank' rel='noopener noreferrer' key={casting.id}>
-                          <div className='drawer-actor'>
-                            {casting.profile_path === null ? <img src={DefaultAvatar} alt={casting.name} /> : <img src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`} alt={casting.name} />}
-                          </div>
-                        </a>
+                        <div className='drawer-actor-img-name-container' key={casting.id}>
+                          <a href={`https://www.google.com/search?q=${casting.name}`} target='_blank' rel='noopener noreferrer' key={casting.id}>
+                            <div className='drawer-actor'>
+                              {casting.profile_path === null ? <img src={DefaultAvatar} alt={casting.name} /> : <img src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`} alt={casting.name} />}
+                            </div>
+                          </a>
+                          <p>{casting.name}</p>
+                        </div>
                       );
                     }) : (
                       <div className='drawer-actor'>

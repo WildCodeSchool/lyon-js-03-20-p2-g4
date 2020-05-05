@@ -20,6 +20,7 @@ class Result extends React.Component {
 
   closeDrawer = () => {
     this.setState({ getInfo: false });
+    document.getElementById('drawer-movie-all-info-container').scrollTo(0, 0);
     document.body.classList.remove('js-no-scroll');
   };
 

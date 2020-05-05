@@ -7,7 +7,7 @@ import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
 
 class MatchRoom extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       apiList: [],
@@ -18,7 +18,7 @@ class MatchRoom extends React.Component {
       finishedSession: false,
       currentSession: 'user1',
       listIsLoading: true,
-      fetchListError: false
+      fetchListError: false,
     };
   }
 
@@ -89,32 +89,48 @@ class MatchRoom extends React.Component {
   }
 
   getData = () => {
-    const numberofPages = 20;
-    const randomPage = Math.ceil(Math.random() * numberofPages);
-
     const genreId = this.props.match.params.id;
+
     window
       .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
-      )
+        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`)
       .then((response) => {
         return response
           .json()
           .then((data) => {
-            this.setState({ apiList: data.results, listIsLoading: false });
+            let randomPage = 0;
+            if (data.total_pages < 20) {
+              randomPage = Math.ceil(Math.random() * (data.total_pages-1));
+            } else {
+              randomPage = Math.ceil(Math.random() * 20);
+            }
+            console.log(randomPage);
+            window
+              .fetch(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
+              )
+              .then((response) => {
+                return response
+                  .json()
+                  .then((data) => {
+                    this.setState({ apiList: data.results, listIsLoading: false });
+                  })
+                  .catch(() => {
+                    // console.error('api not responding with the list')
+                    this.setState({ listIsLoading: false, fetchListError: true });
+                  });
+              });
           })
-          .catch(() => {
-            // console.error('api not responding with the list')
-            this.setState({ listIsLoading: false, fetchListError: true });
-          });
-      });
+      })
+
+
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.getData();
   }
 
-  render () {
+  render() {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {
       return (
@@ -148,15 +164,15 @@ class MatchRoom extends React.Component {
           user2={user2}
         />
       ) : (
-        <User2List
-          user2={user2}
-          {...this.state}
-          onHandleReject={this.handleReject}
-          onHandleValidate={this.handleValidate}
-          onHandleReturn={this.handleReturn2}
-          getMatchList={this.props.getMatchList}
-        />
-      );
+          <User2List
+            user2={user2}
+            {...this.state}
+            onHandleReject={this.handleReject}
+            onHandleValidate={this.handleValidate}
+            onHandleReturn={this.handleReturn2}
+            getMatchList={this.props.getMatchList}
+          />
+        );
     }
   }
 }

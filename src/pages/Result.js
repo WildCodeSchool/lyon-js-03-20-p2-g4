@@ -1,7 +1,5 @@
 import React from 'react';
 import MovieLists from '../components/MovieLists';
-import { Link } from 'react-router-dom';
-import Button from '../components/Button.js';
 import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
 
@@ -21,7 +19,7 @@ class Result extends React.Component {
             <div className='centered'>
               <HeaderSmall />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
-              {this.props.fullListExplored ? <p>Vous avez exploré toute la liste... Choisissez-en une autre !</p> : <Link to='/matchroom'><Button content="Continuer d'explorer la liste" className='button' /></Link>}
+              {this.props.fullListExplored ? <p>Vous avez exploré toute la liste... Choisissez un autre genre !</p> : <p>Choisissez une nouvelle liste à explorer !</p>}
             </div>
             <MovieLists />
           </>

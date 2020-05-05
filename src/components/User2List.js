@@ -5,6 +5,7 @@ import Button from './Button';
 import Validate from '../images/validate.svg';
 import Reject from '../images/reject.svg';
 import { Link } from 'react-router-dom';
+import Return from '../images/return.svg';
 
 class User2List extends React.Component {
   render () {
@@ -34,6 +35,11 @@ class User2List extends React.Component {
                 content={<img src={Reject} alt='reject button' />}
                 className='session-button reject'
                 onClick={this.props.onHandleReject}
+              />
+              <Button
+                content={<img src={Return} alt='return button' />}
+                className={(this.props.index > 0) ? ('session-button return') : ('session-button hidden-return')}
+                onClick={this.props.onHandleReturn}
               />
               <Button
                 content={<img src={Validate} alt='validate button' />}

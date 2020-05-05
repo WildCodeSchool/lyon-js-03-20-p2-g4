@@ -46,3 +46,18 @@
 
 }
 
+.session-button-container button.hidden-return {
+  display : none;
+}
+
+.session-button-container button.session-button.return {
+  width: 28px;
+  height: 28px;
+  align-self: flex-start;
+  margin-top: 40px;
+}
+
+.session-button-container button.session-button.return img {
+  width: 12px;
+  height: 12px;
+}

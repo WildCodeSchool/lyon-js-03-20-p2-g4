@@ -47,7 +47,7 @@ class App extends React.Component {
               exact
               path='/matchroom/:id'
               render={(routeProps) => (
-                <MatchRoom {...this.state} {...routeProps} getMatchList={this.getMatchList} getAllPagesNumber={this.getAllPagesNumber} />
+                <MatchRoom {...this.state} {...routeProps} getMatchList={this.getMatchList} />
               )}
             />
             <Route exact path='/result'>

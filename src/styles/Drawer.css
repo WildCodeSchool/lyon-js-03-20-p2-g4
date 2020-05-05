@@ -1,7 +1,7 @@
 .drawer-container {
     width:100vw;
     max-width: 500px;
-    position:absolute;
+    position:fixed;
     z-index: 9999999999;
     margin:auto;
     bottom:0;
@@ -17,7 +17,7 @@
     height:90%;
 }
 .drawer-overlay {
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
     height:100%;
@@ -38,7 +38,8 @@
     background-color:white;
     overflow-y:auto;
     position:relative;
-    z-index:3
+    z-index:3;
+    text-align:left;
 }
 .drawer-container .close-drawer {
     position:sticky;
@@ -86,6 +87,7 @@
 
 .drawer-container .drawer-movie-all-info-container .drawer-movie-banner {
     height:30%;
+    max-height:200px;
     width:100%;
     background-position:center;
     background-size:cover;

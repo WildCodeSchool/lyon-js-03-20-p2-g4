@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Drawer.css';
-import listAction from './listAction.json';
+import ApiKey from '../ApiKey';
+import DefaultAvatar from '../images/default-avatar.png';
 
 class Drawer extends React.Component {
   constructor (props) {
@@ -18,14 +19,14 @@ class Drawer extends React.Component {
   }
 
   getPeople = async () => {
-    const people = await window.fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}/credits?api_key=fcbb1bd6a2b486386efe153e5874f9ee`)
+    const people = await window.fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}/credits?api_key=${ApiKey}`)
       .then(response => response.json())
       .then(data => data);
     this.setState({ people, peopleLoaded: true });
   }
 
   getMovieDetails = async () => {
-    const movieDetails = await window.fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}?api_key=fcbb1bd6a2b486386efe153e5874f9ee`)
+    const movieDetails = await window.fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}?api_key=${ApiKey}&language=fr-FR`)
       .then(response => response.json())
       .then(data => data);
     this.setState({ movieDetails, movieDetailsLoaded: true });
@@ -39,9 +40,9 @@ class Drawer extends React.Component {
   }
 
   getMovieVideo = async () => {
-    const movieVideo = await window.fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}/videos?api_key=fcbb1bd6a2b486386efe153e5874f9ee&language=fr-FR`)
+    const movieVideo = await window.fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}/videos?api_key=${ApiKey}&language=fr-FR`)
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => data.results[0]);
     this.setState({ movieVideo, movieVideoLoaded: true });
   }
 
@@ -51,9 +52,17 @@ class Drawer extends React.Component {
     this.getMovieVideo();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.filmId !== this.props.filmId ) {
+      this.getMovieDetails();
+      this.getPeople();
+      this.getMovieVideo();
+    }
+  }
+
   render () {
     // Get movie rating
-    const voteAverage = (Math.round((listAction.results[0].vote_average / 2) * 10) / 10);
+    const voteAverage = (Math.round((this.state.movieDetails.vote_average / 2) * 10) / 10);
     const stars = [];
     const starsDisplay = (rating) => {
       for (let i = 0; i < 5; i++) {
@@ -82,17 +91,27 @@ class Drawer extends React.Component {
                 <div
                   className='drawer-movie-banner' style={{
                     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
-                            listAction.results[0].poster_path
+                        this.state.movieDetails.poster_path
                         })`
                   }}
                 />
                 <div className='drawer-link-rating'>
-                  <a href={`https://www.youtube.com/watch?v=${this.state.movieVideo}`} target='_blank' rel='noopener noreferrer'>
+                  {this.state.movieVideo !== undefined ? (
+                    <a href={`https://www.youtube.com/watch?v=${this.state.movieVideo.key}`} target='_blank' rel='noopener noreferrer'>
+                      <div className='button'>
+                        <span className='drawer-play-icon' />
+                                              Bande annonce
+                      </div>
+                    </a>
+                   ) : 
+                   (
+                    <a href={`https://www.google.com/search?q=${this.state.movieDetails.title}`} target='_blank' rel='noopener noreferrer'>
                     <div className='button'>
-                      <span className='drawer-play-icon' />
-                                            Bande annonce
+                                            Plus d'informations
                     </div>
                   </a>
+                   )
+                  }
                   <div className='drawer-rating-container'>
                     {getStars.map(star => {
                       if (star[1] === 1) {
@@ -107,12 +126,12 @@ class Drawer extends React.Component {
                   </div>
                 </div>
                 <div className='drawer-movie-info-container'>
-                  <h4>{listAction.results[0].title}</h4>
+                  <h4>{this.state.movieDetails.title}</h4>
                   <span>{`De ${this.state.peopleLoaded ? (this.state.people.crew.filter(director => {
                   return director.job === 'Director';
-                  }))[0].name : '...'} - ${this.state.movieDetailsLoaded ? this.state.movieDetails.genres[0].name : '...'} - ${this.transformDuration(this.state.movieDetails.runtime)} - ${listAction.results[0].release_date.split('-')[0]}`}
+                  }))[0].name : '...'} - ${this.state.movieDetailsLoaded ? this.state.movieDetails.genres[0].name : '...'} - ${this.transformDuration(this.state.movieDetails.runtime)} - ${this.state.movieDetails.release_date.split('-')[0]}`}
                   </span>
-                  <p>{listAction.results[0].overview}</p>
+                  <p>{this.state.movieDetails.overview}</p>
                 </div>
                 <div className='drawer-movie-casting'>
                   <h5>Casting</h5>
@@ -121,7 +140,7 @@ class Drawer extends React.Component {
                       return (
                         <a href={`https://www.google.com/search?q=${casting.name}`} target='_blank' rel='noopener noreferrer' key={casting.id}>
                           <div className='drawer-actor'>
-                            <img src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`} alt={casting.name} />
+                            {casting.profile_path === null ? <img src={DefaultAvatar} alt={casting.name} /> : <img src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`} alt={casting.name} />}
                           </div>
                         </a>
                       );

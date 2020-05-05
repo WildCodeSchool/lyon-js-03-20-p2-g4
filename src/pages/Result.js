@@ -13,16 +13,19 @@ class Result extends React.Component {
       getInfo: false,
       matchList: this.props.matchList,
       filmId: null,
-      renderedDrawer: false
+      renderedDrawer: false,
+      previousFilmId: null,
     };
   }
 
   closeDrawer = () => {
     this.setState({ getInfo: false });
+    document.body.classList.remove('js-no-scroll');
   };
 
   handleGetDrawer = (e) => {
     this.setState({ filmId: e.target.id, getInfo: true, renderedDrawer: true });
+    document.body.classList.add('js-no-scroll');
   }
 
   render () {

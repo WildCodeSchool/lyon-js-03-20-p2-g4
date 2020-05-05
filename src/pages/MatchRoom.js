@@ -77,8 +77,7 @@ class MatchRoom extends React.Component {
       user2List.pop();
       matchList.pop();
       this.setState({ user2List, matchList });
-    }
-    else if (user2List.includes(this.state.apiList[currentId - 1])) {
+    } else if (user2List.includes(this.state.apiList[currentId - 1])) {
       user2List.pop();
       this.setState({ user2List });
     }

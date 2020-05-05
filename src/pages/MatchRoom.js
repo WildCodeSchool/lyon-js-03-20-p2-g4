@@ -5,13 +5,11 @@ import User2List from '../components/User2List';
 import HeaderSmall from '../components/HeaderSmall';
 import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
-import shuffle from 'lodash/shuffle';
 
 class MatchRoom extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      allPagesNumber: [],
       apiList: [],
       user1List: [],
       user2List: [],
@@ -65,10 +63,16 @@ class MatchRoom extends React.Component {
   }
 
   getData = () => {
-    const randomPage = Math.ceil(Math.random() * 10);
-    //const allPagesNumber = [];
-    //allPagesNumber.push(randomPage);
-    this.setState({allPagesNumber: this.state.allPagesNumber.push(randomPage)})
+    const numberofPages = 2;
+    let randomPage = Math.ceil(Math.random() * numberofPages);
+    while (this.props.allPagesNumber.includes(randomPage) && this.props.allPagesNumber.length < numberofPages) {
+      randomPage = Math.ceil(Math.random() * numberofPages);
+    }
+    if(this.props.allPagesNumber.length === numberofPages - 1) {
+      this.props.handleFullListExplored()
+    }
+    console.log(randomPage);
+    this.props.getAllPagesNumber(randomPage);
     const genreId = this.props.match.params.id;
     window
       .fetch(

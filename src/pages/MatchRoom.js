@@ -7,7 +7,7 @@ import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
 
 class MatchRoom extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       apiList: [],
@@ -18,7 +18,7 @@ class MatchRoom extends React.Component {
       finishedSession: false,
       currentSession: 'user1',
       listIsLoading: true,
-      fetchListError: false,
+      fetchListError: false
     };
   }
 
@@ -100,7 +100,7 @@ class MatchRoom extends React.Component {
           .then((data) => {
             let randomPage = 0;
             if (data.total_pages < 20) {
-              randomPage = Math.ceil(Math.random() * (data.total_pages-1));
+              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
             } else {
               randomPage = Math.ceil(Math.random() * 20);
             }
@@ -120,17 +120,15 @@ class MatchRoom extends React.Component {
                     this.setState({ listIsLoading: false, fetchListError: true });
                   });
               });
-          })
-      })
-
-
+          });
+      });
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.getData();
   }
 
-  render() {
+  render () {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {
       return (
@@ -164,15 +162,15 @@ class MatchRoom extends React.Component {
           user2={user2}
         />
       ) : (
-          <User2List
-            user2={user2}
-            {...this.state}
-            onHandleReject={this.handleReject}
-            onHandleValidate={this.handleValidate}
-            onHandleReturn={this.handleReturn2}
-            getMatchList={this.props.getMatchList}
-          />
-        );
+        <User2List
+          user2={user2}
+          {...this.state}
+          onHandleReject={this.handleReject}
+          onHandleValidate={this.handleValidate}
+          onHandleReturn={this.handleReturn2}
+          getMatchList={this.props.getMatchList}
+        />
+      );
     }
   }
 }

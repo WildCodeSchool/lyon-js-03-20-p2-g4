@@ -5,11 +5,13 @@ import User2List from '../components/User2List';
 import HeaderSmall from '../components/HeaderSmall';
 import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
+import shuffle from 'lodash/shuffle';
 
 class MatchRoom extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      allPagesNumber: [],
       apiList: [],
       user1List: [],
       user2List: [],
@@ -63,16 +65,19 @@ class MatchRoom extends React.Component {
   }
 
   getData = () => {
+    const randomPage = Math.ceil(Math.random() * 10);
+    //const allPagesNumber = [];
+    //allPagesNumber.push(randomPage);
+    this.setState({allPagesNumber: this.state.allPagesNumber.push(randomPage)})
     const genreId = this.props.match.params.id;
     window
       .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
       )
       .then((response) => {
         return response
           .json()
           .then((data) => {
-            console.log(data);
             this.setState({ apiList: data.results, listIsLoading: false });
           })
           .catch(() => {

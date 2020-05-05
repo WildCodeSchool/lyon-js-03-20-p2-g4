@@ -10,7 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       user1: 'Tic',
-      user2: 'Tac'
+      user2: 'Tac',
+      matchList: []
     };
   }
 
@@ -24,6 +25,10 @@ class App extends React.Component {
     this.setState({ user2: user });
   };
 
+  getMatchList = (newMatchList) => {
+    this.setState({ matchList: newMatchList });
+  }
+
   render () {
     const { user1, user2 } = this.state;
     return (
@@ -31,13 +36,22 @@ class App extends React.Component {
         <div className='App'>
           <Switch>
             <Route exact path='/'>
-              <Home user1={user1} user2={user2} onChange1={this.handleChange1} onChange2={this.handleChange2} />
+              <Home
+                user1={user1}
+                user2={user2}
+                onChange1={this.handleChange1}
+                onChange2={this.handleChange2}
+              />
             </Route>
-            <Route exact path='/matchroom'>
-              <MatchRoom user1={user1} user2={user2} />
-            </Route>
+            <Route
+              exact
+              path='/matchroom/:id'
+              render={(routeProps) => (
+                <MatchRoom {...this.state} {...routeProps} getMatchList={this.getMatchList} />
+              )}
+            />
             <Route exact path='/result'>
-              <Result />
+              <Result {...this.state} />
             </Route>
           </Switch>
         </div>

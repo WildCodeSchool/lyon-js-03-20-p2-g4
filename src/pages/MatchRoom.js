@@ -89,15 +89,9 @@ class MatchRoom extends React.Component {
   }
 
   getData = () => {
-    const numberofPages = 3;
-    let randomPage = Math.ceil(Math.random() * numberofPages);
-    while (this.props.allPagesNumber.includes(randomPage) && this.props.allPagesNumber.length < numberofPages) {
-      randomPage = Math.ceil(Math.random() * numberofPages);
-    }
-    if (this.props.allPagesNumber.length === numberofPages - 1) {
-      this.props.onHandleFullListExplored();
-    }
-    this.props.getAllPagesNumber(randomPage);
+    const numberofPages = 20;
+    const randomPage = Math.ceil(Math.random() * numberofPages);
+
     const genreId = this.props.match.params.id;
     window
       .fetch(

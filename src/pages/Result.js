@@ -19,7 +19,6 @@ class Result extends React.Component {
             <div className='centered'>
               <HeaderSmall />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
-              {this.props.fullListExplored ? <p>Vous avez exploré toute la liste... Choisissez un autre genre !</p> : <p>Choisissez une nouvelle liste à explorer !</p>}
             </div>
             <MovieLists />
           </>

@@ -57,6 +57,32 @@ class MatchRoom extends React.Component {
     this.setState({ currentSession, index: 0, finishedSession: false });
   };
 
+  handleReturn1 = () => {
+    const user1List = this.state.user1List.slice();
+    const currentId = this.state.index;
+    this.setState({ index: currentId - 1 });
+    if (user1List.includes(this.state.apiList[currentId - 1])) {
+      user1List.pop();
+      this.setState({ user1List });
+    }
+  };
+
+  handleReturn2 = () => {
+    const user2List = this.state.user2List.slice();
+    const user1List = this.state.user1List.slice();
+    const currentId = this.state.index;
+    this.setState({ index: currentId - 1 });
+    const matchList = intersection(user1List, user2List);
+    if (user2List.includes(this.state.apiList[currentId - 1]) && matchList.includes(this.state.apiList[currentId - 1])) {
+      user2List.pop();
+      matchList.pop();
+      this.setState({ user2List, matchList });
+    } else if (user2List.includes(this.state.apiList[currentId - 1])) {
+      user2List.pop();
+      this.setState({ user2List });
+    }
+  };
+
   handleResult = () => {
     const matchList = [];
     this.setState({ matchList });
@@ -116,6 +142,7 @@ class MatchRoom extends React.Component {
           onHandleSession={this.handleSession}
           onHandleReject={this.handleReject}
           onHandleValidate={this.handleValidate}
+          onHandleReturn={this.handleReturn1}
           user2={user2}
         />
       ) : (
@@ -124,6 +151,7 @@ class MatchRoom extends React.Component {
           {...this.state}
           onHandleReject={this.handleReject}
           onHandleValidate={this.handleValidate}
+          onHandleReturn={this.handleReturn2}
           getMatchList={this.props.getMatchList}
         />
       );

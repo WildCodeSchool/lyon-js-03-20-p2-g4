@@ -13,7 +13,7 @@ class App extends React.Component {
       user2: 'Tac',
       matchList: [],
       allPagesNumber: [],
-      fullListExplored: false,
+      fullListExplored: false
     };
   }
 
@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   handleFullListExplored = () => {
-    this.setState({fullListExplored : !this.state.fullListExplored})
+    this.setState({ fullListExplored: !this.state.fullListExplored });
   }
 
   render () {
@@ -57,7 +57,7 @@ class App extends React.Component {
               exact
               path='/matchroom/:id'
               render={(routeProps) => (
-                <MatchRoom {...this.state} {...routeProps} getMatchList={this.getMatchList} getAllPagesNumber={this.getAllPagesNumber} handleFullListExplored={this.handleFullListExplored}/>
+                <MatchRoom {...this.state} {...routeProps} getMatchList={this.getMatchList} getAllPagesNumber={this.getAllPagesNumber} onHandleFullListExplored={this.handleFullListExplored} />
               )}
             />
             <Route exact path='/result'>

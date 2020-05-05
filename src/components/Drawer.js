@@ -34,7 +34,10 @@ class Drawer extends React.Component {
 
   transformDuration = (duration) => {
     const runTimeHours = Math.floor(duration / 60);
-    const runTimeMinutes = duration % 60;
+    let runTimeMinutes = duration % 60;
+    if (runTimeMinutes < 10) {
+      runTimeMinutes = '0' + runTimeMinutes
+    }
     const runTimeHM = runTimeHours + 'h' + runTimeMinutes;
     return runTimeHM;
   }
@@ -52,8 +55,8 @@ class Drawer extends React.Component {
     this.getMovieVideo();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.filmId !== this.props.filmId ) {
+  componentDidUpdate (prevProps) {
+    if (prevProps.filmId !== this.props.filmId) {
       this.getMovieDetails();
       this.getPeople();
       this.getMovieVideo();
@@ -103,15 +106,14 @@ class Drawer extends React.Component {
                                               Bande annonce
                       </div>
                     </a>
-                   ) : 
-                   (
-                    <a href={`https://www.google.com/search?q=${this.state.movieDetails.title}`} target='_blank' rel='noopener noreferrer'>
-                    <div className='button'>
+                  )
+                    : (
+                      <a href={`https://www.google.com/search?q=${this.state.movieDetails.title}+movie`} target='_blank' rel='noopener noreferrer'>
+                        <div className='button'>
                                             Plus d'informations
-                    </div>
-                  </a>
-                   )
-                  }
+                        </div>
+                      </a>
+                    )}
                   <div className='drawer-rating-container'>
                     {getStars.map(star => {
                       if (star[1] === 1) {

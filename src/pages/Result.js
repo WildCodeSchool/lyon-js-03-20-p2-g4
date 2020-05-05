@@ -14,7 +14,7 @@ class Result extends React.Component {
       matchList: this.props.matchList,
       filmId: null,
       renderedDrawer: false,
-      previousFilmId: null,
+      previousFilmId: null
     };
   }
 

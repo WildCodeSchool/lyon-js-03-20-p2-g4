@@ -7,7 +7,7 @@ import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
 
 class MatchRoom extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       apiList: [],
@@ -90,71 +90,89 @@ class MatchRoom extends React.Component {
 
   getData = () => {
     const genreId = this.props.match.params.id;
+
     window
       .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
-      )
+        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`)
       .then((response) => {
         return response
           .json()
           .then((data) => {
-            this.setState({ apiList: data.results, listIsLoading: false });
-          })
-          .catch(() => {
-            this.setState({ listIsLoading: false, fetchListError: true });
+            let randomPage = 0;
+            if (data.total_pages < 20) {
+              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+            } else {
+              randomPage = Math.ceil(Math.random() * 20);
+            }
+            console.log(randomPage);
+            window
+              .fetch(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
+              )
+              .then((response) => {
+                return response
+                  .json()
+                  .then((data) => {
+                    this.setState({ apiList: data.results, listIsLoading: false });
+                  })
+                  .catch(() => {
+                    // console.error('api not responding with the list')
+                    this.setState({ listIsLoading: false, fetchListError: true });
+                  });
+              });
           });
       });
-  };
-
-  componentDidMount () {
-    this.getData();
   }
 
-  render () {
-    const { user1, user2 } = this.props;
-    if (this.state.listIsLoading) {
-      return (
-        <div>
-          <HeaderSmall />
-          <Link to='/result'>
-            <h2>Result</h2>
-          </Link>
-          <p>En cours de chargement ...</p>
-        </div>
-      );
-    } else if (this.state.fetchListError) {
-      return (
-        <div>
-          <HeaderSmall />
-          <Link to='/result'>
-            <h2>Result</h2>
-          </Link>
-          <p>Erreur lors du chargement</p>
-        </div>
-      );
-    } else {
-      return this.state.currentSession === 'user1' ? (
-        <User1List
-          user1={user1}
-          {...this.state}
-          onHandleSession={this.handleSession}
-          onHandleReject={this.handleReject}
-          onHandleValidate={this.handleValidate}
-          onHandleReturn={this.handleReturn1}
-          user2={user2}
-        />
-      ) : (
-        <User2List
-          user2={user2}
-          {...this.state}
-          onHandleReject={this.handleReject}
-          onHandleValidate={this.handleValidate}
-          onHandleReturn={this.handleReturn2}
-          getMatchList={this.props.getMatchList}
-        />
-      );
+    componentDidMount() {
+      this.getData();
+    }
+
+    render() {
+      const { user1, user2 } = this.props;
+      if (this.state.listIsLoading) {
+        return (
+          <div>
+            <HeaderSmall />
+            <Link to='/result'>
+              <h2>Result</h2>
+            </Link>
+            <p>En cours de chargement ...</p>
+          </div>
+        );
+      } else if (this.state.fetchListError) {
+        return (
+          <div>
+            <HeaderSmall />
+            <Link to='/result'>
+              <h2>Result</h2>
+            </Link>
+            <p>Erreur lors du chargement</p>
+          </div>
+        );
+      } else {
+        return this.state.currentSession === 'user1' ? (
+          <User1List
+            user1={user1}
+            {...this.state}
+            onHandleSession={this.handleSession}
+            onHandleReject={this.handleReject}
+            onHandleValidate={this.handleValidate}
+            onHandleReturn={this.handleReturn1}
+            user2={user2}
+          />
+        ) : (
+            <User2List
+              user2={user2}
+              {...this.state}
+              onHandleReject={this.handleReject}
+              onHandleValidate={this.handleValidate}
+              onHandleReturn={this.handleReturn2}
+              getMatchList={this.props.getMatchList}
+            />
+          );
+      }
     }
   }
-}
 
-export default MatchRoom;
+  export default MatchRoom;

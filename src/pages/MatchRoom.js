@@ -90,20 +90,36 @@ class MatchRoom extends React.Component {
 
   getData = () => {
     const genreId = this.props.match.params.id;
+
     window
       .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
-      )
+        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`)
       .then((response) => {
         return response
           .json()
           .then((data) => {
-            console.log(data);
-            this.setState({ apiList: data.results, listIsLoading: false });
-          })
-          .catch(() => {
-            // console.error('api not responding with the list')
-            this.setState({ listIsLoading: false, fetchListError: true });
+            let randomPage = 0;
+            if (data.total_pages < 20) {
+              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+            } else {
+              randomPage = Math.ceil(Math.random() * 20);
+            }
+            console.log(randomPage);
+            window
+              .fetch(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
+              )
+              .then((response) => {
+                return response
+                  .json()
+                  .then((data) => {
+                    this.setState({ apiList: data.results, listIsLoading: false });
+                  })
+                  .catch(() => {
+                    // console.error('api not responding with the list')
+                    this.setState({ listIsLoading: false, fetchListError: true });
+                  });
+              });
           });
       });
   };

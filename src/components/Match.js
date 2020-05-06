@@ -18,12 +18,18 @@ class Match extends React.Component {
 
   render () {
     return (
-      <div className={this.state.handleAnimation ? 'new-match' : 'unvisible'}>
-        <h3 className='subtitle'>🔥 Match ! 🔥</h3>
-        <img
-          src={`http://image.tmdb.org/t/p/w185/${this.props.currentMatchedMovie.poster_path}`}
-        />
-      </div>
+      <>
+        {this.props.currentMatchedMovie !== undefined && (
+          <div
+            className={this.state.handleAnimation ? 'new-match' : 'unvisible'}
+          >
+            <h3 className='subtitle'>🔥 Match ! 🔥</h3>
+            <img
+              src={`http://image.tmdb.org/t/p/w185/${this.props.currentMatchedMovie.poster_path}`}
+            />
+          </div>
+        )}
+      </>
     );
   }
 }

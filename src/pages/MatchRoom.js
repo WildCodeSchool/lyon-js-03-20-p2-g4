@@ -112,7 +112,6 @@ class MatchRoom extends React.Component {
         return response
           .json()
           .then((data) => {
-            console.log(data);
             this.setState({ apiList: data.results, listIsLoading: false });
           })
           .catch(() => {

@@ -1,4 +1,5 @@
 import React from 'react';
+
 class Match extends React.Component {
   constructor (props) {
     super(props);
@@ -18,7 +19,10 @@ class Match extends React.Component {
   render () {
     return (
       <div className={this.state.handleAnimation ? 'new-match' : 'unvisible'}>
-        Match ! Pour le film {this.props.currentMatchedMovie.title}
+        <h3 className='subtitle'>🔥 Match ! 🔥</h3>
+        <img
+          src={`http://image.tmdb.org/t/p/w185/${this.props.currentMatchedMovie.poster_path}`}
+        />
       </div>
     );
   }

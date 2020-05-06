@@ -1,17 +1,17 @@
-import React from "react";
-import "./styles/App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import MatchRoom from "./pages/MatchRoom";
-import Result from "./pages/Result";
+import React from 'react';
+import './styles/App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import MatchRoom from './pages/MatchRoom';
+import Result from './pages/Result';
 
 class App extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      user1: "Tic",
-      user2: "Tac",
-      matchList: [],
+      user1: 'Tic',
+      user2: 'Tac',
+      matchList: []
     };
   }
 
@@ -29,13 +29,13 @@ class App extends React.Component {
     this.setState({ matchList: newMatchList });
   };
 
-  render() {
+  render () {
     const { user1, user2 } = this.state;
     return (
       <Router>
-        <div className="App">
+        <div className='App'>
           <Switch>
-            <Route exact path="/">
+            <Route exact path='/'>
               <Home
                 user1={user1}
                 user2={user2}
@@ -45,7 +45,7 @@ class App extends React.Component {
             </Route>
             <Route
               exact
-              path="/matchroom/:id"
+              path='/matchroom/:id'
               render={(routeProps) => (
                 <MatchRoom
                   {...this.state}
@@ -54,7 +54,7 @@ class App extends React.Component {
                 />
               )}
             />
-            <Route exact path="/result">
+            <Route exact path='/result'>
               <Result {...this.state} />
             </Route>
           </Switch>

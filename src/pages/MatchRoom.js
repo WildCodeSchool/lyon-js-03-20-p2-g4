@@ -26,7 +26,6 @@ class MatchRoom extends React.Component {
   }
 
   handleValidate = () => {
-    this.setState({ newMatch: false });
     if (this.state.currentSession === "user1") {
       const user1List = this.state.user1List.slice();
       user1List.push(this.state.apiList[this.state.index]);
@@ -58,7 +57,6 @@ class MatchRoom extends React.Component {
   };
 
   handleReject = () => {
-    this.handleMatch();
     this.setState({
       index: this.state.index + 1,
       finishedSession: this.state.index === this.state.apiList.length - 1,
@@ -170,7 +168,14 @@ class MatchRoom extends React.Component {
             onHandleReturn={this.handleReturn2}
             getMatchList={this.props.getMatchList}
           />
-          {this.state.newMatch && <Match onHandleMatch={this.handleMatch} />}
+          {this.state.newMatch && (
+            <Match
+              onHandleMatch={this.handleMatch}
+              currentMatchedMovie={
+                this.state.matchList[this.state.matchList.length - 1]
+              }
+            />
+          )}
         </>
       );
     }

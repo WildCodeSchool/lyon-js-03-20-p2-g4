@@ -12,12 +12,13 @@ class Match extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.onHandleMatch();
+    this.props.onHandleMatch(false);
   }
+
   render() {
     return (
       <div className={this.state.handleAnimation ? "new-match" : "unvisible"}>
-        Match !
+        Match ! Pour le film {this.props.currentMatchedMovie.title}
       </div>
     );
   }

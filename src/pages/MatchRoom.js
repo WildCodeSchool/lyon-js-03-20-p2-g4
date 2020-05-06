@@ -7,7 +7,7 @@ import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
 
 class MatchRoom extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       apiList: [],
@@ -124,55 +124,55 @@ class MatchRoom extends React.Component {
       });
   }
 
-    componentDidMount() {
-      this.getData();
-    }
-
-    render() {
-      const { user1, user2 } = this.props;
-      if (this.state.listIsLoading) {
-        return (
-          <div>
-            <HeaderSmall />
-            <Link to='/result'>
-              <h2>Result</h2>
-            </Link>
-            <p>En cours de chargement ...</p>
-          </div>
-        );
-      } else if (this.state.fetchListError) {
-        return (
-          <div>
-            <HeaderSmall />
-            <Link to='/result'>
-              <h2>Result</h2>
-            </Link>
-            <p>Erreur lors du chargement</p>
-          </div>
-        );
-      } else {
-        return this.state.currentSession === 'user1' ? (
-          <User1List
-            user1={user1}
-            {...this.state}
-            onHandleSession={this.handleSession}
-            onHandleReject={this.handleReject}
-            onHandleValidate={this.handleValidate}
-            onHandleReturn={this.handleReturn1}
-            user2={user2}
-          />
-        ) : (
-            <User2List
-              user2={user2}
-              {...this.state}
-              onHandleReject={this.handleReject}
-              onHandleValidate={this.handleValidate}
-              onHandleReturn={this.handleReturn2}
-              getMatchList={this.props.getMatchList}
-            />
-          );
-      }
-    }
+  componentDidMount () {
+    this.getData();
   }
 
-  export default MatchRoom;
+  render () {
+    const { user1, user2 } = this.props;
+    if (this.state.listIsLoading) {
+      return (
+        <div>
+          <HeaderSmall />
+          <Link to='/result'>
+            <h2>Result</h2>
+          </Link>
+          <p>En cours de chargement ...</p>
+        </div>
+      );
+    } else if (this.state.fetchListError) {
+      return (
+        <div>
+          <HeaderSmall />
+          <Link to='/result'>
+            <h2>Result</h2>
+          </Link>
+          <p>Erreur lors du chargement</p>
+        </div>
+      );
+    } else {
+      return this.state.currentSession === 'user1' ? (
+        <User1List
+          user1={user1}
+          {...this.state}
+          onHandleSession={this.handleSession}
+          onHandleReject={this.handleReject}
+          onHandleValidate={this.handleValidate}
+          onHandleReturn={this.handleReturn1}
+          user2={user2}
+        />
+      ) : (
+        <User2List
+          user2={user2}
+          {...this.state}
+          onHandleReject={this.handleReject}
+          onHandleValidate={this.handleValidate}
+          onHandleReturn={this.handleReturn2}
+          getMatchList={this.props.getMatchList}
+        />
+      );
+    }
+  }
+}
+
+export default MatchRoom;

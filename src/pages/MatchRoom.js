@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import User1List from '../components/User1List';
-import User2List from '../components/User2List';
-import HeaderSmall from '../components/HeaderSmall';
-import ApiKey from '../ApiKey';
-import intersection from 'lodash/intersection';
+import React from "react";
+import { Link } from "react-router-dom";
+import User1List from "../components/User1List";
+import User2List from "../components/User2List";
+import HeaderSmall from "../components/HeaderSmall";
+import ApiKey from "../ApiKey";
+import intersection from "lodash/intersection";
+import "../styles/UserList.css";
+import Match from "../components/Match";
 
 class MatchRoom extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       apiList: [],
@@ -16,20 +18,22 @@ class MatchRoom extends React.Component {
       matchList: [],
       index: 0,
       finishedSession: false,
-      currentSession: 'user1',
+      currentSession: "user1",
       listIsLoading: true,
-      fetchListError: false
+      fetchListError: false,
+      newMatch: false,
     };
   }
 
   handleValidate = () => {
-    if (this.state.currentSession === 'user1') {
+    this.setState({ newMatch: false });
+    if (this.state.currentSession === "user1") {
       const user1List = this.state.user1List.slice();
       user1List.push(this.state.apiList[this.state.index]);
       this.setState({
         user1List,
         index: this.state.index + 1,
-        finishedSession: this.state.index === this.state.apiList.length - 1
+        finishedSession: this.state.index === this.state.apiList.length - 1,
       });
     } else {
       const user2List = this.state.user2List.slice();
@@ -38,22 +42,31 @@ class MatchRoom extends React.Component {
       this.setState({
         user2List,
         index: this.state.index + 1,
-        finishedSession: this.state.index === this.state.apiList.length - 1
+        finishedSession: this.state.index === this.state.apiList.length - 1,
       });
+
       const matchList = intersection(user1List, user2List);
+      if (this.state.matchList.length < matchList.length) {
+        this.handleMatch();
+      }
       this.setState({ matchList });
     }
   };
 
+  handleMatch = () => {
+    this.setState({ newMatch: !this.state.newMatch });
+  };
+
   handleReject = () => {
+    this.handleMatch();
     this.setState({
       index: this.state.index + 1,
-      finishedSession: this.state.index === this.state.apiList.length - 1
+      finishedSession: this.state.index === this.state.apiList.length - 1,
     });
   };
 
   handleSession = () => {
-    const currentSession = 'user2';
+    const currentSession = "user2";
     this.setState({ currentSession, index: 0, finishedSession: false });
   };
 
@@ -73,7 +86,10 @@ class MatchRoom extends React.Component {
     const currentId = this.state.index;
     this.setState({ index: currentId - 1 });
     const matchList = intersection(user1List, user2List);
-    if (user2List.includes(this.state.apiList[currentId - 1]) && matchList.includes(this.state.apiList[currentId - 1])) {
+    if (
+      user2List.includes(this.state.apiList[currentId - 1]) &&
+      matchList.includes(this.state.apiList[currentId - 1])
+    ) {
       user2List.pop();
       matchList.pop();
       this.setState({ user2List, matchList });
@@ -85,8 +101,8 @@ class MatchRoom extends React.Component {
 
   handleResult = () => {
     const matchList = [];
-    this.setState({ matchList });
-  }
+    this.setState({ matchList, newMatch: false });
+  };
 
   getData = () => {
     const genreId = this.props.match.params.id;
@@ -102,23 +118,22 @@ class MatchRoom extends React.Component {
             this.setState({ apiList: data.results, listIsLoading: false });
           })
           .catch(() => {
-            // console.error('api not responding with the list')
             this.setState({ listIsLoading: false, fetchListError: true });
           });
       });
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.getData();
   }
 
-  render () {
+  render() {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {
       return (
         <div>
           <HeaderSmall />
-          <Link to='/result'>
+          <Link to="/result">
             <h2>Result</h2>
           </Link>
           <p>En cours de chargement ...</p>
@@ -128,14 +143,14 @@ class MatchRoom extends React.Component {
       return (
         <div>
           <HeaderSmall />
-          <Link to='/result'>
+          <Link to="/result">
             <h2>Result</h2>
           </Link>
           <p>Erreur lors du chargement</p>
         </div>
       );
     } else {
-      return this.state.currentSession === 'user1' ? (
+      return this.state.currentSession === "user1" ? (
         <User1List
           user1={user1}
           {...this.state}
@@ -146,14 +161,17 @@ class MatchRoom extends React.Component {
           user2={user2}
         />
       ) : (
-        <User2List
-          user2={user2}
-          {...this.state}
-          onHandleReject={this.handleReject}
-          onHandleValidate={this.handleValidate}
-          onHandleReturn={this.handleReturn2}
-          getMatchList={this.props.getMatchList}
-        />
+        <>
+          <User2List
+            user2={user2}
+            {...this.state}
+            onHandleReject={this.handleReject}
+            onHandleValidate={this.handleValidate}
+            onHandleReturn={this.handleReturn2}
+            getMatchList={this.props.getMatchList}
+          />
+          {this.state.newMatch && <Match onHandleMatch={this.handleMatch} />}
+        </>
       );
     }
   }

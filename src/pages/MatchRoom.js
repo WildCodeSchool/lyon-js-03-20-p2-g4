@@ -122,7 +122,7 @@ class MatchRoom extends React.Component {
               });
           });
       });
-  };
+  }
 
   componentDidMount () {
     this.getData();

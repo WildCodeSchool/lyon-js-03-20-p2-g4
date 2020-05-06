@@ -2,13 +2,29 @@ import React from 'react';
 import MovieLists from '../components/MovieLists';
 import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
+import Drawer from '../components/Drawer';
 
 class Result extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      matchList: this.props.matchList
+      getInfo: false,
+      matchList: this.props.matchList,
+      filmId: null,
+      renderedDrawer: false,
+      previousFilmId: null
     };
+  }
+
+  closeDrawer = () => {
+    this.setState({ getInfo: false });
+    document.getElementById('drawer-movie-all-info-container').scrollTo(0, 0);
+    document.body.classList.remove('js-no-scroll');
+  };
+
+  handleGetDrawer = (e) => {
+    this.setState({ filmId: e.target.id, getInfo: true, renderedDrawer: true });
+    document.body.classList.add('js-no-scroll');
   }
 
   render () {
@@ -34,10 +50,13 @@ class Result extends React.Component {
                       className='matched-movie'
                       style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` }}
                       key={film.id}
+                      id={film.id}
+                      onClick={this.handleGetDrawer}
                     />
                   );
                 })}
               </div>
+              {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
             </div>
           </>
         )}

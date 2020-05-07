@@ -5,6 +5,8 @@ import User2List from '../components/User2List';
 import HeaderSmall from '../components/HeaderSmall';
 import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
+import '../styles/UserList.css';
+import Match from '../components/Match';
 
 class MatchRoom extends React.Component {
   constructor (props) {
@@ -18,7 +20,8 @@ class MatchRoom extends React.Component {
       finishedSession: false,
       currentSession: 'user1',
       listIsLoading: true,
-      fetchListError: false
+      fetchListError: false,
+      newMatch: false
     };
   }
 
@@ -40,9 +43,17 @@ class MatchRoom extends React.Component {
         index: this.state.index + 1,
         finishedSession: this.state.index === this.state.apiList.length - 1
       });
+
       const matchList = intersection(user1List, user2List);
+      if (this.state.matchList.length < matchList.length) {
+        this.handleMatch();
+      }
       this.setState({ matchList });
     }
+  };
+
+  handleMatch = () => {
+    this.setState({ newMatch: !this.state.newMatch });
   };
 
   handleReject = () => {
@@ -73,7 +84,10 @@ class MatchRoom extends React.Component {
     const currentId = this.state.index;
     this.setState({ index: currentId - 1 });
     const matchList = intersection(user1List, user2List);
-    if (user2List.includes(this.state.apiList[currentId - 1]) && matchList.includes(this.state.apiList[currentId - 1])) {
+    if (
+      user2List.includes(this.state.apiList[currentId - 1]) &&
+      matchList.includes(this.state.apiList[currentId - 1])
+    ) {
       user2List.pop();
       matchList.pop();
       this.setState({ user2List, matchList });
@@ -85,42 +99,43 @@ class MatchRoom extends React.Component {
 
   handleResult = () => {
     const matchList = [];
-    this.setState({ matchList });
-  }
+    this.setState({ matchList, newMatch: false });
+  };
 
   getData = () => {
     const genreId = this.props.match.params.id;
 
     window
       .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`)
+        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`
+      )
       .then((response) => {
-        return response
-          .json()
-          .then((data) => {
-            let randomPage = 0;
-            if (data.total_pages < 20) {
-              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
-            } else {
-              randomPage = Math.ceil(Math.random() * 20);
-            }
-            console.log(randomPage);
-            window
-              .fetch(
-                `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
-              )
-              .then((response) => {
-                return response
-                  .json()
-                  .then((data) => {
-                    this.setState({ apiList: data.results, listIsLoading: false });
-                  })
-                  .catch(() => {
-                    // console.error('api not responding with the list')
-                    this.setState({ listIsLoading: false, fetchListError: true });
+        return response.json().then((data) => {
+          let randomPage = 0;
+          if (data.total_pages < 20) {
+            randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+          } else {
+            randomPage = Math.ceil(Math.random() * 20);
+          }
+          console.log(randomPage);
+          window
+            .fetch(
+              `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
+            )
+            .then((response) => {
+              return response
+                .json()
+                .then((data) => {
+                  this.setState({
+                    apiList: data.results,
+                    listIsLoading: false
                   });
-              });
-          });
+                })
+                .catch(() => {
+                  this.setState({ listIsLoading: false, fetchListError: true });
+                });
+            });
+        });
       });
   }
 
@@ -162,14 +177,24 @@ class MatchRoom extends React.Component {
           user2={user2}
         />
       ) : (
-        <User2List
-          user2={user2}
-          {...this.state}
-          onHandleReject={this.handleReject}
-          onHandleValidate={this.handleValidate}
-          onHandleReturn={this.handleReturn2}
-          getMatchList={this.props.getMatchList}
-        />
+        <>
+          <User2List
+            user2={user2}
+            {...this.state}
+            onHandleReject={this.handleReject}
+            onHandleValidate={this.handleValidate}
+            onHandleReturn={this.handleReturn2}
+            getMatchList={this.props.getMatchList}
+          />
+          {this.state.newMatch && (
+            <Match
+              onHandleMatch={this.handleMatch}
+              currentMatchedMovie={
+                this.state.matchList[this.state.matchList.length - 1]
+              }
+            />
+          )}
+        </>
       );
     }
   }

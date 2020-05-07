@@ -27,7 +27,7 @@ class App extends React.Component {
 
   getMatchList = (newMatchList) => {
     this.setState({ matchList: newMatchList });
-  }
+  };
 
   render () {
     const { user1, user2 } = this.state;
@@ -47,7 +47,11 @@ class App extends React.Component {
               exact
               path='/matchroom/:id'
               render={(routeProps) => (
-                <MatchRoom {...this.state} {...routeProps} getMatchList={this.getMatchList} />
+                <MatchRoom
+                  {...this.state}
+                  {...routeProps}
+                  getMatchList={this.getMatchList}
+                />
               )}
             />
             <Route exact path='/result'>

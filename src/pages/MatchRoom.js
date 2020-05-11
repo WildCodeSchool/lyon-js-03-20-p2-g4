@@ -108,7 +108,7 @@ class MatchRoom extends React.Component {
 
     if (type === 'genre') {
       window
-        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`)
+        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`)
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
@@ -119,7 +119,7 @@ class MatchRoom extends React.Component {
             }
             console.log('page aléatoire :' + randomPage);
             window
-              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${id}`)
+              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${id}`)
               .then((response) => {
                 return response
                   .json()
@@ -137,7 +137,7 @@ class MatchRoom extends React.Component {
         });
     } else if (type === 'people') {
       window
-        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_people=${id}`)
+        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_people=${id}`)
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
@@ -148,7 +148,7 @@ class MatchRoom extends React.Component {
             }
             console.log('page aléatoire :' + randomPage);
             window
-              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`)
+              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`)
               .then((response) => {
                 return response
                   .json()

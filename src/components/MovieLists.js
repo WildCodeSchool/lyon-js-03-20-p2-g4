@@ -42,7 +42,7 @@ const MovieLists = (props) => {
   if (props.type === 'genres') {
     CarouselType = 'Genre';
   } else if (props.type === 'people') {
-    CarouselType = 'Réalisateur';
+    CarouselType = 'Personnalité';
   }
 
   const slides = type.map((item) => {

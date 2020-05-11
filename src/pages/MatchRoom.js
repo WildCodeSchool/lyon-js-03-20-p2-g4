@@ -8,6 +8,7 @@ import "../styles/UserList.css";
 import "../styles/MatchRoom.css";
 import Match from "../components/Match";
 import { Alert } from "reactstrap";
+import { Ellipsis } from "react-awesome-spinners";
 
 class MatchRoom extends React.Component {
   constructor(props) {
@@ -155,7 +156,9 @@ class MatchRoom extends React.Component {
       return (
         <div>
           <HeaderSmall />
-          <p>En cours de chargement ...</p>
+          <div className="matchroom centered">
+            <Ellipsis color="#66C69B" />
+          </div>
         </div>
       );
     } else if (this.state.fetchListError) {

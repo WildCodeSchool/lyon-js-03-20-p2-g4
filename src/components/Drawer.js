@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/Drawer.css';
 import ApiKey from '../ApiKey';
 import DefaultAvatar from '../images/default-avatar.png';
+import defaultImage from '../images/grey-logo.png';
 
 class Drawer extends React.Component {
   constructor (props) {
@@ -92,10 +93,13 @@ class Drawer extends React.Component {
             ? (
               <div className='drawer-movie-all-info-container' id='drawer-movie-all-info-container'>
                 <div
-                  className='drawer-movie-banner' style={{
+                  className='drawer-movie-banner' style={this.state.movieDetails.poster_path !== null ? {
                     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
-                        this.state.movieDetails.poster_path
+                      this.state.movieDetails.poster_path
+
                         })`
+                  } : {
+                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})`
                   }}
                 />
                 <div className='drawer-link-rating'>
@@ -129,9 +133,9 @@ class Drawer extends React.Component {
                 </div>
                 <div className='drawer-movie-info-container'>
                   <h4>{this.state.movieDetails.title}</h4>
-                  <span>{`De ${this.state.peopleLoaded ? (this.state.people.crew.filter(director => {
+                  <span>{`De ${this.state.peopleLoaded ? ((this.state.people.crew.filter(director => {
                   return director.job === 'Director';
-                  }))[0].name : '...'} - ${this.state.movieDetailsLoaded ? this.state.movieDetails.genres[0].name : '...'} - ${this.transformDuration(this.state.movieDetails.runtime)} - ${this.state.movieDetails.release_date.split('-')[0]}`}
+                  }))[0].name) : '...'} - ${this.state.movieDetailsLoaded ? (this.state.movieDetails.genres[0] ? this.state.movieDetails.genres[0].name : 'non-classé') : '...'} - ${this.transformDuration(this.state.movieDetails.runtime)} - ${this.state.movieDetails.release_date.split('-')[0]}`}
                   </span>
                   <p>{this.state.movieDetails.overview}</p>
                 </div>

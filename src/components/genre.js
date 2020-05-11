@@ -14,70 +14,70 @@ const genres = [
     source: action,
     altText: 'Action',
     caption: 'Action',
-    link: '/matchroom/genre/28',
+    link: '/matchroom/genres/28',
     id: 28
   },
   {
     source: scienceFiction,
     altText: 'Science-Fiction',
     caption: 'Science-Fiction',
-    link: '/matchroom/genre/878',
+    link: '/matchroom/genres/878',
     id: 878
   },
   {
     source: policier,
     altText: 'Thriller',
     caption: 'Thriller',
-    link: '/matchroom/genre/53',
+    link: '/matchroom/genres/53',
     id: 53
   },
   {
     source: superHero,
     altText: 'Super héro',
     caption: 'Super héro',
-    link: '/matchroom/genre/14',
+    link: '/matchroom/genres/14',
     id: 14
   },
   {
     source: guerre,
     altText: 'Guerre',
     caption: 'Guerre',
-    link: '/matchroom/genre/10752',
+    link: '/matchroom/genres/10752',
     id: 10752
   },
   {
     source: comedy,
     altText: 'Comédie',
     caption: 'Comédie',
-    link: '/matchroom/genre/35',
+    link: '/matchroom/genres/35',
     id: 35
   },
   {
     source: animation,
     altText: 'Animation',
     caption: 'Animation',
-    link: '/matchroom/genre/16',
+    link: '/matchroom/genres/16',
     id: 16
   },
   {
     source: romantic,
     altText: 'Romance',
     caption: 'Romance',
-    link: '/matchroom/genre/10749',
+    link: '/matchroom/genres/10749',
     id: 10749
   },
   {
     source: drama,
     altText: 'Drame',
     caption: 'Drame',
-    link: '/matchroom/genre/18',
+    link: '/matchroom/genres/18',
     id: 18
   }/* ,
   {
     source: mystere,
     altText: 'Mystère',
     caption: 'Mystère',
-    link: '/matchroom/genre/9648',
+    link: '/matchroom/genres/9648',
     id: 9648
   } */
 ];

@@ -106,7 +106,7 @@ class MatchRoom extends React.Component {
     const type = this.props.match.params.type;
     const id = this.props.match.params.id;
 
-    if (type === 'genre') {
+    if (type === 'genres') {
       window
         .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`)
         .then((response) => {
@@ -146,9 +146,38 @@ class MatchRoom extends React.Component {
             } else {
               randomPage = Math.ceil(Math.random() * 15);
             }
-            console.log('page aléatoire :' + randomPage);
             window
               .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`)
+              .then((response) => {
+                return response
+                  .json()
+                  .then((data) => {
+                    this.setState({
+                      apiList: data.results,
+                      listIsLoading: false
+                    });
+                  })
+                  .catch(() => {
+                    this.setState({ listIsLoading: false, fetchListError: true });
+                  });
+              });
+          });
+        });
+    } else if (type === 'decades') {
+      const finalYear = (parseInt(id) + 9).toString();
+      window
+        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`)
+        .then((response) => {
+          return response.json().then((data) => {
+            let randomPage = 0;
+            if (data.total_pages < 15) {
+              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+            } else {
+              randomPage = Math.ceil(Math.random() * 15);
+            }
+            console.log('page aléatoire :' + randomPage);
+            window
+              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`)
               .then((response) => {
                 return response
                   .json()

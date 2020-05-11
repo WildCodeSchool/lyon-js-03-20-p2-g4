@@ -3,6 +3,7 @@ import MovieLists from '../components/MovieLists';
 import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
 import Drawer from '../components/Drawer';
+import defaultImage from '../images/grey-logo.png';
 
 class Result extends React.Component {
   constructor (props) {
@@ -36,7 +37,9 @@ class Result extends React.Component {
               <HeaderSmall />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
             </div>
-            <MovieLists />
+            <MovieLists type='genres' />
+            <MovieLists type='people' />
+            <MovieLists type='decades' />
           </>
         ) : (
           <>
@@ -48,7 +51,7 @@ class Result extends React.Component {
                   return (
                     <div
                       className='matched-movie'
-                      style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` }}
+                      style={film.poster_path ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }}
                       key={film.id}
                       id={film.id}
                       onClick={this.handleGetDrawer}

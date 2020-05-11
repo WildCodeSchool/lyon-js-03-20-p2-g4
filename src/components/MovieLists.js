@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import '../styles/movielists.css';
 import genres from './genre.js';
 import people from './people.js';
+import decades from './decades.js';
 import {
   Carousel,
   CarouselItem,
   CarouselControl,
   CarouselCaption
 } from 'reactstrap';
-
-console.table(genres);
 
 /* Carousel */
 /* Movies genre */
@@ -19,30 +18,34 @@ const MovieLists = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
+  let type = [];
+  if (props.type === 'genres') {
+    type = genres;
+  } else if (props.type === 'people') {
+    type = people;
+  } else if (props.type === 'decades') {
+    type = decades;
+  }
+
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === genres.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === type.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? genres.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? type.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
-
-  let type = '';
-  if (props.type === 'genres') {
-    type = genres;
-  } else if (props.type === 'people') {
-    type = people;
-  }
 
   let CarouselType = '';
   if (props.type === 'genres') {
     CarouselType = 'Genre';
   } else if (props.type === 'people') {
     CarouselType = 'Personnalité';
+  } else if (props.type === 'decades') {
+    CarouselType = 'Périodes';
   }
 
   const slides = type.map((item) => {

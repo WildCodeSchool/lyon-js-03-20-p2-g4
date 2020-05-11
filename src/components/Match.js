@@ -24,9 +24,7 @@ class Match extends React.Component {
             className={this.state.handleAnimation ? 'new-match' : 'unvisible'}
           >
             <h3 className='subtitle'>🔥 Match ! 🔥</h3>
-            <img
-              src={`http://image.tmdb.org/t/p/w185/${this.props.currentMatchedMovie.poster_path}`}
-            />
+            {this.props.currentMatchedMovie.poster_path && <img src={`http://image.tmdb.org/t/p/w185/${this.props.currentMatchedMovie.poster_path}`} alt={this.props.currentMatchedMovie.title} />}
           </div>
         )}
       </>

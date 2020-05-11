@@ -1,17 +1,17 @@
-import React from "react";
-import User1List from "../components/User1List";
-import User2List from "../components/User2List";
-import HeaderSmall from "../components/HeaderSmall";
-import ApiKey from "../ApiKey";
-import intersection from "lodash/intersection";
-import "../styles/UserList.css";
-import "../styles/MatchRoom.css";
-import Match from "../components/Match";
-import { Alert } from "reactstrap";
-import { Ellipsis } from "react-awesome-spinners";
+import React from 'react';
+import User1List from '../components/User1List';
+import User2List from '../components/User2List';
+import HeaderSmall from '../components/HeaderSmall';
+import ApiKey from '../ApiKey';
+import intersection from 'lodash/intersection';
+import '../styles/UserList.css';
+import '../styles/MatchRoom.css';
+import Match from '../components/Match';
+import { Alert } from 'reactstrap';
+import { Ellipsis } from 'react-awesome-spinners';
 
 class MatchRoom extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       apiList: [],
@@ -20,22 +20,22 @@ class MatchRoom extends React.Component {
       matchList: [],
       index: 0,
       finishedSession: false,
-      currentSession: "user1",
+      currentSession: 'user1',
       listIsLoading: true,
       fetchListError: false,
       newMatch: false,
-      alertDisplay: true,
+      alertDisplay: true
     };
   }
 
   handleValidate = () => {
-    if (this.state.currentSession === "user1") {
+    if (this.state.currentSession === 'user1') {
       const user1List = this.state.user1List.slice();
       user1List.push(this.state.apiList[this.state.index]);
       this.setState({
         user1List,
         index: this.state.index + 1,
-        finishedSession: this.state.index === this.state.apiList.length - 1,
+        finishedSession: this.state.index === this.state.apiList.length - 1
       });
     } else {
       const user2List = this.state.user2List.slice();
@@ -44,7 +44,7 @@ class MatchRoom extends React.Component {
       this.setState({
         user2List,
         index: this.state.index + 1,
-        finishedSession: this.state.index === this.state.apiList.length - 1,
+        finishedSession: this.state.index === this.state.apiList.length - 1
       });
 
       const matchList = intersection(user1List, user2List);
@@ -62,12 +62,12 @@ class MatchRoom extends React.Component {
   handleReject = () => {
     this.setState({
       index: this.state.index + 1,
-      finishedSession: this.state.index === this.state.apiList.length - 1,
+      finishedSession: this.state.index === this.state.apiList.length - 1
     });
   };
 
   handleSession = () => {
-    const currentSession = "user2";
+    const currentSession = 'user2';
     this.setState({ currentSession, index: 0, finishedSession: false });
   };
 
@@ -131,7 +131,7 @@ class MatchRoom extends React.Component {
                 .then((data) => {
                   this.setState({
                     apiList: data.results,
-                    listIsLoading: false,
+                    listIsLoading: false
                   });
                 })
                 .catch(() => {
@@ -146,18 +146,18 @@ class MatchRoom extends React.Component {
     this.setState({ alertDisplay: false });
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.getData();
   }
 
-  render() {
+  render () {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {
       return (
         <div>
           <HeaderSmall />
-          <div className="matchroom centered">
-            <Ellipsis color="#66C69B" />
+          <div className='matchroom centered'>
+            <Ellipsis color='#66C69B' />
           </div>
         </div>
       );
@@ -165,22 +165,22 @@ class MatchRoom extends React.Component {
       return (
         <>
           <HeaderSmall />
-          <div className="matchroom centered">
+          <div className='matchroom centered'>
             <Alert
-              color="danger"
+              color='danger'
               isOpen={this.state.alertDisplay}
               toggle={this.onDismiss}
             >
-              <span role="img" aria-label="confused face">
+              <span role='img' aria-label='confused face'>
                 😕
-              </span>{" "}
+              </span>{' '}
               Erreur lors du chargement !
             </Alert>
           </div>
         </>
       );
     } else {
-      return this.state.currentSession === "user1" ? (
+      return this.state.currentSession === 'user1' ? (
         <User1List
           user1={user1}
           {...this.state}

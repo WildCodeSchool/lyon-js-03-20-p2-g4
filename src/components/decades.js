@@ -1,4 +1,3 @@
-
 import d1960 from '../images/1960.jpg';
 import d1970 from '../images/1970.jpg';
 import d1980 from '../images/1980.jpg';

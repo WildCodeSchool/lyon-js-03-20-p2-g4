@@ -107,7 +107,7 @@ class MatchRoom extends React.Component {
 
     window
       .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`
       )
       .then((response) => {
         return response.json().then((data) => {
@@ -120,7 +120,7 @@ class MatchRoom extends React.Component {
           console.log(randomPage);
           window
             .fetch(
-              `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
+              `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
             )
             .then((response) => {
               return response

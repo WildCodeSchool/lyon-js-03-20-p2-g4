@@ -33,6 +33,10 @@
   line-height: 46px;
   margin-block-end: 0px;
 }
+.user-list-container h3.session-film-name {
+  text-align:center;
+  font-size: 1.2rem;
+}
 .new-match {
   width: 100%;
   height: 100px;

@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import User1List from '../components/User1List';
 import User2List from '../components/User2List';
 import HeaderSmall from '../components/HeaderSmall';
 import ApiKey from '../ApiKey';
 import intersection from 'lodash/intersection';
 import '../styles/UserList.css';
+import '../styles/MatchRoom.css';
 import Match from '../components/Match';
+import { Alert } from 'reactstrap';
+import { Ellipsis } from 'react-awesome-spinners';
 
 class MatchRoom extends React.Component {
   constructor (props) {
@@ -21,7 +23,8 @@ class MatchRoom extends React.Component {
       currentSession: 'user1',
       listIsLoading: true,
       fetchListError: false,
-      newMatch: false
+      newMatch: false,
+      alertDisplay: true
     };
   }
 
@@ -137,7 +140,11 @@ class MatchRoom extends React.Component {
             });
         });
       });
-  }
+  };
+
+  onDismiss = () => {
+    this.setState({ alertDisplay: false });
+  };
 
   componentDidMount () {
     this.getData();
@@ -149,21 +156,28 @@ class MatchRoom extends React.Component {
       return (
         <div>
           <HeaderSmall />
-          <Link to='/result'>
-            <h2>Result</h2>
-          </Link>
-          <p>En cours de chargement ...</p>
+          <div className='matchroom centered'>
+            <Ellipsis color='#66C69B' />
+          </div>
         </div>
       );
     } else if (this.state.fetchListError) {
       return (
-        <div>
+        <>
           <HeaderSmall />
-          <Link to='/result'>
-            <h2>Result</h2>
-          </Link>
-          <p>Erreur lors du chargement</p>
-        </div>
+          <div className='matchroom centered'>
+            <Alert
+              color='danger'
+              isOpen={this.state.alertDisplay}
+              toggle={this.onDismiss}
+            >
+              <span role='img' aria-label='confused face'>
+                😕
+              </span>{' '}
+              Erreur lors du chargement !
+            </Alert>
+          </div>
+        </>
       );
     } else {
       return this.state.currentSession === 'user1' ? (

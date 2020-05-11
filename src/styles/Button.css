@@ -55,9 +55,24 @@
   height: 28px;
   align-self: flex-start;
   margin-top: 40px;
+  box-shadow:none;
+  border:1px solid #AFACAC;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .session-button-container button.session-button.return img {
   width: 12px;
   height: 12px;
+}
+.session-button-container button.session-button.more-info {
+  width:28px;
+  height:28px;
+  align-self:flex-start;
+  margin-top:40px;
+  text-align:center;
+  color:#AFACAC;
+  border:1px solid #AFACAC;
+  box-shadow:none;
 }

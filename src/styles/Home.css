@@ -5,3 +5,6 @@
 .home Button {
   width: 220px;
 }
+.home .centered-title {
+  text-align:center;
+}

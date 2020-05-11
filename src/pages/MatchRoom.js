@@ -103,40 +103,68 @@ class MatchRoom extends React.Component {
   };
 
   getData = () => {
-    const genreId = this.props.match.params.id;
+    const type = this.props.match.params.type;
+    const id = this.props.match.params.id;
 
-    window
-      .fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${genreId}`
-      )
-      .then((response) => {
-        return response.json().then((data) => {
-          let randomPage = 0;
-          if (data.total_pages < 20) {
-            randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
-          } else {
-            randomPage = Math.ceil(Math.random() * 20);
-          }
-          console.log(randomPage);
-          window
-            .fetch(
-              `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${genreId}`
-            )
-            .then((response) => {
-              return response
-                .json()
-                .then((data) => {
-                  this.setState({
-                    apiList: data.results,
-                    listIsLoading: false
+    if (type === 'genre') {
+      window
+        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`)
+        .then((response) => {
+          return response.json().then((data) => {
+            let randomPage = 0;
+            if (data.total_pages < 15) {
+              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+            } else {
+              randomPage = Math.ceil(Math.random() * 15);
+            }
+            console.log('page aléatoire :' + randomPage);
+            window
+              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${id}`)
+              .then((response) => {
+                return response
+                  .json()
+                  .then((data) => {
+                    this.setState({
+                      apiList: data.results,
+                      listIsLoading: false
+                    });
+                  })
+                  .catch(() => {
+                    this.setState({ listIsLoading: false, fetchListError: true });
                   });
-                })
-                .catch(() => {
-                  this.setState({ listIsLoading: false, fetchListError: true });
-                });
-            });
+              });
+          });
         });
-      });
+    } else if (type === 'people') {
+      window
+        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_people=${id}`)
+        .then((response) => {
+          return response.json().then((data) => {
+            let randomPage = 0;
+            if (data.total_pages < 15) {
+              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+            } else {
+              randomPage = Math.ceil(Math.random() * 15);
+            }
+            console.log('page aléatoire :' + randomPage);
+            window
+              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`)
+              .then((response) => {
+                return response
+                  .json()
+                  .then((data) => {
+                    this.setState({
+                      apiList: data.results,
+                      listIsLoading: false
+                    });
+                  })
+                  .catch(() => {
+                    this.setState({ listIsLoading: false, fetchListError: true });
+                  });
+              });
+          });
+        });
+    }
   }
 
   componentDidMount () {

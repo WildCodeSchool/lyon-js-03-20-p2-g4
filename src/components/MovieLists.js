@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/movielists.css';
-import scienceFiction from '../images/science-fiction.jpg';
-import action from '../images/action.jpg';
-import policier from '../images/policier.jpg';
-import superHero from '../images/super-hero.jpg';
-import guerre from '../images/guerre.jpg';
+import genres from './genre.js';
+import people from './people.js';
 import {
   Carousel,
   CarouselItem,
@@ -13,43 +10,7 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
-const items = [
-  {
-    source: action,
-    altText: 'Action',
-    caption: 'Action',
-    link: '/matchroom/28',
-    id: 28
-  },
-  {
-    source: scienceFiction,
-    altText: 'Science-Fiction',
-    caption: 'Science-Fiction',
-    link: '/matchroom/878',
-    id: 878
-  },
-  {
-    source: policier,
-    altText: 'Thriller',
-    caption: 'Thriller',
-    link: '/matchroom/53',
-    id: 53
-  },
-  {
-    source: superHero,
-    altText: 'Super héro',
-    caption: 'Super héro',
-    link: '/matchroom/14',
-    id: 14
-  },
-  {
-    source: guerre,
-    altText: 'Guerre',
-    caption: 'Guerre',
-    link: '/matchroom/10752',
-    id: 10752
-  }
-];
+console.table(genres);
 
 /* Carousel */
 /* Movies genre */
@@ -60,17 +21,31 @@ const MovieLists = (props) => {
 
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === genres.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? genres.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
 
-  const slides = items.map((item) => {
+  let type = '';
+  if (props.type === 'genres') {
+    type = genres;
+  } else if (props.type === 'people') {
+    type = people;
+  }
+
+  let CarouselType = '';
+  if (props.type === 'genres') {
+    CarouselType = 'Genre';
+  } else if (props.type === 'people') {
+    CarouselType = 'Réalisateur';
+  }
+
+  const slides = type.map((item) => {
     return (
       /* Displaying each carousel Item */
       <CarouselItem
@@ -101,8 +76,7 @@ const MovieLists = (props) => {
   });
   return (
     <div className='list-container'>
-      <h2>Choisissez une liste de films</h2>
-      <h3 className='list-category'>Par genre</h3>
+      <h3 className='list-category'>{CarouselType}</h3>
 
       <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         {slides}

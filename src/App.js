@@ -31,7 +31,7 @@ class App extends React.Component {
   };
 
   getCurrentList = (newList) => {
-    this.setState({currentList: newList});
+    this.setState({ currentList: newList });
   };
 
   render () {
@@ -61,7 +61,9 @@ class App extends React.Component {
               )}
             />
             <Route exact path='/result'>
-              <Result {...this.state} />
+              <Result 
+                {...this.state}
+                getCurrentList={this.getCurrentList} />
             </Route>
           </Switch>
         </div>

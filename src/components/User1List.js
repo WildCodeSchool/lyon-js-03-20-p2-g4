@@ -13,7 +13,7 @@ class User1List extends React.Component {
     this.state = {
       getInfo: false,
       renderedDrawer: false,
-      filmId: null,
+      filmId: null
     };
   }
 

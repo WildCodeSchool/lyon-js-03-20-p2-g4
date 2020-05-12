@@ -5,3 +5,42 @@
 .home Button {
   width: 220px;
 }
+
+@media only screen and (max-width: 1023px) {
+  .home h1.big-screens {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1024px){
+  .home {
+    padding: 0 30px;
+    background-image: url('../images/home-background.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .home h1.big-screens {
+    color: var(--lightTextColor);
+    position: absolute;
+    width: 50%;
+    left: 0;
+    top: 50%;
+    margin-left: 79px;
+    margin-top: -86px;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 43px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .home .centered {
+    position: absolute;
+    width: 50%;
+    right: 0;
+    margin-top: -133px;
+    top: 50%;
+  }
+}

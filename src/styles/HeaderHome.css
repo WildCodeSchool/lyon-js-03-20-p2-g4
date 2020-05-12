@@ -32,3 +32,35 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 1023px){
+  .headerHome h1.big-screens {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .headerHome .logo-white {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1024px){
+  .headerHome h1.small-screens, .headerHome span.borderBottom {
+    display: none;
+  }
+
+  .headerHome .logo {
+    display: none;
+  }
+
+  .headerHome .logo-white {
+    display: block;
+    width: 143px;
+  }
+
+  .headerHome {
+    width: 40%;
+    height: 100%;
+  }
+}

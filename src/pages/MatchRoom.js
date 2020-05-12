@@ -238,15 +238,15 @@ class MatchRoom extends React.Component {
       );
     } else {
       return this.state.currentSession === 'user1' ? (
-        <User1List
-          user1={user1}
-          {...this.state}
-          onHandleSession={this.handleSession}
-          onHandleReject={this.handleReject}
-          onHandleValidate={this.handleValidate}
-          onHandleReturn={this.handleReturn1}
-          user2={user2}
-        />
+          <User1List
+            user1={user1}
+            {...this.state}
+            onHandleSession={this.handleSession}
+            onHandleReject={this.handleReject}
+            onHandleValidate={this.handleValidate}
+            onHandleReturn={this.handleReturn1}
+            user2={user2}
+          />
       ) : (
         <>
           <User2List

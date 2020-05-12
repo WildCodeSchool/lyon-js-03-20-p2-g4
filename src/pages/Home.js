@@ -33,7 +33,7 @@ class Home extends React.Component {
           </>
         ) : (
           <div className='movie-list-container-desktop'>
-              <MovieLists />
+            <MovieLists />
           </div>
         )}
       </div>

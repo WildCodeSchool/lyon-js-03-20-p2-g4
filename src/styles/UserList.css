@@ -125,3 +125,13 @@
     transform: translateX(-50%);
   }
 }
+@media all and (max-width:1024px) {
+  .sidebar-info-container {
+    display:none;
+  }
+}
+@media all and (min-width:1024px) {
+  .session-button-container button.session-button.more-info {
+    display:none;
+  }
+}

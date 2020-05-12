@@ -97,22 +97,17 @@ class SideBarInfoDesktop extends React.Component {
 
     return (
       <>
-          {this.state.movieDetailsLoaded &&
-            this.state.movieVideoLoaded &&
-            this.state.peopleLoaded ? (
-                <aside className='sidebar-info-container'>
+        {this.state.movieDetailsLoaded &&
+          this.state.movieVideoLoaded &&
+          this.state.peopleLoaded ? (
+            <aside className='sidebar-info-container'>
               <div
                 className='sidebar-info-movie-all-info-container'
                 id='sidebar-info-movie-all-info-container'
               >
                 <div
-                  className='sidebar-info-movie-banner' style={this.state.movieDetails.poster_path !== null ? {
-                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
-                      this.state.movieDetails.poster_path
-                        })`
-                  } : {
-                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})`
-                  }}
+                  className='sidebar-info-movie-banner'
+                  style={this.state.movieDetails.poster_path !== null ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${this.state.movieDetails.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }}
                 />
                 <div className='sidebar-info-link-rating'>
                   {this.state.movieVideo !== undefined ? (
@@ -123,7 +118,7 @@ class SideBarInfoDesktop extends React.Component {
                     >
                       <div className='button'>
                         <span className='sidebar-info-play-icon' />
-                      Bande annonce
+                    Bande annonce
                       </div>
                     </a>
                   ) : (
@@ -150,11 +145,26 @@ class SideBarInfoDesktop extends React.Component {
                 </div>
                 <div className='sidebar-info-movie-info-container'>
                   <h4>{this.state.movieDetails.title}</h4>
-                  <span>{`De ${this.state.peopleLoaded ? (((this.state.people.crew.filter(director => {
-                  return director.job === 'Director';
-                  }))[0]) ? this.state.people.crew.filter(director => {
-                    return director.job === 'Director';
-                    })[0].name : 'non renseigné') : '...'} - ${this.state.movieDetailsLoaded ? (this.state.movieDetails.genres[0] ? this.state.movieDetails.genres[0].name : 'non-classé') : '...'} - ${this.transformDuration(this.state.movieDetails.runtime)} - ${this.state.movieDetails.release_date.split('-')[0]}`}
+                  <span>
+                    {`De ${
+                      this.state.peopleLoaded
+                        ? this.state.people.crew.filter((director) => {
+                          return director.job === 'Director';
+                        })[0]
+                          ? this.state.people.crew.filter((director) => {
+                            return director.job === 'Director';
+                          })[0].name
+                          : 'non renseigné'
+                        : '...'
+                      } - ${
+                      this.state.movieDetailsLoaded
+                        ? this.state.movieDetails.genres[0]
+                          ? this.state.movieDetails.genres[0].name
+                          : 'non-classé'
+                        : '...'
+                      } - ${this.transformDuration(
+                        this.state.movieDetails.runtime
+                      )} - ${this.state.movieDetails.release_date.split('-')[0]}`}
                   </span>
                   <p>{this.state.movieDetails.overview}</p>
                 </div>
@@ -197,10 +207,10 @@ class SideBarInfoDesktop extends React.Component {
                   </div>
                 </div>
               </div>
-              </aside>
-            ) : (
-              <Ellipsis color='#66C69B' />
-            )}
+            </aside>
+          ) : (
+            <Ellipsis color='#66C69B' />
+          )}
       </>
     );
   }

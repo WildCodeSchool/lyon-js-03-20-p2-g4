@@ -11,7 +11,7 @@ import { Alert } from 'reactstrap';
 import { Ellipsis } from 'react-awesome-spinners';
 
 class MatchRoom extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       apiList: [],
@@ -203,11 +203,11 @@ class MatchRoom extends React.Component {
     this.setState({ alertDisplay: false });
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.getData();
   }
 
-  render () {
+  render() {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {
       return (
@@ -238,35 +238,35 @@ class MatchRoom extends React.Component {
       );
     } else {
       return this.state.currentSession === 'user1' ? (
-          <User1List
-            user1={user1}
-            {...this.state}
-            onHandleSession={this.handleSession}
-            onHandleReject={this.handleReject}
-            onHandleValidate={this.handleValidate}
-            onHandleReturn={this.handleReturn1}
-            user2={user2}
-          />
+        <User1List
+          user1={user1}
+          {...this.state}
+          onHandleSession={this.handleSession}
+          onHandleReject={this.handleReject}
+          onHandleValidate={this.handleValidate}
+          onHandleReturn={this.handleReturn1}
+          user2={user2}
+        />
       ) : (
-        <>
-          <User2List
-            user2={user2}
-            {...this.state}
-            onHandleReject={this.handleReject}
-            onHandleValidate={this.handleValidate}
-            onHandleReturn={this.handleReturn2}
-            getMatchList={this.props.getMatchList}
-          />
-          {this.state.newMatch && (
-            <Match
-              onHandleMatch={this.handleMatch}
-              currentMatchedMovie={
-                this.state.matchList[this.state.matchList.length - 1]
-              }
+          <>
+            <User2List
+              user2={user2}
+              {...this.state}
+              onHandleReject={this.handleReject}
+              onHandleValidate={this.handleValidate}
+              onHandleReturn={this.handleReturn2}
+              getMatchList={this.props.getMatchList}
             />
-          )}
-        </>
-      );
+            {this.state.newMatch && (
+              <Match
+                onHandleMatch={this.handleMatch}
+                currentMatchedMovie={
+                  this.state.matchList[this.state.matchList.length - 1]
+                }
+              />
+            )}
+          </>
+        );
     }
   }
 }

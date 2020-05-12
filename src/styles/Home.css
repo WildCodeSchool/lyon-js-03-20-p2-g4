@@ -49,4 +49,11 @@
   .home h1.big-screens span.green-title {
     color: var(--accentColor);
   }
+
+  .home .movie-list-container-desktop {
+    position: absolute;
+    bottom: 233px;
+    left: 206px;
+    display: flex;
+  }
 }

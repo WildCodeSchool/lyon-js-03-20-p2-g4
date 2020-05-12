@@ -6,6 +6,19 @@
   width: 220px;
 }
 
+/* Doute sur cette classe lors du merge avec dev
+.home .centered-title {
+  text-align:center;
+  margin-top:50px;
+  font-size:18px;
+}
+*/
+
+.home div:nth-of-type(3) .list-category::after {
+  width:calc(100% - 150px);
+  left:150px;
+}
+
 @media only screen and (max-width: 1023px) {
   .home h1.big-screens {
     display: none;
@@ -57,3 +70,4 @@
     display: flex;
   }
 }
+

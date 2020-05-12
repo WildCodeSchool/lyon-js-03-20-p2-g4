@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieLists from '../components/MovieLists';
+import TrendList from '../components/TrendList';
 import UsersInputs from '../components/UsersInputs';
 import HeaderHome from '../components/HeaderHome';
 import Button from '../components/Button';
@@ -31,6 +32,7 @@ class Home extends React.Component {
         ) : (
           <>
             <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
+            <TrendList />
             <MovieLists type='genres' />
             <MovieLists type='people' />
             <MovieLists type='decades' />

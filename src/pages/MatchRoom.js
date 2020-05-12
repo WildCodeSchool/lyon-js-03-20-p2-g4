@@ -196,6 +196,21 @@ class MatchRoom extends React.Component {
               });
           });
         });
+    } else if (type === 'trending') {
+      window.fetch(`https://api.themoviedb.org/3/trending/all/${id}?api_key=${ApiKey}`)
+      .then((response) => {
+        return response
+          .json()
+          .then((data) => {
+            this.setState({
+              apiList: data.results,
+              listIsLoading: false
+            });
+          })
+          .catch(() => {
+            this.setState({ listIsLoading: false, fetchListError: true });
+          });
+      });
     }
   }
 

@@ -29,11 +29,13 @@
     left: 0;
     top: 50%;
     margin-left: 79px;
+    padding-right: 150px;
     margin-top: -86px;
     font-size: 36px;
     font-weight: bold;
     line-height: 43px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
   }
 
   .home .centered {
@@ -42,5 +44,9 @@
     right: 0;
     margin-top: -133px;
     top: 50%;
+  }
+
+  .home h1.big-screens span.green-title {
+    color: var(--accentColor);
   }
 }

@@ -23,7 +23,7 @@ class Home extends React.Component {
     return (
       <div className='home'>
         <HeaderHome />
-        <h1 className='big-screens'>MOVIE MATCH VOUS AIDE A TROUVER UN FILM A REGARDER EN QUELQUES MINUTES</h1>
+        <h1 className='big-screens'>Movie Match vous aide à <span className='green-title'>trouver un film à regarder</span> en quelques minutes</h1>
         {!namesHidden ? (
           <div className='centered'>
             <UsersInputs {...this.props} />

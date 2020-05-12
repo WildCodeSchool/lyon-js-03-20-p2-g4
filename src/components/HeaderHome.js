@@ -8,7 +8,7 @@ const HeaderHome = () => {
     <header className='headerHome'>
       <img src={logoFull} alt='full logo' className='logo' />
       <img src={logoFullWhite} alt='full logo' className='logo-white' />
-      <h1 className='small-screens'>TROUVEZ UN FILM A REGARDER CE SOIR !</h1>
+      <h1 className='small-screens'>Trouver un film à regarder ce soir !</h1>
       <span className='borderBottom' />
     </header>
   );

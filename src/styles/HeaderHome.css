@@ -56,8 +56,10 @@
   }
 
   .headerHome .logo-white {
-    display: block;
+    position: absolute;
     width: 143px;
+    top: 70px;
+    left: 79px;
   }
 
   .headerHome {

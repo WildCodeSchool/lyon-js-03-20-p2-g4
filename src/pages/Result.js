@@ -40,11 +40,11 @@ class Result extends React.Component {
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
               {
                 Object.keys(this.props.currentList).length !== 0 && (
-                  <> 
-                  <p>Continuez d'explorer la liste :</p>
-              <Link to={item.link}>
-                <img src={item.source} alt={item.caption} />
-              </Link>
+                  <>
+                    <p>Continuez d'explorer la liste :</p>
+                    <Link to={item.link}>
+                      <img src={item.source} alt={item.caption} />
+                    </Link>
                   </>
                 )
               }

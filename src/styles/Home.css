@@ -5,3 +5,12 @@
 .home Button {
   width: 220px;
 }
+.home .centered-title {
+  text-align:center;
+  margin-top:50px;
+  font-size:18px;
+}
+.home div:nth-of-type(2) .list-category::after {
+  width:calc(100% - 150px);
+  left:150px;
+}

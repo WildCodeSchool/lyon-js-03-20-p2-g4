@@ -10,6 +10,9 @@
     overflow: hidden;
     transition:all 0.4s ease-in-out;
 }
+.drawer-container .drawer-default-director {
+    text-transform:italic;
+}
 .drawer-container.closed {
     height:0;
 }

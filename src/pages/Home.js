@@ -29,7 +29,12 @@ class Home extends React.Component {
             <Button content='Valider' onClick={this.handleHide} className='button' />
           </div>
         ) : (
-          <MovieLists />
+          <>
+            <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
+            <MovieLists type='genres' />
+            <MovieLists type='people' />
+            <MovieLists type='decades' />
+          </>
         )}
       </div>
     );

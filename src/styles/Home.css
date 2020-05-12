@@ -6,13 +6,12 @@
   width: 220px;
 }
 
-/* Doute sur cette classe lors du merge avec dev
+/* Doute sur cette classe lors du merge avec dev */
 .home .centered-title {
   text-align:center;
   margin-top:50px;
   font-size:18px;
 }
-*/
 
 .home div:nth-of-type(3) .list-category::after {
   width:calc(100% - 150px);

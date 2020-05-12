@@ -10,7 +10,7 @@
   margin-top:50px;
   font-size:18px;
 }
-.home div:nth-of-type(2) .list-category::after {
+.home div:nth-of-type(3) .list-category::after {
   width:calc(100% - 150px);
   left:150px;
 }

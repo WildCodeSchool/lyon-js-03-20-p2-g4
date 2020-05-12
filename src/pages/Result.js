@@ -4,6 +4,7 @@ import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
 import Drawer from '../components/Drawer';
 import { Link } from 'react-router-dom';
+import defaultImage from '../images/grey-logo.png';
 
 class Result extends React.Component {
   constructor (props) {
@@ -37,13 +38,20 @@ class Result extends React.Component {
             <div className='centered'>
               <HeaderSmall />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
-              <p>Continuez d'explorer la liste :</p>
+              {
+                Object.keys(this.props.currentList).length !== 0 && (
+                  <> 
+                  <p>Continuez d'explorer la liste :</p>
               <Link to={item.link}>
                 <img src={item.source} alt={item.caption} />
               </Link>
-
+                  </>
+                )
+              }
             </div>
-            <MovieLists getCurrentList={this.props.getCurrentList} />
+            <MovieLists type='genres' getCurrentList={this.props.getCurrentList} />
+            <MovieLists type='people' getCurrentList={this.props.getCurrentList} />
+            <MovieLists type='decades' getCurrentList={this.props.getCurrentList} />
           </>
         ) : (
           <>
@@ -59,9 +67,7 @@ class Result extends React.Component {
                   return (
                     <div
                       className='matched-movie'
-                      style={{
-                        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})`
-                      }}
+                      style={film.poster_path ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }}
                       key={film.id}
                       id={film.id}
                       onClick={this.handleGetDrawer}

@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieLists from '../components/MovieLists';
+import TrendList from '../components/TrendList';
 import UsersInputs from '../components/UsersInputs';
 import HeaderHome from '../components/HeaderHome';
 import Button from '../components/Button';
@@ -29,7 +30,13 @@ class Home extends React.Component {
             <Button content='Valider' onClick={this.handleHide} className='button' />
           </div>
         ) : (
-          <MovieLists {...this.props} />
+          <>
+            <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
+            <TrendList />
+            <MovieLists type='genres' {...this.props} />
+            <MovieLists type='people' {...this.props} />
+            <MovieLists type='decades' {...this.props} />
+          </>
         )}
       </div>
     );

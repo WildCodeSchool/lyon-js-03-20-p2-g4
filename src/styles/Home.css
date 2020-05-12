@@ -62,11 +62,28 @@
     color: var(--accentColor);
   }
 
-  .home .movie-list-container-desktop {
+  .home h2.centered-title.subtitle {
     position: absolute;
-    bottom: 233px;
-    left: 206px;
+    top: 10%;
+    color: var(--lightTextColor);
+    font-weight: bold;
+    font-size: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .home .list-container-desktop {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18%;
     display: flex;
+    justify-content: space-around;
+    width:80%;
+  }
+
+  .home .list-container-desktop .left-column, .home .list-container-desktop .right-column {
+    width: 40%;
   }
 }
 

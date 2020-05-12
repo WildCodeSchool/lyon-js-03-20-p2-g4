@@ -49,3 +49,13 @@
 .trendlist-container a:hover {
     text-decoration:none;
 }
+
+@media only screen and (min-width: 1024px) {
+  .trendlist-container h3.list-category {
+    color: var(--lightTextColor)
+  }
+
+  .trendlist-container .list-category::after {
+    background-color: var(--lightTextColor);
+  }
+}

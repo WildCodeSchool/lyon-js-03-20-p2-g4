@@ -35,10 +35,17 @@ class Home extends React.Component {
         ) : (
           <>
             <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
-            <TrendList />
-            <MovieLists type='genres' />
-            <MovieLists type='people' />
-            <MovieLists type='decades' />
+            <div className='list-container-desktop'>
+              <div className='left-column'>
+                <TrendList />
+                <MovieLists type='genres' />
+              </div>
+              <div className='right-column'>
+                <MovieLists type='people' />
+                <MovieLists type='decades' />
+              </div>
+            </div>
+
           </>
         )}
       </div>

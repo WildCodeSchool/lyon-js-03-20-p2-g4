@@ -32,6 +32,11 @@
     left:92px;
 }
 
+.right-column .list-container:nth-child(1) .list-category::after {
+  width:calc(100% - 150px);
+  left: 150px;
+}
+
 /* CAROUSEL */
 .list-container .carousel-inner {
     width:70%!important;

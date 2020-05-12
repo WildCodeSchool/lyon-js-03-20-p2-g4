@@ -61,9 +61,10 @@ class App extends React.Component {
               )}
             />
             <Route exact path='/result'>
-              <Result 
+              <Result
                 {...this.state}
-                getCurrentList={this.getCurrentList} />
+                getCurrentList={this.getCurrentList}
+              />
             </Route>
           </Switch>
         </div>

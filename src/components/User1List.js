@@ -6,7 +6,6 @@ import Validate from '../images/validate.svg';
 import Reject from '../images/reject.svg';
 import Return from '../images/return.png';
 import Drawer from './Drawer';
-import ApiKey from '../ApiKey';
 
 class User1List extends React.Component {
   constructor (props) {

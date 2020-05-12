@@ -29,7 +29,7 @@ class Home extends React.Component {
             <Button content='Valider' onClick={this.handleHide} className='button' />
           </div>
         ) : (
-          <MovieLists />
+          <MovieLists {...this.props} />
         )}
       </div>
     );

@@ -11,7 +11,8 @@ class App extends React.Component {
     this.state = {
       user1: 'Tic',
       user2: 'Tac',
-      matchList: []
+      matchList: [],
+      currentList: {}
     };
   }
 
@@ -29,6 +30,10 @@ class App extends React.Component {
     this.setState({ matchList: newMatchList });
   };
 
+  getCurrentList = (newList) => {
+    this.setState({currentList: newList});
+  };
+
   render () {
     const { user1, user2 } = this.state;
     return (
@@ -41,6 +46,7 @@ class App extends React.Component {
                 user2={user2}
                 onChange1={this.handleChange1}
                 onChange2={this.handleChange2}
+                getCurrentList={this.getCurrentList}
               />
             </Route>
             <Route

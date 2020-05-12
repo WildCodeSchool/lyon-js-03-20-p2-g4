@@ -79,7 +79,7 @@ const MovieLists = (props) => {
         key={item.source}
       >
         {/* Link to the next page */}
-        <Link to={item.link}>
+        <Link to={item.link} onClick={() => props.getCurrentList(item)}>
           <div
             className='clickable-list'
             style={{
@@ -89,7 +89,7 @@ const MovieLists = (props) => {
         </Link>
         {/* Link to the next page
                 We added it for picture link and text to make both of them clickable */}
-        <Link to={item.link}>
+        <Link to={item.link} onClick={() => props.getCurrentList(item)}>
           <CarouselCaption
             captionText='choisir cette liste'
             captionHeader={item.caption}

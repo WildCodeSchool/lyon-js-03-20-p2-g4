@@ -4,9 +4,10 @@
 .result .centered {
   text-align: center;
 }
-.result div:nth-of-type(3) .list-category::after {
-  width: calc(100% - 150px);
-  left: 150px;
+
+.result div:nth-of-type(4) .list-category::after {
+  width:calc(100% - 150px);
+  left:150px;
 }
 .result h2 {
   text-align: center;
@@ -90,6 +91,19 @@
   color:white;
   text-align:center;
 }
+
+.result .button {
+  margin-bottom: 50px;
+}
+
+.result .list-container h3.list-category, .result .trendlist-container h3.list-category {
+  color: var(--darkTextColor);
+}
+
+.result .list-category::after {
+  background-color: var(--darkTextColor);
+}
+
 @media only screen and (max-height: 668px) {
   .result h2.subtitle {
     margin-top: 25px;

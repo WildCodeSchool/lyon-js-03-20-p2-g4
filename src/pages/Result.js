@@ -3,9 +3,12 @@ import MovieLists from '../components/MovieLists';
 import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
 import Drawer from '../components/Drawer';
+import { Link } from 'react-router-dom';
 import defaultImage from '../images/grey-logo.png';
 import ResultHistory from '../components/ResultHistory';
 import SideBarInfoDesktop from '../components/SidebarInfoDesktop';
+import Button from '../components/Button.js';
+import TrendList from '../components/TrendList';
 
 class Result extends React.Component {
   constructor (props) {
@@ -31,6 +34,7 @@ class Result extends React.Component {
   };
 
   render () {
+    const item = this.props.currentList;
     return (
       <div className='result'>
         {this.state.matchList.length === 0 ? (
@@ -44,10 +48,26 @@ class Result extends React.Component {
             <div className='centered'>
               <HeaderSmall />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
+              {
+                Object.keys(this.props.currentList).length !== 0 ? (
+                  <>
+                    <p>Continuez d'explorer la liste : {item.caption}</p>
+                    <Link to={item.link}>
+                      <Button
+                        className='button'
+                        content='Go !'
+                      />
+                    </Link>
+                  </>
+                ) : (
+                  <p>Choisissez une nouvelle liste</p>
+                )
+              }
             </div>
-            <MovieLists type='genres' />
-            <MovieLists type='people' />
-            <MovieLists type='decades' />
+            <TrendList />
+            <MovieLists type='genres' getCurrentList={this.props.getCurrentList} />
+            <MovieLists type='people' getCurrentList={this.props.getCurrentList} />
+            <MovieLists type='decades' getCurrentList={this.props.getCurrentList} />
           </>
         ) : (
           <>

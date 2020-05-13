@@ -25,7 +25,8 @@ class MatchRoom extends React.Component {
       listIsLoading: true,
       fetchListError: false,
       newMatch: false,
-      alertDisplay: true
+      alertDisplay: true,
+      currentPage: this.props.currentPage
     };
   }
 
@@ -143,6 +144,7 @@ class MatchRoom extends React.Component {
   getData = () => {
     const type = this.props.match.params.type;
     const id = this.props.match.params.id;
+    const currentPage = this.state.currentPage;
 
     if (type === 'genres') {
       window
@@ -152,11 +154,13 @@ class MatchRoom extends React.Component {
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
-            if (data.total_pages < 15) {
-              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
-            } else {
-              randomPage = Math.ceil(Math.random() * 15);
-            }
+            do {
+              if (data.total_pages < 15) {
+                randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+              } else {
+                randomPage = Math.ceil(Math.random() * 15);
+              }
+            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             console.log('page aléatoire :' + randomPage);
             window
               .fetch(
@@ -166,6 +170,11 @@ class MatchRoom extends React.Component {
                 return response
                   .json()
                   .then((data) => {
+                    this.props.getCurrentPage({
+                      type: type,
+                      id: id,
+                      randomPage: randomPage
+                    });
                     this.setState({
                       apiList: data.results,
                       listIsLoading: false
@@ -188,11 +197,13 @@ class MatchRoom extends React.Component {
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
-            if (data.total_pages < 15) {
-              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
-            } else {
-              randomPage = Math.ceil(Math.random() * 15);
-            }
+            do {
+              if (data.total_pages < 15) {
+                randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+              } else {
+                randomPage = Math.ceil(Math.random() * 15);
+              }
+            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             window
               .fetch(
                 `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`
@@ -201,6 +212,11 @@ class MatchRoom extends React.Component {
                 return response
                   .json()
                   .then((data) => {
+                    this.props.getCurrentPage({
+                      type: type,
+                      id: id,
+                      randomPage: randomPage
+                    });
                     this.setState({
                       apiList: data.results,
                       listIsLoading: false
@@ -224,11 +240,13 @@ class MatchRoom extends React.Component {
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
-            if (data.total_pages < 15) {
-              randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
-            } else {
-              randomPage = Math.ceil(Math.random() * 15);
-            }
+            do {
+              if (data.total_pages < 15) {
+                randomPage = Math.ceil(Math.random() * (data.total_pages - 1));
+              } else {
+                randomPage = Math.ceil(Math.random() * 15);
+              }
+            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             console.log('page aléatoire :' + randomPage);
             window
               .fetch(
@@ -238,6 +256,11 @@ class MatchRoom extends React.Component {
                 return response
                   .json()
                   .then((data) => {
+                    this.props.getCurrentPage({
+                      type: type,
+                      id: id,
+                      randomPage: randomPage
+                    });
                     this.setState({
                       apiList: data.results,
                       listIsLoading: false

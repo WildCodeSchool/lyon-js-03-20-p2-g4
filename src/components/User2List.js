@@ -9,7 +9,7 @@ import Return from '../images/return.png';
 import Drawer from './Drawer';
 
 class User2List extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       getInfo: false,
@@ -30,7 +30,7 @@ class User2List extends React.Component {
     document.body.classList.add('js-no-scroll');
   }
 
-  render() {
+  render () {
     return (
       <div className='user-list-container'>
         <div className='pop-up-user-session'>
@@ -49,34 +49,34 @@ class User2List extends React.Component {
             </Link>
           </div>
         ) : (
-            <>
-              <h2 className='user-session'>Utilisateur : {this.props.user2}</h2>
-              <FilmCard index={this.props.index} apiList={this.props.apiList} />
-              <h3 className='session-film-name'>{this.props.apiList[this.props.index].title}</h3>
-              <div className='session-button-container'>
-                <Button
-                  content={<img src={Reject} alt='reject button' />}
-                  className='session-button reject'
-                  onClick={this.props.onHandleReject}
-                />
-                <Button
-                  content={<img src={Return} alt='return button' />}
-                  className={(this.props.index > 0) ? ('session-button return') : ('session-button hidden-return')}
-                  onClick={this.props.onHandleReturn}
-                />
-                <Button
-                  content='i'
-                  className='session-button more-info'
-                  onClick={this.handleGetDrawer}
-                />
-                <Button
-                  content={<img src={Validate} alt='validate button' />}
-                  className='session-button validate'
-                  onClick={this.props.onHandleValidate}
-                />
-              </div>
-            </>
-          )}
+          <>
+            <h2 className='user-session'>Utilisateur : {this.props.user2}</h2>
+            <FilmCard index={this.props.index} apiList={this.props.apiList} />
+            <h3 className='session-film-name'>{this.props.apiList[this.props.index].title}</h3>
+            <div className='session-button-container'>
+              <Button
+                content={<img src={Reject} alt='reject button' />}
+                className='session-button reject'
+                onClick={this.props.onHandleReject}
+              />
+              <Button
+                content={<img src={Return} alt='return button' />}
+                className={(this.props.index > 0) ? ('session-button return') : ('session-button hidden-return')}
+                onClick={this.props.onHandleReturn}
+              />
+              <Button
+                content='i'
+                className='session-button more-info'
+                onClick={this.handleGetDrawer}
+              />
+              <Button
+                content={<img src={Validate} alt='validate button' />}
+                className='session-button validate'
+                onClick={this.props.onHandleValidate}
+              />
+            </div>
+          </>
+        )}
         {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
       </div>
     );

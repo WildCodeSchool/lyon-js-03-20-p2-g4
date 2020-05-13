@@ -7,6 +7,7 @@ import Reject from '../images/reject.svg';
 import { Link } from 'react-router-dom';
 import Return from '../images/return.png';
 import Drawer from './Drawer';
+import SidebarInfoDesktop from '../components/SidebarInfoDesktop';
 
 class User2List extends React.Component {
   constructor (props) {
@@ -92,14 +93,8 @@ class User2List extends React.Component {
             </div>
           </>
         )}
-        {this.state.renderedDrawer && (
-          <Drawer
-            matchList={this.state.matchList}
-            getInfo={this.state.getInfo}
-            handleCloseDrawer={this.closeDrawer}
-            filmId={this.state.filmId}
-          />
-        )}
+        {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
+        {this.props.index <= 19 && <SidebarInfoDesktop matchList={this.state.matchList} getInfo={this.state.getInfo} filmId={this.props.apiList[this.props.index].id} />}
       </div>
     );
   }

@@ -55,6 +55,8 @@ class Result extends React.Component {
               user1List={this.props.user1List}
               user2List={this.props.user2List}
               matchList={this.state.matchList}
+              user1={this.props.user1}
+              user2={this.props.user2}
             />
             <div className='centered'>
               <HeaderSmall />

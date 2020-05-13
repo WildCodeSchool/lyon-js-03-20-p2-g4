@@ -20,24 +20,27 @@ class SideBarInfoDesktop extends React.Component {
     };
   }
 
+  _isMounted = false;
   getPeople = async () => {
+    this._isMounted = true;
     const people = await window
       .fetch(
         `https://api.themoviedb.org/3/movie/${this.props.filmId}/credits?api_key=${ApiKey}`
       )
       .then((response) => response.json())
       .then((data) => data);
-    this.setState({ people, peopleLoaded: true });
+    if (this._isMounted) { this.setState({ people, peopleLoaded: true }); }
   };
 
   getMovieDetails = async () => {
+    this._isMounted = true;
     const movieDetails = await window
       .fetch(
         `https://api.themoviedb.org/3/movie/${this.props.filmId}?api_key=${ApiKey}&language=fr-FR`
       )
       .then((response) => response.json())
       .then((data) => data);
-    this.setState({ movieDetails, movieDetailsLoaded: true });
+    if (this._isMounted) { this.setState({ movieDetails, movieDetailsLoaded: true }); }
   };
 
   transformDuration = (duration) => {
@@ -51,13 +54,14 @@ class SideBarInfoDesktop extends React.Component {
   };
 
   getMovieVideo = async () => {
+    this._isMounted = true;
     const movieVideo = await window
       .fetch(
         `https://api.themoviedb.org/3/movie/${this.props.filmId}/videos?api_key=${ApiKey}&language=fr-FR`
       )
       .then((response) => response.json())
       .then((data) => data.results[0]);
-    this.setState({ movieVideo, movieVideoLoaded: true });
+    if (this._isMounted) { this.setState({ movieVideo, movieVideoLoaded: true }); }
   };
 
   componentDidMount () {
@@ -72,6 +76,10 @@ class SideBarInfoDesktop extends React.Component {
       this.getPeople();
       this.getMovieVideo();
     }
+  }
+
+  componentWillUnmount () {
+    this._isMounted = false;
   }
 
   render () {

@@ -127,9 +127,14 @@ class MatchRoom extends React.Component {
                 return response
                   .json()
                   .then((data) => {
+                    this.props.getCurrentPage({
+                      type: type,
+                      id: id,
+                      randomPage: randomPage
+                    })
                     this.setState({
                       apiList: data.results,
-                      listIsLoading: false
+                      listIsLoading: false 
                     });
                   })
                   .catch(() => {
@@ -155,9 +160,14 @@ class MatchRoom extends React.Component {
                 return response
                   .json()
                   .then((data) => {
+                    this.props.getCurrentPage({
+                      type: type,
+                      id: id,
+                      randomPage: randomPage
+                    })
                     this.setState({
                       apiList: data.results,
-                      listIsLoading: false
+                      listIsLoading: false,
                     });
                   })
                   .catch(() => {
@@ -185,6 +195,11 @@ class MatchRoom extends React.Component {
                 return response
                   .json()
                   .then((data) => {
+                    this.props.getCurrentPage({
+                      type: type,
+                      id: id,
+                      randomPage: randomPage
+                    })
                     this.setState({
                       apiList: data.results,
                       listIsLoading: false

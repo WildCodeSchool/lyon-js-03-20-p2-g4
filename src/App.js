@@ -12,7 +12,8 @@ class App extends React.Component {
       user1: 'Tic',
       user2: 'Tac',
       matchList: [],
-      currentList: {}
+      currentList: {},
+      currentPage: {}
     };
   }
 
@@ -34,6 +35,10 @@ class App extends React.Component {
     this.setState({ currentList: newList });
   };
 
+  getCurrentPage = (newPage) => {
+    this.setState({ currentPage: newPage })
+  }
+
   render () {
     const { user1, user2 } = this.state;
     return (
@@ -47,6 +52,7 @@ class App extends React.Component {
                 onChange1={this.handleChange1}
                 onChange2={this.handleChange2}
                 getCurrentList={this.getCurrentList}
+                getCurrentPage={this.getCurrentPage}
               />
             </Route>
             <Route
@@ -57,6 +63,7 @@ class App extends React.Component {
                   {...this.state}
                   {...routeProps}
                   getMatchList={this.getMatchList}
+                  getCurrentPage={this.getCurrentPage}
                 />
               )}
             />
@@ -64,6 +71,7 @@ class App extends React.Component {
               <Result
                 {...this.state}
                 getCurrentList={this.getCurrentList}
+                getCurrentPage={this.getCurrentPage}
               />
             </Route>
           </Switch>

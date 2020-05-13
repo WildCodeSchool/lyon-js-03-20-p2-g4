@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/History.css';
 import Logo from '../images/logoFull.svg';
 import genre from './genre.js';
@@ -16,7 +16,9 @@ function History(props) {
   } else if (props.type === 'trending') {
     props.id === 'day' ? result = 'jour' : result = 'semaine';
   }
-
+  useEffect(() => {
+    document.getElementById('timeline-container').scrollTo(0, 0);
+  }, [props.index])
   return (
     <div className='history-sidebar-container'>
       <div className='logo-container'>
@@ -30,12 +32,13 @@ function History(props) {
         <h3 className='subtitle'>Historique</h3>
       </div>
       <div className='history-container'>
-        <div className='timeline-container'>
+        <div id='timeline-container'>
           {props.apiList.map(movie => (
-            <div className='timeline-movie-container hidden' key={movie.id}>
-              <div className='history-film-card hidden' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${movie.poster_path}` }} />
+            <div className={props.apiList.indexOf(movie) <= props.index ? 'timeline-movie-container' : 'timeline-movie-container hidden'} key={movie.id}>
+              <div className={props.apiList.indexOf(movie) <= props.index ? 'history-film-card' : 'history-film-card hidden'} style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${movie.poster_path}` }} />
             </div>
-          ))}
+          ))
+          }
         </div>
       </div>
     </div>

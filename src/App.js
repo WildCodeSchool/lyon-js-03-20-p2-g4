@@ -36,7 +36,7 @@ class App extends React.Component {
   };
 
   getCurrentPage = (newPage) => {
-    this.setState({ currentPage: newPage })
+    this.setState({ currentPage: newPage });
   }
 
   render () {

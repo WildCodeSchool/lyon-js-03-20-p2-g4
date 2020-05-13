@@ -2,10 +2,24 @@
   width: 100%;
   text-align: center;
 }
-
+.matchroom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
 @media only screen and (min-width: 768px) {
   .matchroom.centered {
     width: 500px;
     margin: 0 auto;
+  }
+}
+@media all and (min-width:1024px) {
+  .headerSmall {
+    display:none;
+  }
+  h2.user-session {
+    display:none;
   }
 }

@@ -76,6 +76,7 @@
   display: flex;
   align-items: center;
   font-size:14px;
+  margin-bottom:0;
 }
 .drawer-container .drawer-movie-all-info-container .button .drawer-play-icon  {
     background-image:url('../images/play-icon.png');

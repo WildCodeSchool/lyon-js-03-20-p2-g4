@@ -39,6 +39,12 @@
 .all-films-cards .empty-card {
     display:none;
 }
+.matchroom .centered .button {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+}
 
 /* TABLETTE */
 @media all and (min-width:768px) and (max-width:1024px) and (orientation:portrait) {
@@ -50,9 +56,173 @@
 }
 
 /* IPHONE X */ 
-@media all and (height: 812px) and (orientation:portrait) {
+@media all and (height: 812px) and (width:375px) and (orientation:portrait) {
     .all-films-cards {
         height:60vh;
+        top: 40%;
+        transform: translateY(-50%);
+    }
+    .session-button-container {
+        position:absolute;
+        bottom:0;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .user-list-container .user-session {
+        text-align: center;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .user-list-container h3.session-film-name {
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        font-size:1rem!important;
+        top: 75%;
+        width: 90%;
+    }
+}
+
+/* GALAXY S5 + MOTO G4 */
+@media only screen and (width:360px) and (height:640px) and (orientation:portrait) {
+    .all-films-cards {
+        width: 65vw;
+        height: 57vh;
+    }
+    .session-button-container {
+        bottom:0;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .user-list-container h3.session-film-name {
+        font-size:0.8rem!important;
+        margin-top:1em;
+    }
+}
+
+/* PIXEL 2 */
+@media only screen and (width:411px) and (height:731px) and (orientation:portrait) {
+    .session-button-container {
+        bottom:0;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .user-list-container h3.session-film-name {
+        font-size:1rem!important;
+        width:90%;
+        margin:0 auto;
+    }
+}
+
+/* PIXEL 2 XL */
+@media only screen and (width:411px) and (height:823px) and (orientation:portrait) {
+    .session-button-container {
+        bottom:0;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .all-films-cards {
+        top:13%;
+    }
+    .user-list-container h3.session-film-name {
+        top: 75%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size:0.8rem;
+        width:90%;
+    }
+    .user-list-container .user-session {
+        top: 4%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Iphone 5/SE */
+@media only screen and (width:320px) and (height:568px) and (orientation:portrait) {
+    .session-button-container {
+        bottom:0;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .all-films-cards {
+        width: 70vw;
+        height: 55vh;
+        top:3%;
+    }
+    .user-list-container h3.session-film-name {
+        top:65%;
+    }
+    .session-button-container .session-button {
+        width:75px;
+        height:75px;
+    }
+    .session-button-container {
+        width:75%;
+        height:100px;
+    }
+    .session-button-container button.session-button.more-info, .session-button-container button.session-button.return {
+        width:20px;
+        height:20px;
+        line-height: 16px;
+        font-size: 14px;
+    }
+    .session-button-container button.session-button.return img {
+        width:8px;
+        height:8px;
+    }
+    .user-list-container h3.session-film-name {
+        top:75%;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        width:90%;
+        font-size:0.8rem!important;
+    }
+}
+
+/* Iphone 6/7/8 */
+@media only screen and (width:375px) and (height:667px) and (orientation:portrait) {
+    .all-films-cards {
+        width:65vw;
+        height:55vh;
+        top:3%;
+    }
+    .user-list-container h3.session-film-name {
+        top: 70%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size:0.9rem!important;
+        width:90%;
+    }
+    .session-button-container {
+        position:absolute;
+        bottom:0;
+        left:50%;
+        transform:translateX(-50%);
+    }
+}
+
+/* Iphone 6/7/8 PLUS */
+@media only screen and (width:414px) and (height:736px) {
+    .user-list-container h3.session-film-name {
+        font-size: 0.9rem!important;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .session-button-container {
+        position:absolute;
+        bottom:0;
+        left:50%;
+        transform:translateX(-50%);
     }
 }
  

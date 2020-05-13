@@ -123,7 +123,7 @@ class MatchRoom extends React.Component {
               } else {
                 randomPage = Math.ceil(Math.random() * 15);
               }
-            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage)
+            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             console.log('page aléatoire :' + randomPage);
             window
               .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${id}`)
@@ -159,7 +159,7 @@ class MatchRoom extends React.Component {
               } else {
                 randomPage = Math.ceil(Math.random() * 15);
               }
-            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage)
+            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             window
               .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`)
               .then((response) => {
@@ -195,7 +195,7 @@ class MatchRoom extends React.Component {
               } else {
                 randomPage = Math.ceil(Math.random() * 15);
               }
-            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage)
+            } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             console.log('page aléatoire :' + randomPage);
             window
               .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`)
@@ -210,7 +210,7 @@ class MatchRoom extends React.Component {
                     });
                     this.setState({
                       apiList: data.results,
-                      listIsLoading: false 
+                      listIsLoading: false
                     });
                   })
                   .catch(() => {

@@ -25,17 +25,26 @@ class Home extends React.Component {
       <div className='home'>
         <HeaderHome />
         {!namesHidden ? (
-          <div className='centered'>
-            <UsersInputs {...this.props} />
-            <Button content='Valider' onClick={this.handleHide} className='button' />
-          </div>
+          <>
+            <h1 className='big-screens'>Movie Match vous aide à <span className='green-title'>trouver un film à regarder</span> en quelques minutes</h1>
+            <div className='centered'>
+              <UsersInputs {...this.props} />
+              <Button content='Valider' onClick={this.handleHide} className='button' />
+            </div>
+          </>
         ) : (
           <>
             <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
-            <TrendList />
-            <MovieLists type='genres' {...this.props} />
-            <MovieLists type='people' {...this.props} />
-            <MovieLists type='decades' {...this.props} />
+            <div className='list-container-desktop'>
+              <div className='left-column'>
+                <TrendList />
+                <MovieLists type='genres'  {...this.props} />
+              </div>
+              <div className='right-column'>
+                <MovieLists type='people'  {...this.props} />
+                <MovieLists type='decades'  {...this.props} />
+              </div>
+            </div>
           </>
         )}
       </div>

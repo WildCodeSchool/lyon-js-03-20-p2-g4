@@ -5,12 +5,85 @@
 .home Button {
   width: 220px;
 }
+
+/* Doute sur cette classe lors du merge avec dev */
 .home .centered-title {
   text-align:center;
   margin-top:50px;
   font-size:18px;
 }
+
 .home div:nth-of-type(3) .list-category::after {
   width:calc(100% - 150px);
   left:150px;
 }
+
+@media only screen and (max-width: 1023px) {
+  .home h1.big-screens {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1024px){
+  .home {
+    padding: 0 30px;
+    background-image: url('../images/home-background.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .home h1.big-screens {
+    color: var(--lightTextColor);
+    position: absolute;
+    width: 50%;
+    left: 0;
+    top: 50%;
+    margin-left: 79px;
+    padding-right: 150px;
+    transform: translateY(-50%);
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 43px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+  }
+
+  .home .centered {
+    position: absolute;
+    width: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    top: 50%;
+  }
+
+  .home h1.big-screens span.green-title {
+    color: var(--accentColor);
+  }
+
+  .home h2.centered-title.subtitle {
+    position: absolute;
+    top: 10%;
+    color: var(--lightTextColor);
+    font-weight: bold;
+    font-size: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .home .list-container-desktop {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18%;
+    display: flex;
+    justify-content: space-around;
+    width:80%;
+  }
+
+  .home .list-container-desktop .left-column, .home .list-container-desktop .right-column {
+    width: 40%;
+  }
+}
+

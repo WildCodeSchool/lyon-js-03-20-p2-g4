@@ -1,5 +1,6 @@
 .history-sidebar-container {
     width:30vw;
+    max-width: 500px;
     position:fixed;
     left:0;
     top:0;
@@ -70,6 +71,18 @@
 .history-sidebar-container .history-container .timeline-movie-container {
     width:100%;
     position:relative;
+    height:220px;
+}
+.history-sidebar-container .history-container .timeline-movie-container::before {
+    position:absolute;
+    content:'';
+    height:100%;
+    width:1px;
+    background-color:#BFBFBF;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+
 }
 .history-sidebar-container .history-container .timeline-movie-container::after {
     position:absolute;
@@ -93,15 +106,16 @@
     background-color:var(--dangerColor);
 }
 .history-sidebar-container .history-container #timeline-container .history-film-card {
-    width:150px;
-    height:200px;
+    width:33.333%;
+    height:90%;
     background-position:center;
     background-size:cover;
-    margin:10px auto;
+    margin:10px 33.333% 10px 33.333%;
     z-index:999;
     position:relative;
     border-radius:var(--radius);
     box-shadow:var(--shadow);
+    transition:all 0.2s ease-in-out;
 }
 .history-sidebar-container .history-container #timeline-container .history-film-card::after {
     content:'';
@@ -131,10 +145,10 @@
     display:none;
 }
 .history-sidebar-container .history-container #timeline-container .history-film-card.validated {
-    margin-right:10%;
+    margin:10px 10% 10px auto;
 }
 .history-sidebar-container .history-container #timeline-container .history-film-card.rejected {
-    margin-left:10%;
+    margin:10px auto 10px 10%;
 }
 .history-sidebar-container .history-container #timeline-container {
     position:relative;
@@ -143,8 +157,9 @@
     display: flex;
     flex-direction: column-reverse;
     overflow-y: scroll;
+    scroll-behavior:smooth;
 }
-.history-sidebar-container .history-container #timeline-container::before {
+/*.history-sidebar-container .history-container #timeline-container::before {
     position:fixed;
     content:'';
     width:1px;
@@ -153,7 +168,8 @@
     left: 15vw;
     transform:translateX(calc(-50% - 8px));
     z-index:1;
-}
+}*/
+
 @media all and (max-width:1024px) {
     .history-sidebar-container {
         display:none;

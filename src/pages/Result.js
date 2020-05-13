@@ -48,8 +48,7 @@ class Result extends React.Component {
                       <Button
                         className='button'
                         content='Go !'
-                      >
-                      </Button>
+                      />
                     </Link>
                   </>
                 ) : (

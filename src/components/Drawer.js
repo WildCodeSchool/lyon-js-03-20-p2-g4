@@ -74,10 +74,6 @@ class Drawer extends React.Component {
     }
   }
 
-  componentWillUnmount () {
-
-  }
-
   render () {
     // Get movie rating
     const voteAverage =
@@ -191,7 +187,6 @@ class Drawer extends React.Component {
                               href={`https://www.google.com/search?q=${casting.name}`}
                               target='_blank'
                               rel='noopener noreferrer'
-                              key={casting.id}
                             >
                               <div className='drawer-actor'>
                                 {casting.profile_path === null ? (

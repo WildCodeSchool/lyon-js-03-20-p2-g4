@@ -172,11 +172,13 @@ class SideBarInfoDesktop extends React.Component {
                   <h5>Casting</h5>
                   <div className='sidebar-info-actor-container'>
                     {this.state.peopleLoaded ? (
-                      this.state.people.cast.map((casting) => {
+                      this.state.people.cast.map((casting, index) => {
                         return (
+
                           <div
                             className='sidebar-info-actor-img-name-container'
-                            key={casting.id}
+                            id={casting.id + casting.name}
+                            key={index}
                           >
                             <a
                               href={`https://www.google.com/search?q=${casting.name}`}

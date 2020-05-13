@@ -6,7 +6,7 @@ import defaultImage from '../images/grey-logo.png';
 import { Ellipsis } from 'react-awesome-spinners';
 
 class SideBarInfoDesktop extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       people: [],
@@ -60,13 +60,13 @@ class SideBarInfoDesktop extends React.Component {
     this.setState({ movieVideo, movieVideoLoaded: true });
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.getMovieDetails();
     this.getPeople();
     this.getMovieVideo();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (prevProps.filmId !== this.props.filmId) {
       this.getMovieDetails();
       this.getPeople();
@@ -74,8 +74,7 @@ class SideBarInfoDesktop extends React.Component {
     }
   }
 
-
-  render() {
+  render () {
     // Get movie rating
     const voteAverage =
       Math.round((this.state.movieDetails.vote_average / 2) * 10) / 10;
@@ -123,14 +122,14 @@ class SideBarInfoDesktop extends React.Component {
                       </div>
                     </a>
                   ) : (
-                      <a
-                        href={`https://www.google.com/search?q=${this.state.movieDetails.title}+movie`}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        <div className='button'>Plus d'informations</div>
-                      </a>
-                    )}
+                    <a
+                      href={`https://www.google.com/search?q=${this.state.movieDetails.title}+movie`}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <div className='button'>Plus d'informations</div>
+                    </a>
+                  )}
                   <div className='sidebar-info-rating-container'>
                     {getStars.map((star) => {
                       if (star[1] === 1) {
@@ -188,11 +187,11 @@ class SideBarInfoDesktop extends React.Component {
                                 {casting.profile_path === null ? (
                                   <img src={DefaultAvatar} alt={casting.name} />
                                 ) : (
-                                    <img
-                                      src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`}
-                                      alt={casting.name}
-                                    />
-                                  )}
+                                  <img
+                                    src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`}
+                                    alt={casting.name}
+                                  />
+                                )}
                               </div>
                             </a>
                             <p>{casting.name}</p>
@@ -200,10 +199,10 @@ class SideBarInfoDesktop extends React.Component {
                         );
                       })
                     ) : (
-                        <div className='sidebar-info-actor'>
-                          <Ellipsis color='#66C69B' />
-                        </div>
-                      )}
+                      <div className='sidebar-info-actor'>
+                        <Ellipsis color='#66C69B' />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@ import defaultImage from '../images/grey-logo.png';
 import { Ellipsis } from 'react-awesome-spinners';
 
 class Drawer extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       people: [],
@@ -60,13 +60,13 @@ class Drawer extends React.Component {
     this.setState({ movieVideo, movieVideoLoaded: true });
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.getMovieDetails();
     this.getPeople();
     this.getMovieVideo();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (prevProps.filmId !== this.props.filmId) {
       this.getMovieDetails();
       this.getPeople();
@@ -74,11 +74,11 @@ class Drawer extends React.Component {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
 
   }
 
-  render() {
+  render () {
     // Get movie rating
     const voteAverage =
       Math.round((this.state.movieDetails.vote_average / 2) * 10) / 10;
@@ -130,8 +130,8 @@ class Drawer extends React.Component {
                       this.state.movieDetails.poster_path
                       })`
                   } : {
-                      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})`
-                    }}
+                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})`
+                  }}
                 />
                 <div className='drawer-link-rating'>
                   {this.state.movieVideo !== undefined ? (
@@ -146,14 +146,14 @@ class Drawer extends React.Component {
                       </div>
                     </a>
                   ) : (
-                      <a
-                        href={`https://www.google.com/search?q=${this.state.movieDetails.title}+movie`}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        <div className='button'>Plus d'informations</div>
-                      </a>
-                    )}
+                    <a
+                      href={`https://www.google.com/search?q=${this.state.movieDetails.title}+movie`}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <div className='button'>Plus d'informations</div>
+                    </a>
+                  )}
                   <div className='drawer-rating-container'>
                     {getStars.map((star) => {
                       if (star[1] === 1) {
@@ -197,11 +197,11 @@ class Drawer extends React.Component {
                                 {casting.profile_path === null ? (
                                   <img src={DefaultAvatar} alt={casting.name} />
                                 ) : (
-                                    <img
-                                      src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`}
-                                      alt={casting.name}
-                                    />
-                                  )}
+                                  <img
+                                    src={`http://image.tmdb.org/t/p/w185/${casting.profile_path}`}
+                                    alt={casting.name}
+                                  />
+                                )}
                               </div>
                             </a>
                             <p>{casting.name}</p>
@@ -209,10 +209,10 @@ class Drawer extends React.Component {
                         );
                       })
                     ) : (
-                        <div className='drawer-actor'>
-                          <Ellipsis color='#66C69B' />
-                        </div>
-                      )}
+                      <div className='drawer-actor'>
+                        <Ellipsis color='#66C69B' />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -25,11 +25,16 @@ class User2List extends React.Component {
   };
 
   handleGetDrawer = (e) => {
-    this.setState({ filmId: this.props.apiList[this.props.index].id, getInfo: true, renderedDrawer: true });
+    this.setState({
+      filmId: this.props.apiList[this.props.index].id,
+      getInfo: true,
+      renderedDrawer: true
+    });
     document.body.classList.add('js-no-scroll');
-  }
+  };
 
   render () {
+    const { apiList, matchList, user2List, user1List } = this.props;
     return (
       <div className='user-list-container'>
         <div className='pop-up-user-session'>
@@ -42,7 +47,12 @@ class User2List extends React.Component {
                 content='Voir les résultats'
                 className='button'
                 onClick={() => {
-                  this.props.getMatchList(this.props.matchList);
+                  this.props.getAllLists(
+                    apiList,
+                    matchList,
+                    user1List,
+                    user2List
+                  );
                 }}
               />
             </Link>
@@ -51,7 +61,9 @@ class User2List extends React.Component {
           <>
             <h2 className='user-session'>Utilisateur : {this.props.user2}</h2>
             <FilmCard index={this.props.index} apiList={this.props.apiList} />
-            <h3 className='session-film-name'>{this.props.apiList[this.props.index].title}</h3>
+            <h3 className='session-film-name'>
+              {this.props.apiList[this.props.index].title}
+            </h3>
             <div className='session-button-container'>
               <Button
                 content={<img src={Reject} alt='reject button' />}
@@ -60,7 +72,11 @@ class User2List extends React.Component {
               />
               <Button
                 content={<img src={Return} alt='return button' />}
-                className={(this.props.index > 0) ? ('session-button return') : ('session-button hidden-return')}
+                className={
+                  this.props.index > 0
+                    ? 'session-button return'
+                    : 'session-button hidden-return'
+                }
                 onClick={this.props.onHandleReturn}
               />
               <Button
@@ -76,7 +92,14 @@ class User2List extends React.Component {
             </div>
           </>
         )}
-        {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
+        {this.state.renderedDrawer && (
+          <Drawer
+            matchList={this.state.matchList}
+            getInfo={this.state.getInfo}
+            handleCloseDrawer={this.closeDrawer}
+            filmId={this.state.filmId}
+          />
+        )}
       </div>
     );
   }

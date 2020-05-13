@@ -4,6 +4,7 @@ import HeaderSmall from '../components/HeaderSmall';
 import '../styles/Result.css';
 import Drawer from '../components/Drawer';
 import defaultImage from '../images/grey-logo.png';
+import ResultHistory from '../components/ResultHistory';
 
 class Result extends React.Component {
   constructor (props) {
@@ -33,6 +34,12 @@ class Result extends React.Component {
       <div className='result'>
         {this.state.matchList.length === 0 ? (
           <>
+            <ResultHistory
+              apiList={this.props.apiList}
+              user1List={this.props.user1List}
+              user2List={this.props.user2List}
+              matchList={this.state.matchList}
+            />
             <div className='centered'>
               <HeaderSmall />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
@@ -43,6 +50,12 @@ class Result extends React.Component {
           </>
         ) : (
           <>
+            <ResultHistory
+              apiList={this.props.apiList}
+              user1List={this.props.user1List}
+              user2List={this.props.user2List}
+              matchList={this.state.matchList}
+            />
             <div className='centered'>
               <HeaderSmall />
               <h2 className='title'>
@@ -53,13 +66,7 @@ class Result extends React.Component {
               <div className='matched-movie-container'>
                 {this.state.matchList.map((film) => {
                   return (
-                    <div
-                      className='matched-movie'
-                      style={film.poster_path ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }}
-                      key={film.id}
-                      id={film.id}
-                      onClick={this.handleGetDrawer}
-                    />
+                    <div className='matched-movie' style={film.poster_path ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }} key={film.id} id={film.id} onClick={this.handleGetDrawer} />
                   );
                 })}
               </div>

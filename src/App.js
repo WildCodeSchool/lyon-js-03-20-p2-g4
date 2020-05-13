@@ -11,7 +11,10 @@ class App extends React.Component {
     this.state = {
       user1: 'Tic',
       user2: 'Tac',
-      matchList: []
+      matchList: [],
+      apiList: [],
+      user1List: [],
+      user2List: []
     };
   }
 
@@ -25,8 +28,8 @@ class App extends React.Component {
     this.setState({ user2: user });
   };
 
-  getMatchList = (newMatchList) => {
-    this.setState({ matchList: newMatchList });
+  getAllLists = (apiList, matchList, user1List, user2List) => {
+    this.setState({ apiList, matchList, user1List, user2List });
   };
 
   render () {
@@ -50,7 +53,7 @@ class App extends React.Component {
                 <MatchRoom
                   {...this.state}
                   {...routeProps}
-                  getMatchList={this.getMatchList}
+                  getAllLists={this.getAllLists}
                 />
               )}
             />

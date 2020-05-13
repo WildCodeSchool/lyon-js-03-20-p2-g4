@@ -5,6 +5,8 @@ import '../styles/Result.css';
 import Drawer from '../components/Drawer';
 import { Link } from 'react-router-dom';
 import defaultImage from '../images/grey-logo.png';
+import Button from '../components/Button.js';
+import TrendList from '../components/TrendList';
 
 class Result extends React.Component {
   constructor (props) {
@@ -39,16 +41,23 @@ class Result extends React.Component {
               <HeaderSmall />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
               {
-                Object.keys(this.props.currentList).length !== 0 && (
+                Object.keys(this.props.currentList).length !== 0 ? (
                   <>
-                    <p>Continuez d'explorer la liste :</p>
+                    <p>Continuez d'explorer la liste : {item.caption}</p>
                     <Link to={item.link}>
-                      <img src={item.source} alt={item.caption} />
+                      <Button
+                        className='button'
+                        content='Go !'
+                      >
+                      </Button>
                     </Link>
                   </>
+                ) : (
+                  <p>Choisissez une nouvelle liste</p>
                 )
               }
             </div>
+            <TrendList />
             <MovieLists type='genres' getCurrentList={this.props.getCurrentList} />
             <MovieLists type='people' getCurrentList={this.props.getCurrentList} />
             <MovieLists type='decades' getCurrentList={this.props.getCurrentList} />

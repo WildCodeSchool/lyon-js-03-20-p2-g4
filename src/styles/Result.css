@@ -65,6 +65,10 @@
   opacity:1;
 }
 
+.result .button {
+  margin-bottom: 50px;
+}
+
 @media only screen and (max-height: 668px) {
   .result h2.subtitle {
     margin-top: 25px;

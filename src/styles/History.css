@@ -66,18 +66,12 @@
     left:0;
     width:100%;
     height:63%;
-    overflow-y:scroll;
 }
-.history-sidebar-container .history-container .timeline-container .film-card {
-    width:150px;
-    height:200px;
-    background-position:center;
-    background-size:cover;
-    margin:10px auto;
-    z-index:999;
+.history-sidebar-container .history-container .timeline-movie-container {
+    width:100%;
     position:relative;
 }
-.history-sidebar-container .history-container .timeline-container .film-card::after {
+.history-sidebar-container .history-container .timeline-movie-container::after {
     position:absolute;
     content:'';
     width:10px;
@@ -87,17 +81,74 @@
     left:50%;
     transform: translateX(-50%) translateY(-50%);
     background-color: black;
+    display:none;
+    z-index:99999;
+}
+.history-sidebar-container .history-container .timeline-movie-container.validated::after {
+    display:block;
+    background-color:var(--accentColor);
+}
+.history-sidebar-container .history-container .timeline-movie-container.rejected::after {
+    display:block;
+    background-color:var(--dangerColor);
+}
+.history-sidebar-container .history-container .timeline-container .history-film-card {
+    width:150px;
+    height:200px;
+    background-position:center;
+    background-size:cover;
+    margin:10px auto;
+    z-index:999;
+    position:relative;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+.history-sidebar-container .history-container .timeline-container .history-film-card::after {
+    content:'';
+    height:50px;
+    width:50px;
+    border-radius:100%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+}
+.history-sidebar-container .history-container .timeline-container .history-film-card.validated::after {
+    background-color:var(--accentColor);
+    background-image:url('../images/validate-white.svg');
+    background-position:center;
+    background-size:50%;
+    background-repeat:no-repeat;
+}
+.history-sidebar-container .history-container .timeline-container .history-film-card.rejected::after {
+    background-color:var(--dangerColor);
+    background-image:url('../images/reject-white.svg');
+    background-position:center;
+    background-size:50%;
+    background-repeat:no-repeat;
+}
+.history-sidebar-container .history-container .timeline-container .history-film-card.hidden {
+    display:none;
+}
+.history-sidebar-container .history-container .timeline-container .history-film-card.validated {
+    margin-right:10%;
+}
+.history-sidebar-container .history-container .timeline-container .history-film-card.rejected {
+    margin-left:10%;
 }
 .history-sidebar-container .history-container .timeline-container {
     position:relative;
     width:100%;
     height:100%;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
 }
 .history-sidebar-container .history-container .timeline-container::before {
     position:fixed;
     content:'';
     width:1px;
-    height:100%;
+    height:63%;
     background-color:#BFBFBF;
     left: 15vw;
     transform:translateX(calc(-50% - 8px));

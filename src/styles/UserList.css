@@ -130,7 +130,7 @@
     display:none;
   }
 }
-@media all and (min-width:1024px) {
+@media all and (min-width:1025px) {
   .session-button-container button.session-button.more-info {
     display:none;
   }

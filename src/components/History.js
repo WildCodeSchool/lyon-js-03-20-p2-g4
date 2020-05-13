@@ -6,7 +6,7 @@ import people from './people.js';
 import decades from './decades.js';
 import defaultImage from '../images/grey-logo.png';
 
-function History(props) {
+function History (props) {
   let result = [];
 
   if (props.type === 'genres') {
@@ -41,7 +41,7 @@ function History(props) {
             <div className={props.apiList.indexOf(movie) <= props.index ? 'timeline-movie-container' : 'timeline-movie-container hidden'} key={movie.id}>
               <div
                 className={props.apiList.indexOf(movie) <= props.index ? 'history-film-card' : 'history-film-card hidden'}
-                style={{ backgroundImage: movie.poster_path ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${movie.poster_path}` : `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage}`}}
+                style={{ backgroundImage: movie.poster_path ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${movie.poster_path}` : `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage}` }}
               />
             </div>
           ))}

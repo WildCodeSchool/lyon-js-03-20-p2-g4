@@ -5,6 +5,7 @@ import '../styles/Result.css';
 import Drawer from '../components/Drawer';
 import defaultImage from '../images/grey-logo.png';
 import ResultHistory from '../components/ResultHistory';
+import SideBarInfoDesktop from '../components/SidebarInfoDesktop';
 
 class Result extends React.Component {
   constructor (props) {
@@ -72,15 +73,9 @@ class Result extends React.Component {
                   );
                 })}
               </div>
-              {this.state.renderedDrawer && (
-                <Drawer
-                  matchList={this.state.matchList}
-                  getInfo={this.state.getInfo}
-                  handleCloseDrawer={this.closeDrawer}
-                  filmId={this.state.filmId}
-                />
-              )}
+              {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
             </div>
+            {this.state.filmId === null ? (<div className='empty-sidebar-info-desktop'><h3>Cliquez sur un film pour obtenir davantage d'informations</h3></div>) : <SideBarInfoDesktop matchList={this.state.matchList} getInfo={this.state.getInfo} filmId={this.state.filmId} />}
           </>
         )}
       </div>

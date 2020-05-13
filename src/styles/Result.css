@@ -67,7 +67,28 @@
 .result .matched-movie-container .matched-movie:hover::after {
   opacity: 1;
 }
-
+.empty-sidebar-info-desktop {
+  position:fixed;
+  right:0;
+  width:30vw;
+  height:100%;
+  background-color:grey;
+  top: 0;
+  max-width: 500px;
+  box-shadow:0 0 3px lightgrey;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-image:url('../images/movie-match-grayscale.svg');
+  background-position:center;
+  background-size:200px;
+  background-repeat:no-repeat;
+  cursor: default;
+}
+.empty-sidebar-info-desktop h3 {
+  color:white;
+  text-align:center;
+}
 @media only screen and (max-height: 668px) {
   .result h2.subtitle {
     margin-top: 25px;
@@ -85,5 +106,16 @@
   .result .list-container,
   .result .trendlist-container {
     max-width: 450px;
+  }
+  .drawer-overlay, .drawer-container, .drawer-movie-all-info-container {
+    display:none;
+  }
+  body.js-no-scroll {
+    overflow-y:scroll;
+  }
+}
+@media only screen and (max-width:1024px) {
+  .empty-sidebar-info-desktop {
+    display:none;
   }
 }

@@ -1,12 +1,16 @@
 import React from 'react';
 import '../styles/Button.css';
 
-const Button = (props) => {
-  const { onClick, content, className } = props;
+const Button = ({ onClick, content, className, legend }) => {
   return (
-    <button className={className} onClick={onClick}>
-      {content}
-    </button>
+    <>
+      <div className='button-legend-container'>
+        <button className={className} onClick={onClick}>
+          {content}
+        </button>
+        <p className='button-legend'>{legend}</p>
+      </div>
+    </>
   );
 };
 

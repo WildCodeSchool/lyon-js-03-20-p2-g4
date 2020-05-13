@@ -12,7 +12,7 @@ import { Ellipsis } from 'react-awesome-spinners';
 import History from '../components/History';
 
 class MatchRoom extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       apiList: [],
@@ -107,9 +107,7 @@ class MatchRoom extends React.Component {
     const historyListContainer = document.getElementsByClassName('timeline-movie-container');
     const historyList = document.getElementsByClassName('history-film-card');
     historyListContainer[this.state.index - 1].classList.remove('validated', 'rejected');
-    // historyListContainer[this.state.index - 1].classList.remove('rejected');
     historyList[this.state.index - 1].classList.remove('validated', 'rejected');
-    // historyList[this.state.index - 1].classList.remove('rejected');
   };
 
   handleReturn2 = () => {
@@ -279,11 +277,11 @@ class MatchRoom extends React.Component {
     this.setState({ alertDisplay: false });
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.getData();
   }
 
-  render () {
+  render() {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {
       return (
@@ -327,26 +325,26 @@ class MatchRoom extends React.Component {
           <History {...this.state} user={user1} type={this.props.match.params.type} id={this.props.match.params.id} />
         </>
       ) : (
-        <>
-          <User2List
-            user2={user2}
-            {...this.state}
-            onHandleReject={this.handleReject}
-            onHandleValidate={this.handleValidate}
-            onHandleReturn={this.handleReturn2}
-            getAllLists={this.props.getAllLists}
-          />
-          <History {...this.state} user={user2} type={this.props.match.params.type} id={this.props.match.params.id} />
-          {this.state.newMatch && (
-            <Match
-              onHandleMatch={this.handleMatch}
-              currentMatchedMovie={
-                this.state.matchList[this.state.matchList.length - 1]
-              }
+          <>
+            <User2List
+              user2={user2}
+              {...this.state}
+              onHandleReject={this.handleReject}
+              onHandleValidate={this.handleValidate}
+              onHandleReturn={this.handleReturn2}
+              getAllLists={this.props.getAllLists}
             />
-          )}
-        </>
-      );
+            <History {...this.state} user={user2} type={this.props.match.params.type} id={this.props.match.params.id} />
+            {this.state.newMatch && (
+              <Match
+                onHandleMatch={this.handleMatch}
+                currentMatchedMovie={
+                  this.state.matchList[this.state.matchList.length - 1]
+                }
+              />
+            )}
+          </>
+        );
     }
   }
 }

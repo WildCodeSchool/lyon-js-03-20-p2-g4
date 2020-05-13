@@ -15,7 +15,8 @@ class User2List extends React.Component {
     this.state = {
       getInfo: false,
       renderedDrawer: false,
-      filmId: null
+      filmId: null,
+      currentPage: this.props.currentPage
     };
   }
 
@@ -38,7 +39,7 @@ class User2List extends React.Component {
         </div>
         {this.props.finishedSession ? (
           <div className='centered'>
-            <Link to='/result'>
+            <Link to='/result' {...this.state}>
               <Button
                 content='Voir les résultats'
                 className='button'

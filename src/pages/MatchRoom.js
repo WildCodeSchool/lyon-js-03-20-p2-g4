@@ -9,6 +9,7 @@ import '../styles/MatchRoom.css';
 import Match from '../components/Match';
 import { Alert } from 'reactstrap';
 import { Ellipsis } from 'react-awesome-spinners';
+import History from '../components/History';
 
 class MatchRoom extends React.Component {
   constructor (props) {
@@ -37,6 +38,12 @@ class MatchRoom extends React.Component {
         index: this.state.index + 1,
         finishedSession: this.state.index === this.state.apiList.length - 1
       });
+      const historyList = document.getElementsByClassName('history-film-card');
+      const historyListContainer = document.getElementsByClassName('timeline-movie-container');
+      historyListContainer[this.state.index].classList.remove('hidden');
+      historyListContainer[this.state.index].classList.add('validated');
+      historyList[this.state.index].classList.remove('hidden', 'rejected');
+      historyList[this.state.index].classList.add('validated');
     } else {
       const user2List = this.state.user2List.slice();
       const user1List = this.state.user1List;
@@ -46,6 +53,12 @@ class MatchRoom extends React.Component {
         index: this.state.index + 1,
         finishedSession: this.state.index === this.state.apiList.length - 1
       });
+      const historyList = document.getElementsByClassName('history-film-card');
+      const historyListContainer = document.getElementsByClassName('timeline-movie-container');
+      historyListContainer[this.state.index].classList.remove('hidden');
+      historyListContainer[this.state.index].classList.add('validated');
+      historyList[this.state.index].classList.remove('hidden', 'rejected');
+      historyList[this.state.index].classList.add('validated');
 
       const matchList = intersection(user1List, user2List);
       if (this.state.matchList.length < matchList.length) {
@@ -64,11 +77,23 @@ class MatchRoom extends React.Component {
       index: this.state.index + 1,
       finishedSession: this.state.index === this.state.apiList.length - 1
     });
+    const historyList = document.getElementsByClassName('history-film-card');
+    const historyListContainer = document.getElementsByClassName('timeline-movie-container');
+    historyListContainer[this.state.index].classList.remove('hidden');
+    historyListContainer[this.state.index].classList.add('rejected');
+    historyList[this.state.index].classList.remove('hidden', 'validated');
+    historyList[this.state.index].classList.add('rejected');
   };
 
   handleSession = () => {
     const currentSession = 'user2';
     this.setState({ currentSession, index: 0, finishedSession: false });
+    const firstHistoryMovie = document.getElementsByClassName('timeline-movie-container');
+    const firstHistoryMovieContainer = document.getElementsByClassName('history-film-card');
+    firstHistoryMovie[0].classList.remove('validated');
+    firstHistoryMovieContainer[0].classList.remove('validated');
+    firstHistoryMovie[0].classList.remove('rejected');
+    firstHistoryMovieContainer[0].classList.remove('rejected');
   };
 
   handleReturn1 = () => {
@@ -79,6 +104,12 @@ class MatchRoom extends React.Component {
       user1List.pop();
       this.setState({ user1List });
     }
+    const historyListContainer = document.getElementsByClassName('timeline-movie-container');
+    const historyList = document.getElementsByClassName('history-film-card');
+    historyListContainer[this.state.index - 1].classList.remove('validated', 'rejected');
+    // historyListContainer[this.state.index - 1].classList.remove('rejected');
+    historyList[this.state.index - 1].classList.remove('validated', 'rejected');
+    // historyList[this.state.index - 1].classList.remove('rejected');
   };
 
   handleReturn2 = () => {
@@ -98,6 +129,12 @@ class MatchRoom extends React.Component {
       user2List.pop();
       this.setState({ user2List });
     }
+    const historyListContainer = document.getElementsByClassName('timeline-movie-container');
+    const historyList = document.getElementsByClassName('history-film-card');
+    historyListContainer[this.state.index - 1].classList.remove('validated');
+    historyListContainer[this.state.index - 1].classList.remove('rejected');
+    historyList[this.state.index - 1].classList.remove('validated');
+    historyList[this.state.index - 1].classList.remove('rejected');
   };
 
   handleResult = () => {
@@ -253,15 +290,18 @@ class MatchRoom extends React.Component {
       );
     } else {
       return this.state.currentSession === 'user1' ? (
-        <User1List
-          user1={user1}
-          {...this.state}
-          onHandleSession={this.handleSession}
-          onHandleReject={this.handleReject}
-          onHandleValidate={this.handleValidate}
-          onHandleReturn={this.handleReturn1}
-          user2={user2}
-        />
+        <>
+          <User1List
+            user1={user1}
+            {...this.state}
+            onHandleSession={this.handleSession}
+            onHandleReject={this.handleReject}
+            onHandleValidate={this.handleValidate}
+            onHandleReturn={this.handleReturn1}
+            user2={user2}
+          />
+          <History {...this.state} user={user1} type={this.props.match.params.type} id={this.props.match.params.id} />
+        </>
       ) : (
         <>
           <User2List
@@ -272,6 +312,7 @@ class MatchRoom extends React.Component {
             onHandleReturn={this.handleReturn2}
             getMatchList={this.props.getMatchList}
           />
+          <History {...this.state} user={user2} type={this.props.match.params.type} id={this.props.match.params.id} />
           {this.state.newMatch && (
             <Match
               onHandleMatch={this.handleMatch}

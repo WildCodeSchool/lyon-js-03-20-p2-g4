@@ -38,11 +38,11 @@ class Home extends React.Component {
             <div className='list-container-desktop'>
               <div className='left-column'>
                 <TrendList />
-                <MovieLists type='genres'  {...this.props} />
+                <MovieLists type='genres' {...this.props} />
               </div>
               <div className='right-column'>
-                <MovieLists type='people'  {...this.props} />
-                <MovieLists type='decades'  {...this.props} />
+                <MovieLists type='people' {...this.props} />
+                <MovieLists type='decades' {...this.props} />
               </div>
             </div>
           </>

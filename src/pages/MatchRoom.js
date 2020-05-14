@@ -162,7 +162,6 @@ class MatchRoom extends React.Component {
                 randomPage = Math.ceil(Math.random() * 15);
               }
             } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
-            console.log('page aléatoire :' + randomPage);
             window
               .fetch(
                 `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${id}`
@@ -248,7 +247,6 @@ class MatchRoom extends React.Component {
                 randomPage = Math.ceil(Math.random() * 15);
               }
             } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
-            console.log('page aléatoire :' + randomPage);
             window
               .fetch(
                 `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`
@@ -311,7 +309,7 @@ class MatchRoom extends React.Component {
       return (
         <div>
           <HeaderSmall />
-          <div className='matchroom centered'>
+          <div className='matchroom centered loading'>
             <Ellipsis color='#66C69B' />
           </div>
         </div>

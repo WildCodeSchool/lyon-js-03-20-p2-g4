@@ -12,7 +12,7 @@
 .result h2 {
   text-align: center;
   margin-bottom: 50px;
-  margin-top:50px;
+  padding-top:50px;
 }
 .result h2.subtitle {
   margin-top: 100px;
@@ -127,6 +127,9 @@
   }
   body.js-no-scroll {
     overflow-y:scroll;
+  }
+  .result .headerSmall {
+    display:block;
   }
 }
 @media only screen and (max-width:1024px) {

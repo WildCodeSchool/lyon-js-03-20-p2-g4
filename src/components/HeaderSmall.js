@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import logoSmall from '../images/logoSmall.svg';
 import '../styles/HeaderSmall.css';
 
-const HeaderSmall = () => {
+const HeaderSmall = (props) => {
   return (
     <header className='headerSmall'>
-      <Link to='/'><img src={logoSmall} alt='full logo' className='logo' /></Link>
+      <Link to='/'><img src={logoSmall} alt='full logo' className='logo' onClick={() => props.resetAppState()} /></Link>
     </header>
   );
 };

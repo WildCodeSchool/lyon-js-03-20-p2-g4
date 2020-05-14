@@ -308,7 +308,7 @@ class MatchRoom extends React.Component {
     if (this.state.listIsLoading) {
       return (
         <div>
-          <HeaderSmall />
+          <HeaderSmall resetAppState={this.props.resetAppState}/>
           <div className='matchroom centered loading'>
             <Ellipsis color='#66C69B' />
           </div>
@@ -317,7 +317,7 @@ class MatchRoom extends React.Component {
     } else if (this.state.fetchListError) {
       return (
         <>
-          <HeaderSmall />
+          <HeaderSmall resetAppState={this.props.resetAppState}/>
           <div className='matchroom centered'>
             <Alert
               color='danger'
@@ -337,7 +337,7 @@ class MatchRoom extends React.Component {
         <>
           {this.state.currentSession === 'user1' ? (
             <div className='matchroom'>
-              <HeaderSmall />
+              <HeaderSmall resetAppState={this.props.resetAppState}/>
               <User1List
                 user1={user1}
                 {...this.state}
@@ -351,7 +351,7 @@ class MatchRoom extends React.Component {
             </div>
           ) : (
             <div className='matchroom'>
-              <HeaderSmall />
+              <HeaderSmall resetAppState={this.props.resetAppState}/>
               <User2List
                 user2={user2}
                 {...this.state}

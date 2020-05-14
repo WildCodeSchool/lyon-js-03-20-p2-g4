@@ -42,6 +42,19 @@ class App extends React.Component {
     this.setState({ currentPage: newPage });
   }
 
+  resetAppState = () => {
+    this.setState({
+      user1: 'Tic',
+      user2: 'Tac',
+      matchList: [],
+      apiList: [],
+      user1List: [],
+      user2List: [],
+      currentList: {},
+      currentPage: {}
+  })
+  }
+
   render () {
     const { user1, user2 } = this.state;
     return (
@@ -67,6 +80,7 @@ class App extends React.Component {
                   {...routeProps}
                   getAllLists={this.getAllLists}
                   getCurrentPage={this.getCurrentPage}
+                  resetAppState={this.resetAppState}
                 />
               )}
             />
@@ -75,6 +89,7 @@ class App extends React.Component {
                 {...this.state}
                 getCurrentList={this.getCurrentList}
                 getCurrentPage={this.getCurrentPage}
+                resetAppState={this.resetAppState}
               />
             </Route>
           </Switch>

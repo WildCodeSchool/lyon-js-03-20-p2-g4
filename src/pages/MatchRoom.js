@@ -303,11 +303,6 @@ class MatchRoom extends React.Component {
     this.getData();
   }
 
-  handleSession = () => {
-    const currentSession = 'user2';
-    this.setState({ currentSession });
-  };
-
   render () {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {

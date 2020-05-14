@@ -1,22 +1,22 @@
 import React from 'react';
 
 class Match extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       handleAnimation: false
     };
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({ handleAnimation: true });
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.props.onHandleMatch(false);
   }
 
-  render() {
+  render () {
     return (
       <>
         {this.props.currentMatchedMovie !== undefined && (

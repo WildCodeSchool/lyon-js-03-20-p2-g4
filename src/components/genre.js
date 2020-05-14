@@ -79,7 +79,7 @@ const genres = [
     caption: 'Drame',
     link: '/matchroom/genres/18',
     id: 18
-  },
+  }
 ];
 
 export default genres;

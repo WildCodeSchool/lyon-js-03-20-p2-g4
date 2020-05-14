@@ -11,7 +11,7 @@ import Button from '../components/Button.js';
 import TrendList from '../components/TrendList';
 
 class Result extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       getInfo: false,
@@ -33,7 +33,7 @@ class Result extends React.Component {
     document.body.classList.add('js-no-scroll');
   };
 
-  render () {
+  render() {
     const item = this.props.currentList;
     return (
       <div className='result'>
@@ -60,8 +60,8 @@ class Result extends React.Component {
                     </Link>
                   </>
                 ) : (
-                  <p>Choisissez une nouvelle liste</p>
-                )
+                    <p>Choisissez une nouvelle liste</p>
+                  )
               }
             </div>
             <TrendList />
@@ -70,34 +70,36 @@ class Result extends React.Component {
             <MovieLists type='decades' getCurrentList={this.props.getCurrentList} />
           </>
         ) : (
-          <>
-            <ResultHistory
-              apiList={this.props.apiList}
-              user1List={this.props.user1List}
-              user2List={this.props.user2List}
-              matchList={this.state.matchList}
-              user1={this.props.user1}
-              user2={this.props.user2}
-            />
-            <div className='centered'>
-              <HeaderSmall />
-              <h2 className='title'>
-                {this.state.matchList.length === 1
-                  ? 'Bravo, vous avez 1 match !'
-                  : `Bravo, vous avez ${this.state.matchList.length} matchs !`}
-              </h2>
-              <div className='matched-movie-container'>
-                {this.state.matchList.map((film) => {
-                  return (
-                    <div className='matched-movie' style={film.poster_path ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }} key={film.id} id={film.id} onClick={this.handleGetDrawer} />
-                  );
-                })}
+            <>
+              <ResultHistory
+                apiList={this.props.apiList}
+                user1List={this.props.user1List}
+                user2List={this.props.user2List}
+                matchList={this.state.matchList}
+                user1={this.props.user1}
+                user2={this.props.user2}
+              />
+              <div className='centered'>
+                <HeaderSmall />
+                <h2 className='title'>
+                  <span className='result-match-stars' />
+                  {this.state.matchList.length === 1
+                    ? 'Vous avez 1 match !'
+                    : `Vous avez ${this.state.matchList.length} matchs !`}
+                  <span className='result-match-stars' />
+                </h2>
+                <div className='matched-movie-container'>
+                  {this.state.matchList.map((film) => {
+                    return (
+                      <div className='matched-movie' style={film.poster_path ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }} key={film.id} id={film.id} onClick={this.handleGetDrawer} />
+                    );
+                  })}
+                </div>
+                {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
               </div>
-              {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
-            </div>
-            {this.state.filmId === null ? (<div className='empty-sidebar-info-desktop'><h3>Cliquez sur un film pour obtenir davantage d'informations</h3></div>) : <SideBarInfoDesktop matchList={this.state.matchList} getInfo={this.state.getInfo} filmId={this.state.filmId} />}
-          </>
-        )}
+              {this.state.filmId === null ? (<div className='empty-sidebar-info-desktop'><h3>Cliquez sur un film pour obtenir davantage d'informations</h3></div>) : <SideBarInfoDesktop matchList={this.state.matchList} getInfo={this.state.getInfo} filmId={this.state.filmId} />}
+            </>
+          )}
       </div>
     );
   }

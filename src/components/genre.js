@@ -7,9 +7,16 @@ import comedy from '../images/comedy.jpg';
 import animation from '../images/animation.jpg';
 import romantic from '../images/romantic.jpg';
 import drama from '../images/drama.jpg';
-// import mystery from '../images/mystery.jpg';
+import mystery from '../images/mystery.jpg';
 
 const genres = [
+  {
+    source: policier,
+    altText: 'Thriller',
+    caption: 'Thriller',
+    link: '/matchroom/genres/53',
+    id: 53
+  },
   {
     source: action,
     altText: 'Action',
@@ -18,18 +25,18 @@ const genres = [
     id: 28
   },
   {
+    source: mystery,
+    altText: 'Mystère',
+    caption: 'Mystère',
+    link: '/matchroom/genres/9648',
+    id: 9648
+  },
+  {
     source: scienceFiction,
     altText: 'Science-Fiction',
     caption: 'Science-Fiction',
     link: '/matchroom/genres/878',
     id: 878
-  },
-  {
-    source: policier,
-    altText: 'Thriller',
-    caption: 'Thriller',
-    link: '/matchroom/genres/53',
-    id: 53
   },
   {
     source: superHero,
@@ -72,14 +79,7 @@ const genres = [
     caption: 'Drame',
     link: '/matchroom/genres/18',
     id: 18
-  }/* ,
-  {
-    source: mystere,
-    altText: 'Mystère',
-    caption: 'Mystère',
-    link: '/matchroom/genres/9648',
-    id: 9648
-  } */
+  },
 ];
 
 export default genres;

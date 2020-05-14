@@ -1,21 +1,45 @@
-import quentinTarantino from '../images/quentinTarantino.jpg';
 import martinScorsese from '../images/martinScorsese.jpg';
 import stevenSpielberg from '../images/stevenSpielberg.jpg';
-import jjAbrams from '../images/jjAbrams.jpg';
 import francisFordCoppola from '../images/francisFordCoppola.jpg';
 import stanleyKubrick from '../images/stanleyKubrick.jpg';
 import clintEastwood from '../images/clintEastwood.jpg';
 import lucBesson from '../images/lucBesson.jpg';
-import timBurton from '../images/timBurton.jpg';
-import jackyChan from '../images/jackyChan.jpg';
+import morganFreeman from '../images/morganFreeman.jpg';
+import jodieFoster from '../images/jodieFoster.jpg';
+import johnnyDepp from '../images/johnnyDepp.jpg';
+import scarlettJohansson from '../images/scarlettJohansson.png';
+import sigourneyWeaver from '../images/sigourneyWeaver.jpg';
+import robertDowneyJr from '../images/robertDowneyJr.png';
+import dwayneJohnson from '../images/dwayneJohnson.jpg';
 
 const people = [
   {
-    source: quentinTarantino,
-    altText: 'Quentin Tarantino',
-    caption: 'Quentin Tarantino',
-    link: '/matchroom/people/138',
-    id: 138
+    source: dwayneJohnson,
+    altText: 'Jodie Foster',
+    caption: 'Dwayne Johnson',
+    link: '/matchroom/people/18918',
+    id: 18918
+  },
+  {
+    source: robertDowneyJr,
+    altText: 'Robert Downey Jr',
+    caption: 'Robert Downey Jr',
+    link: '/matchroom/people/3223',
+    id: 3223
+  },
+  {
+    source: scarlettJohansson,
+    altText: 'Scarlett Johansson',
+    caption: 'Scarlett Johansson',
+    link: '/matchroom/people/1245',
+    id: 1245
+  },
+  {
+    source: johnnyDepp,
+    altText: 'Johnny Depp',
+    caption: 'Johnny Depp',
+    link: '/matchroom/people/85',
+    id: 85
   },
   {
     source: martinScorsese,
@@ -30,13 +54,6 @@ const people = [
     caption: 'Steven Spielberg',
     link: '/matchroom/people/488',
     id: 488
-  },
-  {
-    source: jjAbrams,
-    altText: 'J. J. Abrams',
-    caption: 'J. J. Abrams',
-    link: '/matchroom/people/15344',
-    id: 15344
   },
   {
     source: francisFordCoppola,
@@ -67,18 +84,25 @@ const people = [
     id: 59
   },
   {
-    source: timBurton,
-    altText: 'Tim Burton',
-    caption: 'Tim Burton',
-    link: '/matchroom/people/510',
-    id: 510
+    source: morganFreeman,
+    altText: 'Morgan Freeman',
+    caption: 'Morgan Freeman',
+    link: '/matchroom/people/192',
+    id: 192
   },
   {
-    source: jackyChan,
-    altText: 'Jackie Chan',
-    caption: 'Jackie Chan',
-    link: '/matchroom/people/18897',
-    id: 18897
+    source: jodieFoster,
+    altText: 'Jodie Foster',
+    caption: 'Jodie Foster',
+    link: '/matchroom/people/1038',
+    id: 1038
+  },
+  {
+    source: sigourneyWeaver,
+    altText: 'Jodie Foster',
+    caption: 'Sigourney Weaver',
+    link: '/matchroom/people/10205',
+    id: 10205
   }
 ];
 

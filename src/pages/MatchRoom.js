@@ -13,7 +13,7 @@ import History from '../components/History';
 import SidebarInfoDesktop from '../components/SidebarInfoDesktop';
 
 class MatchRoom extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       apiList: [],
@@ -299,11 +299,11 @@ class MatchRoom extends React.Component {
     this.setState({ alertDisplay: false });
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.getData();
   }
 
-  render() {
+  render () {
     const { user1, user2 } = this.props;
     if (this.state.listIsLoading) {
       return (
@@ -350,27 +350,27 @@ class MatchRoom extends React.Component {
               <History {...this.state} user={user1} type={this.props.match.params.type} id={this.props.match.params.id} />
             </div>
           ) : (
-              <div className='matchroom'>
-                <HeaderSmall />
-                <User2List
-                  user2={user2}
-                  {...this.state}
-                  onHandleReject={this.handleReject}
-                  onHandleValidate={this.handleValidate}
-                  onHandleReturn={this.handleReturn2}
-                  getAllLists={this.props.getAllLists}
+            <div className='matchroom'>
+              <HeaderSmall />
+              <User2List
+                user2={user2}
+                {...this.state}
+                onHandleReject={this.handleReject}
+                onHandleValidate={this.handleValidate}
+                onHandleReturn={this.handleReturn2}
+                getAllLists={this.props.getAllLists}
+              />
+              <History {...this.state} user={user2} type={this.props.match.params.type} id={this.props.match.params.id} />
+              {this.state.newMatch && (
+                <Match
+                  onHandleMatch={this.handleMatch}
+                  currentMatchedMovie={
+                    this.state.matchList[this.state.matchList.length - 1]
+                  }
                 />
-                <History {...this.state} user={user2} type={this.props.match.params.type} id={this.props.match.params.id} />
-                {this.state.newMatch && (
-                  <Match
-                    onHandleMatch={this.handleMatch}
-                    currentMatchedMovie={
-                      this.state.matchList[this.state.matchList.length - 1]
-                    }
-                  />
-                )}
-              </div>
-            )}
+              )}
+            </div>
+          )}
           {this.state.index <= 20 && <SidebarInfoDesktop matchList={this.state.matchList} getInfo={this.state.getInfo} filmId={this.state.index === 20 ? this.state.apiList[this.state.index - 1].id : this.state.apiList[this.state.index].id} />}
         </>
       );

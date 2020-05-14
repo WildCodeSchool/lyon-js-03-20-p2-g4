@@ -7,7 +7,7 @@ import Button from '../components/Button';
 import '../styles/Home.css';
 
 class Home extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       namesHidden: false
@@ -19,7 +19,7 @@ class Home extends React.Component {
     this.setState({ namesHidden });
   };
 
-  render() {
+  render () {
     const { namesHidden } = this.state;
     return (
       <div className='home'>
@@ -33,20 +33,20 @@ class Home extends React.Component {
             </div>
           </>
         ) : (
-            <>
-              <div className='list-container-desktop'>
-                <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
-                <div className='left-column'>
-                  <TrendList />
-                  <MovieLists type='genres' {...this.props} />
-                </div>
-                <div className='right-column'>
-                  <MovieLists type='people' {...this.props} />
-                  <MovieLists type='decades' {...this.props} />
-                </div>
+          <>
+            <div className='list-container-desktop'>
+              <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
+              <div className='left-column'>
+                <TrendList />
+                <MovieLists type='genres' {...this.props} />
               </div>
-            </>
-          )}
+              <div className='right-column'>
+                <MovieLists type='people' {...this.props} />
+                <MovieLists type='decades' {...this.props} />
+              </div>
+            </div>
+          </>
+        )}
       </div>
     );
   }

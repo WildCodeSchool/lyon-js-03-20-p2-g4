@@ -118,6 +118,21 @@
   transform: scaleX(-1);
   margin-left:10px;
 }
+.result .centered .button-legend-container {
+  width:74px;
+  margin:auto;
+}
+.result .centered a {
+  text-decoration:none;
+  width: 74px;
+  margin: auto;
+  display: block;
+  height: 80px;
+}
+.result .centered a .button {
+  margin-top:0;
+  margin-bottom:0;
+}
 
 @media only screen and (max-height: 668px) {
   .result h2.subtitle {

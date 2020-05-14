@@ -133,6 +133,16 @@
   margin-top:0;
   margin-bottom:0;
 }
+.result .button-back-home-container {
+  margin-top:50px;
+  padding-bottom:50px;
+}
+.result .button-back-home-container a {
+  text-decoration:none;
+}
+.result .button-back-home-container .button {
+  width:250px;
+}
 
 @media only screen and (max-height: 668px) {
   .result h2.subtitle {

@@ -141,7 +141,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        font-size:0.8rem;
+        font-size:0.8rem!important;
         width:90%;
     }
     .user-list-container .user-session {

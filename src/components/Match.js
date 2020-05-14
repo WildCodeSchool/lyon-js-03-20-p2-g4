@@ -1,22 +1,23 @@
 import React from 'react';
+import defaultImage from '../images/grey-logo.png';
 
 class Match extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       handleAnimation: false
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({ handleAnimation: true });
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.props.onHandleMatch(false);
   }
 
-  render () {
+  render() {
     return (
       <>
         {this.props.currentMatchedMovie !== undefined && (
@@ -24,7 +25,7 @@ class Match extends React.Component {
             className={this.state.handleAnimation ? 'new-match' : 'unvisible'}
           >
             <img
-              src={`http://image.tmdb.org/t/p/w185/${this.props.currentMatchedMovie.poster_path}`}
+              src={this.props.currentMatchedMovie.poster_path ? `http://image.tmdb.org/t/p/w185/${this.props.currentMatchedMovie.poster_path}` : defaultImage}
               alt={this.props.currentMatchedMovie.title}
             />
             <h3 className='subtitle'>

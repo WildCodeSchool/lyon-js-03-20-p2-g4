@@ -16,11 +16,18 @@
 }
 
 .usersInputs h2 {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 @media only screen and (max-width: 374px){
   .usersInputs h2 {
     margin-top: 50px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .usersInputs h2 {
+    color: var(--lightTextColor);
+    margin-top: 0;
   }
 }

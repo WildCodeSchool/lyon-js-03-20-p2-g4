@@ -10,7 +10,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       user1: 'Tic',
-      user2: 'Tac'
+      user2: 'Tac',
+      matchList: [],
+      apiList: [],
+      user1List: [],
+      user2List: [],
+      currentList: {},
+      currentPage: {}
     };
   }
 
@@ -24,6 +30,18 @@ class App extends React.Component {
     this.setState({ user2: user });
   };
 
+  getAllLists = (apiList, matchList, user1List, user2List) => {
+    this.setState({ apiList, matchList, user1List, user2List });
+  };
+
+  getCurrentList = (newList) => {
+    this.setState({ currentList: newList });
+  };
+
+  getCurrentPage = (newPage) => {
+    this.setState({ currentPage: newPage });
+  }
+
   render () {
     const { user1, user2 } = this.state;
     return (
@@ -31,13 +49,33 @@ class App extends React.Component {
         <div className='App'>
           <Switch>
             <Route exact path='/'>
-              <Home user1={user1} user2={user2} onChange1={this.handleChange1} onChange2={this.handleChange2} />
+              <Home
+                user1={user1}
+                user2={user2}
+                onChange1={this.handleChange1}
+                onChange2={this.handleChange2}
+                getCurrentList={this.getCurrentList}
+                getCurrentPage={this.getCurrentPage}
+              />
             </Route>
-            <Route exact path='/matchroom'>
-              <MatchRoom user1={user1} user2={user2} />
-            </Route>
+            <Route
+              exact
+              path='/matchroom/:type/:id'
+              render={(routeProps) => (
+                <MatchRoom
+                  {...this.state}
+                  {...routeProps}
+                  getAllLists={this.getAllLists}
+                  getCurrentPage={this.getCurrentPage}
+                />
+              )}
+            />
             <Route exact path='/result'>
-              <Result />
+              <Result
+                {...this.state}
+                getCurrentList={this.getCurrentList}
+                getCurrentPage={this.getCurrentPage}
+              />
             </Route>
           </Switch>
         </div>

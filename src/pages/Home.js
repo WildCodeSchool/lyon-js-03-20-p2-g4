@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieLists from '../components/MovieLists';
+import TrendList from '../components/TrendList';
 import UsersInputs from '../components/UsersInputs';
 import HeaderHome from '../components/HeaderHome';
 import Button from '../components/Button';
@@ -24,12 +25,27 @@ class Home extends React.Component {
       <div className='home'>
         <HeaderHome />
         {!namesHidden ? (
-          <div className='centered'>
-            <UsersInputs {...this.props} />
-            <Button txt='Valider' onClick={this.handleHide} />
-          </div>
+          <>
+            <h1 className='big-screens'>Movie Match vous aide à <span className='green-title'>trouver un film à regarder</span> en quelques minutes</h1>
+            <div className='centered'>
+              <UsersInputs {...this.props} />
+              <Button content='Valider' onClick={this.handleHide} className='button' />
+            </div>
+          </>
         ) : (
-          <MovieLists />
+          <>
+            <div className='list-container-desktop'>
+              <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
+              <div className='left-column'>
+                <TrendList />
+                <MovieLists type='genres' {...this.props} />
+              </div>
+              <div className='right-column'>
+                <MovieLists type='people' {...this.props} />
+                <MovieLists type='decades' {...this.props} />
+              </div>
+            </div>
+          </>
         )}
       </div>
     );

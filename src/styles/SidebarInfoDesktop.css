@@ -1,0 +1,189 @@
+@media only screen and (min-width: 1024px) {
+    .sidebar-info-container {
+        width:30vw;
+        max-width: 500px;
+        position:fixed;
+        top:0;
+        right: 0;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        background-color: white;
+        height:100vh;
+        box-shadow: 0 0 3px lightgrey;
+    }
+    .sidebar-info-container .sidebar-info-container-default-director {
+        text-transform:italic;
+    }
+    
+    
+    .sidebar-info-container .sidebar-info-container-movie-all-info-container {
+        height:100%;
+        width:100%;
+        top:0;
+        background-color:white;
+        position:relative;
+        text-align:left;
+    }
+    
+    .sidebar-info-container .sidebar-info-container-movie-all-info-container .banner-link-rating-container {
+        top:0;
+        height:300px;
+        width:100%;
+        transition:height 0.2s ease-in-out;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .button {
+      width: fit-content;
+      line-height:28px;
+      height:30px;
+      display: flex;
+      align-items: center;
+      font-size:14px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .button .sidebar-info-play-icon  {
+        background-image:url('../images/play-icon.png');
+        background-size:cover;
+        background-position:center;
+        background-repeat:no-repeat;
+        height:16px;
+        width:16px;
+        display:inline-block;
+        margin-right:5px;
+        padding-top:2px;
+    }
+    
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-banner {
+        height:200px;
+        max-height:200px;
+        width:100%;
+        background-position:center;
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-rating-container .star {
+        width:18px;
+        height:18px;
+        background-position:center;
+        background-size:contain;
+        background-repeat:no-repeat;
+        display:block;
+        margin: 0 2px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-rating-container .star.full {
+        background-image:url("../images/star-full.png");
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-rating-container .star.half {
+        background-image:url("../images/star-half.png");
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-rating-container .star.empty {
+        background-image:url("../images/star-empty.png");
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-link-rating {
+        display:flex;
+        width:100%;
+        height:70px;
+        justify-content:space-between;
+        align-items:center;
+        padding: 20px 15px 20px 10px;
+        background-color:white;
+        position:sticky;
+        top:-2px;
+        z-index:999999;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-link-rating a .button {
+        margin-bottom:0;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-link-rating a:hover {
+        text-decoration:none;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-link-rating .sidebar-info-rating-container {
+        width:130px;
+        height:50px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-link-rating .sidebar-info-rating-container .global-rating {
+        margin-left:10px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-info-container {
+        padding:0 15px;
+        margin-top:15px;
+        margin-bottom:30px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-info-container span {
+        display:block;
+        margin-bottom:20px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-info-container p {
+        margin-block-end:0px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting {
+        padding:0 15px;
+        margin-bottom:100px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting h5 {
+        text-transform:uppercase;
+        margin-bottom:30px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor-container .sidebar-info-actor-img-name-container {
+        width: 114px;
+        height: 214px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor-container .sidebar-info-actor-img-name-container p {
+        text-align:center;
+        font-size:15px;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor-container {
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor {
+        width:100px;
+        height:150px;
+        margin:7px;
+        border-radius:var(--radius);
+        background-color:rgba(0, 0, 0, 0.3);
+        position:relative;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor::before {
+        position:absolute;
+        content:'';
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-color:transparent;
+        transition:all 0.2s ease-in-out;
+        border-radius:var(--radius);
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor::after {
+        content:'+';
+        color:white;
+        width:50px;
+        height:50px;
+        top:50%;
+        left:50%;
+        transform:translateX(-50%) translateY(-50%);
+        border-radius:100%;
+        border:2px solid white;
+        position:absolute;
+        text-align:center;
+        line-height:44px;
+        font-size:21px;
+        opacity:0;
+        transition:all 0.2s ease-in-out;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor:hover::after {
+        opacity:1;
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor:hover::before {
+        background-color:rgba(90, 210, 156, 0.6);
+    }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor img {
+        object-fit: cover;
+        width:100px;
+        border-radius:var(--radius);
+        box-shadow:0 0 2px rgba(0, 0, 0, 0.2);
+    }
+} 

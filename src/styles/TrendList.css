@@ -1,0 +1,61 @@
+.trendlist-container {
+    max-width:600px;
+    margin:0 auto;
+    padding:20px;
+}
+.trendlist-container .list-category {
+    text-transform:uppercase;
+    font-weight:700;
+    font-size:15px;
+    position:relative;
+    margin-block-end: 20px;
+    color:#333333;
+}
+.trendlist-container .list-category::after {
+    content:'';
+    width:calc(100% - 125px);
+    height:1px;
+    background-color:#333333;
+    top:50%;
+    transform:translateY(-50%);
+    position:absolute;
+    left:125px;
+}
+.trendlist-container .trendlist-day, .trendlist-container .trendlist-week {
+    width:100%;
+    height:57.5px;
+    background-color:rgba(102, 198, 155, 0.9);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-shadow:0 0 3px grey;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    position:relative;
+    transition:all 0.2s ease-in-out;
+}
+.trendlist-container .trendlist-day:hover, .trendlist-container .trendlist-week:hover {
+    cursor: pointer;
+    background-size:100%;
+    background-color:var(--accentColor);
+}
+.trendlist-container .trendlist-day {
+    margin-bottom:20px;
+}
+.trendlist-container a:hover {
+    text-decoration:none;
+}
+
+@media only screen and (min-width: 1024px) {
+  .trendlist-container h3.list-category {
+    color: var(--lightTextColor)
+  }
+
+  .trendlist-container .list-category::after {
+    background-color: var(--lightTextColor);
+  }
+}

@@ -32,6 +32,11 @@
     left:92px;
 }
 
+.right-column .list-container:nth-child(1) .list-category::after {
+  width:calc(100% - 150px);
+  left: 150px;
+}
+
 /* CAROUSEL */
 .list-container .carousel-inner {
     width:70%!important;
@@ -113,3 +118,13 @@
         margin-bottom: 30px;
     }
   }
+
+@media only screen and (min-width: 1024px) {
+  .list-container h3.list-category {
+    color: var(--lightTextColor)
+  }
+
+  .list-container .list-category::after {
+    background-color: var(--lightTextColor);
+  }
+}

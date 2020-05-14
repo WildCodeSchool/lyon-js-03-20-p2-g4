@@ -46,7 +46,7 @@ class Result extends React.Component {
               matchList={this.state.matchList}
             />
             <div className='centered'>
-              <HeaderSmall resetAppState={this.props.resetAppState}/>
+              <HeaderSmall resetAppState={this.props.resetAppState} />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
               {
                 Object.keys(this.props.currentList).length !== 0 ? (
@@ -80,7 +80,7 @@ class Result extends React.Component {
               user2={this.props.user2}
             />
             <div className='centered'>
-              <HeaderSmall resetAppState={this.props.resetAppState}/>
+              <HeaderSmall resetAppState={this.props.resetAppState} />
               <h2 className='title'>
                 <span className='result-match-stars' />
                 {this.state.matchList.length === 1

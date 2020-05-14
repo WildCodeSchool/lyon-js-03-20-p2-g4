@@ -52,7 +52,7 @@ class App extends React.Component {
       user2List: [],
       currentList: {},
       currentPage: {}
-  })
+    });
   }
 
   render () {

@@ -124,7 +124,7 @@ class Drawer extends React.Component {
                   className='drawer-movie-banner' style={this.state.movieDetails.poster_path !== null ? {
                     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${
                       this.state.movieDetails.poster_path
-                        })`
+                      })`
                   } : {
                     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})`
                   }}
@@ -166,10 +166,10 @@ class Drawer extends React.Component {
                 <div className='drawer-movie-info-container'>
                   <h4>{this.state.movieDetails.title}</h4>
                   <span>{`De ${this.state.peopleLoaded ? (((this.state.people.crew.filter(director => {
-                  return director.job === 'Director';
+                    return director.job === 'Director';
                   }))[0]) ? this.state.people.crew.filter(director => {
                     return director.job === 'Director';
-                    })[0].name : 'non renseigné') : '...'} - ${this.state.movieDetailsLoaded ? (this.state.movieDetails.genres[0] ? this.state.movieDetails.genres[0].name : 'non-classé') : '...'} - ${this.transformDuration(this.state.movieDetails.runtime)} - ${this.state.movieDetails.release_date.split('-')[0]}`}
+                  })[0].name : 'non renseigné') : '...'} - ${this.state.movieDetailsLoaded ? (this.state.movieDetails.genres[0] ? this.state.movieDetails.genres[0].name : 'non-classé') : '...'} - ${this.transformDuration(this.state.movieDetails.runtime)} - ${this.state.movieDetails.release_date.split('-')[0]}`}
                   </span>
                   <p>{this.state.movieDetails.overview}</p>
                 </div>
@@ -187,7 +187,6 @@ class Drawer extends React.Component {
                               href={`https://www.google.com/search?q=${casting.name}`}
                               target='_blank'
                               rel='noopener noreferrer'
-                              key={casting.id}
                             >
                               <div className='drawer-actor'>
                                 {casting.profile_path === null ? (

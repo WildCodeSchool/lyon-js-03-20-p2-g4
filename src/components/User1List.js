@@ -58,11 +58,13 @@ class User1List extends React.Component {
                 content={<img src={Return} alt='return button' />}
                 className={(this.props.index > 0) ? ('session-button return') : ('session-button hidden-return')}
                 onClick={this.props.onHandleReturn}
+                legend={this.props.index > 0 ? 'annuler' : ''}
               />
               <Button
                 content='i'
                 className='session-button more-info'
                 onClick={this.handleGetDrawer}
+                legend='infos'
               />
               <Button
                 content={<img src={Validate} alt='validate button' />}

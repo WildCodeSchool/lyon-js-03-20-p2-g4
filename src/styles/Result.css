@@ -127,10 +127,6 @@
   }
   body.js-no-scroll {
     overflow-y:scroll;
-  }
-}
-@media only screen and (max-width:1024px) {
-  .empty-sidebar-info-desktop {
     display:none;
   }
 }

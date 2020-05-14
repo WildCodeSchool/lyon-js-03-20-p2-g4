@@ -71,7 +71,6 @@
     left: 50%;
     transform: translateX(-50%);
   }
-
   .home .list-container-desktop {
     position: absolute;
     left: 50%;
@@ -84,6 +83,12 @@
 
   .home .list-container-desktop .left-column, .home .list-container-desktop .right-column {
     width: 40%;
+  }
+}
+
+@media all and (display-mode: standalone) {
+  body {
+    background-color: var(--accentColor);
   }
 }
 

@@ -60,7 +60,7 @@ class User2List extends React.Component {
           </div>
         ) : (
           <>
-            <h2 className='user-session'>Utilisateur : {this.props.user2}</h2>
+            <h2 className='user-session'>{this.props.user2}</h2>
             <FilmCard index={this.props.index} apiList={this.props.apiList} />
             <h3 className='session-film-name'>
               {this.props.apiList[this.props.index].title}

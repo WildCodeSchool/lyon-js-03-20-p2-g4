@@ -85,8 +85,6 @@
 .session-button-container button.session-button.return {
   width: 28px;
   height: 28px;
-  min-height:28px;
-  min-width:28px;
   box-shadow:none;
   border:1px solid #AFACAC;
   display:flex;

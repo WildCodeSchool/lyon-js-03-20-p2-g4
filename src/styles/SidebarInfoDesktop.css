@@ -89,6 +89,9 @@
         top:-2px;
         z-index:999999;
     }
+    .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-link-rating a .button {
+        margin-bottom:0;
+    }
     .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-link-rating a:hover {
         text-decoration:none;
     }

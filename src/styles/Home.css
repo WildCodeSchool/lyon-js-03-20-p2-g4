@@ -64,12 +64,13 @@
 
   .home h2.centered-title.subtitle {
     position: absolute;
-    top: 10%;
+    top: -10%;
     color: var(--lightTextColor);
     font-weight: bold;
     font-size: 24px;
     left: 50%;
     transform: translateX(-50%);
+    margin-top:0px;
   }
 
   .home .list-container-desktop {

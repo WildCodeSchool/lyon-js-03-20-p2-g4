@@ -1,8 +1,18 @@
 .headerSmall {
-  padding-top: 30px;
+  padding-top:50px;
 }
 .headerSmall .logo {
   display: block;
-  margin: 0 auto;
+  margin: 0px auto;
   width: 100px;
 }
+@media only screen and (max-width:420px) {
+  .headerSmall {
+    padding-top:20px;
+    margin-bottom:20px;
+  }
+  .headerSmall .logo {
+    width:70px;
+  }
+}
+

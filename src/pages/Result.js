@@ -54,7 +54,7 @@ class Result extends React.Component {
                     <p>Continuez d'explorer la liste : {item.caption}</p>
                     <Link to={item.link}>
                       <Button
-                        className='button'
+                        className='button continue-list'
                         content='Go !'
                       />
                     </Link>
@@ -82,9 +82,11 @@ class Result extends React.Component {
             <div className='centered'>
               <HeaderSmall />
               <h2 className='title'>
+                <span className='result-match-stars' />
                 {this.state.matchList.length === 1
-                  ? 'Bravo, vous avez 1 match !'
-                  : `Bravo, vous avez ${this.state.matchList.length} matchs !`}
+                  ? 'Vous avez 1 match !'
+                  : `Vous avez ${this.state.matchList.length} matchs !`}
+                <span className='result-match-stars' />
               </h2>
               <div className='matched-movie-container'>
                 {this.state.matchList.map((film) => {
@@ -92,6 +94,9 @@ class Result extends React.Component {
                     <div className='matched-movie' style={film.poster_path ? { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(http://image.tmdb.org/t/p/w342/${film.poster_path})` } : { backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(${defaultImage})` }} key={film.id} id={film.id} onClick={this.handleGetDrawer} />
                   );
                 })}
+              </div>
+              <div className='button-back-home-container'>
+                <Link to='/'><Button className='button back-home' content="Retour à la page d'accueil" /></Link>
               </div>
               {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
             </div>

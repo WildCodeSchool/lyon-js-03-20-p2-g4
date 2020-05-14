@@ -1,7 +1,6 @@
 import martinScorsese from '../images/martinScorsese.jpg';
 import stevenSpielberg from '../images/stevenSpielberg.jpg';
 import francisFordCoppola from '../images/francisFordCoppola.jpg';
-import stanleyKubrick from '../images/stanleyKubrick.jpg';
 import clintEastwood from '../images/clintEastwood.jpg';
 import lucBesson from '../images/lucBesson.jpg';
 import morganFreeman from '../images/morganFreeman.jpg';
@@ -61,13 +60,6 @@ const people = [
     caption: 'Francis Ford Coppola',
     link: '/matchroom/people/1776',
     id: 1776
-  },
-  {
-    source: stanleyKubrick,
-    altText: 'Stanley Kubrick',
-    caption: 'Stanley Kubrick',
-    link: '/matchroom/people/240',
-    id: 240
   },
   {
     source: clintEastwood,

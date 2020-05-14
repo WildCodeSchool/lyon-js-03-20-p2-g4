@@ -170,7 +170,7 @@
     z-index:1;
 }*/
 
-@media all and (max-width:1024px) {
+@media all and (max-width:1023px) {
     .history-sidebar-container {
         display:none;
     }

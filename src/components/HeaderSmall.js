@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logoSmall from '../images/logoSmall.svg';
 import '../styles/HeaderSmall.css';
 
 const HeaderSmall = () => {
   return (
     <header className='headerSmall'>
-      <img src={logoSmall} alt='full logo' className='logo' />
+      <Link to='/'><img src={logoSmall} alt='full logo' className='logo' /></Link>
     </header>
   );
 };

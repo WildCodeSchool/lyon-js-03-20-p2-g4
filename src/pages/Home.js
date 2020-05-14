@@ -34,8 +34,8 @@ class Home extends React.Component {
           </>
         ) : (
           <>
-            <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
             <div className='list-container-desktop'>
+              <h2 className='centered-title subtitle'>Choisissez une liste de films</h2>
               <div className='left-column'>
                 <TrendList />
                 <MovieLists type='genres' {...this.props} />

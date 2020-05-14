@@ -122,7 +122,7 @@
   width:74px;
   margin:auto;
 }
-.result .centered a {
+.result .centered a.continue-list {
   text-decoration:none;
   width: 74px;
   margin: auto;

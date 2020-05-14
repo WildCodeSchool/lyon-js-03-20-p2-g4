@@ -20,24 +20,27 @@ class SideBarInfoDesktop extends React.Component {
     };
   }
 
+  _isMounted = false;
   getPeople = async () => {
+    this._isMounted = true;
     const people = await window
       .fetch(
         `https://api.themoviedb.org/3/movie/${this.props.filmId}/credits?api_key=${ApiKey}`
       )
       .then((response) => response.json())
       .then((data) => data);
-    this.setState({ people, peopleLoaded: true });
+    if (this._isMounted) { this.setState({ people, peopleLoaded: true }); }
   };
 
   getMovieDetails = async () => {
+    this._isMounted = true;
     const movieDetails = await window
       .fetch(
         `https://api.themoviedb.org/3/movie/${this.props.filmId}?api_key=${ApiKey}&language=fr-FR`
       )
       .then((response) => response.json())
       .then((data) => data);
-    this.setState({ movieDetails, movieDetailsLoaded: true });
+    if (this._isMounted) { this.setState({ movieDetails, movieDetailsLoaded: true }); }
   };
 
   transformDuration = (duration) => {
@@ -51,13 +54,14 @@ class SideBarInfoDesktop extends React.Component {
   };
 
   getMovieVideo = async () => {
+    this._isMounted = true;
     const movieVideo = await window
       .fetch(
         `https://api.themoviedb.org/3/movie/${this.props.filmId}/videos?api_key=${ApiKey}&language=fr-FR`
       )
       .then((response) => response.json())
       .then((data) => data.results[0]);
-    this.setState({ movieVideo, movieVideoLoaded: true });
+    if (this._isMounted) { this.setState({ movieVideo, movieVideoLoaded: true }); }
   };
 
   componentDidMount () {
@@ -72,6 +76,10 @@ class SideBarInfoDesktop extends React.Component {
       this.getPeople();
       this.getMovieVideo();
     }
+  }
+
+  componentWillUnmount () {
+    this._isMounted = false;
   }
 
   render () {
@@ -133,11 +141,11 @@ class SideBarInfoDesktop extends React.Component {
                   <div className='sidebar-info-rating-container'>
                     {getStars.map((star) => {
                       if (star[1] === 1) {
-                        return <span key={star[0]} className='star full' />;
+                        return <span key={`${star[0]}-sidebar`} className='star full' />;
                       } else if (star[1] === 0.5) {
-                        return <span key={star[0]} className='star half' />;
+                        return <span key={`${star[0]}-sidebar`} className='star half' />;
                       } else {
-                        return <span key={star[0]} className='star empty' />;
+                        return <span key={`${star[0]}-sidebar`} className='star empty' />;
                       }
                     })}
                     <span className='global-rating'>{`${voteAverage}/5`}</span>
@@ -172,17 +180,18 @@ class SideBarInfoDesktop extends React.Component {
                   <h5>Casting</h5>
                   <div className='sidebar-info-actor-container'>
                     {this.state.peopleLoaded ? (
-                      this.state.people.cast.map((casting) => {
+                      this.state.people.cast.map((casting, index) => {
                         return (
+
                           <div
                             className='sidebar-info-actor-img-name-container'
-                            key={casting.id}
+                            id={casting.id + casting.name}
+                            key={index}
                           >
                             <a
                               href={`https://www.google.com/search?q=${casting.name}`}
                               target='_blank'
                               rel='noopener noreferrer'
-                              key={casting.id}
                             >
                               <div className='sidebar-info-actor'>
                                 {casting.profile_path === null ? (

@@ -1,8 +1,8 @@
 .headerSmall {
-  margin-top:-10px;
+  padding-top: 30px;
 }
 .headerSmall .logo {
   display: block;
-  margin: 30px auto;
+  margin: 0 auto;
   width: 100px;
 }

@@ -49,3 +49,13 @@ code {
 .link:hover {
   color: black;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #66C69B; 
+  border-radius: 10px;
+}

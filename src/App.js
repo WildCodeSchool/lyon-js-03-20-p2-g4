@@ -12,6 +12,9 @@ class App extends React.Component {
       user1: 'Tic',
       user2: 'Tac',
       matchList: [],
+      apiList: [],
+      user1List: [],
+      user2List: [],
       currentList: {},
       currentPage: {}
     };
@@ -27,8 +30,8 @@ class App extends React.Component {
     this.setState({ user2: user });
   };
 
-  getMatchList = (newMatchList) => {
-    this.setState({ matchList: newMatchList });
+  getAllLists = (apiList, matchList, user1List, user2List) => {
+    this.setState({ apiList, matchList, user1List, user2List });
   };
 
   getCurrentList = (newList) => {
@@ -62,7 +65,7 @@ class App extends React.Component {
                 <MatchRoom
                   {...this.state}
                   {...routeProps}
-                  getMatchList={this.getMatchList}
+                  getAllLists={this.getAllLists}
                   getCurrentPage={this.getCurrentPage}
                 />
               )}

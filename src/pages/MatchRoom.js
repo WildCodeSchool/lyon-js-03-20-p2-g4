@@ -108,9 +108,7 @@ class MatchRoom extends React.Component {
     const historyListContainer = document.getElementsByClassName('timeline-movie-container');
     const historyList = document.getElementsByClassName('history-film-card');
     historyListContainer[this.state.index - 1].classList.remove('validated', 'rejected');
-    // historyListContainer[this.state.index - 1].classList.remove('rejected');
     historyList[this.state.index - 1].classList.remove('validated', 'rejected');
-    // historyList[this.state.index - 1].classList.remove('rejected');
   };
 
   handleReturn2 = () => {
@@ -150,7 +148,9 @@ class MatchRoom extends React.Component {
 
     if (type === 'genres') {
       window
-        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`)
+        .fetch(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`
+        )
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
@@ -163,7 +163,9 @@ class MatchRoom extends React.Component {
             } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             console.log('page aléatoire :' + randomPage);
             window
-              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${id}`)
+              .fetch(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_genres=${id}`
+              )
               .then((response) => {
                 return response
                   .json()
@@ -179,14 +181,19 @@ class MatchRoom extends React.Component {
                     });
                   })
                   .catch(() => {
-                    this.setState({ listIsLoading: false, fetchListError: true });
+                    this.setState({
+                      listIsLoading: false,
+                      fetchListError: true
+                    });
                   });
               });
           });
         });
     } else if (type === 'people') {
       window
-        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_people=${id}`)
+        .fetch(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&with_people=${id}`
+        )
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
@@ -198,7 +205,9 @@ class MatchRoom extends React.Component {
               }
             } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             window
-              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`)
+              .fetch(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&with_people=${id}`
+              )
               .then((response) => {
                 return response
                   .json()
@@ -214,7 +223,10 @@ class MatchRoom extends React.Component {
                     });
                   })
                   .catch(() => {
-                    this.setState({ listIsLoading: false, fetchListError: true });
+                    this.setState({
+                      listIsLoading: false,
+                      fetchListError: true
+                    });
                   });
               });
           });
@@ -222,7 +234,9 @@ class MatchRoom extends React.Component {
     } else if (type === 'decades') {
       const finalYear = (parseInt(id) + 9).toString();
       window
-        .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`)
+        .fetch(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`
+        )
         .then((response) => {
           return response.json().then((data) => {
             let randomPage = 0;
@@ -235,7 +249,9 @@ class MatchRoom extends React.Component {
             } while (type === currentPage.type && id === currentPage.id && randomPage === currentPage.randomPage);
             console.log('page aléatoire :' + randomPage);
             window
-              .fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`)
+              .fetch(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&primary_release_date.gte=${id}-01-01&primary_release_date.lte=${finalYear}-12-31`
+              )
               .then((response) => {
                 return response
                   .json()
@@ -251,13 +267,19 @@ class MatchRoom extends React.Component {
                     });
                   })
                   .catch(() => {
-                    this.setState({ listIsLoading: false, fetchListError: true });
+                    this.setState({
+                      listIsLoading: false,
+                      fetchListError: true
+                    });
                   });
               });
           });
         });
     } else if (type === 'trending') {
-      window.fetch(`https://api.themoviedb.org/3/trending/movie/${id}?api_key=${ApiKey}`)
+      window
+        .fetch(
+          `https://api.themoviedb.org/3/trending/movie/${id}?api_key=${ApiKey}`
+        )
         .then((response) => {
           return response
             .json()
@@ -272,7 +294,7 @@ class MatchRoom extends React.Component {
             });
         });
     }
-  }
+  };
 
   onDismiss = () => {
     this.setState({ alertDisplay: false });
@@ -333,7 +355,7 @@ class MatchRoom extends React.Component {
             onHandleReject={this.handleReject}
             onHandleValidate={this.handleValidate}
             onHandleReturn={this.handleReturn2}
-            getMatchList={this.props.getMatchList}
+            getAllLists={this.props.getAllLists}
           />
           <History {...this.state} user={user2} type={this.props.match.params.type} id={this.props.match.params.id} />
           {this.state.newMatch && (

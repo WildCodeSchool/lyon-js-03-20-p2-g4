@@ -11,7 +11,12 @@
   border: none;
   transition-duration: 0.2s;
 }
-
+.button-legend-container {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
 .button:hover {
   background: #70d1a5;
   cursor: pointer;
@@ -21,10 +26,37 @@
   width:100%;
   max-width:300px;
   margin:auto;
-  height:200px;
+  height:150px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  position:relative;
+}
+.session-button-container .button-legend-container:nth-child(1) {
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+.session-button-container .button-legend-container:nth-child(4) {
+  position:absolute;
+  bottom:0;
+  right:0;
+}
+.session-button-container .button-legend-container:nth-child(2), .session-button-container .button-legend-container:nth-child(3) {
+  position:absolute;
+  top:0;
+}
+.session-button-container .button-legend-container:nth-child(2) {
+  left:40%;
+  transform:translateX(-50%);
+}
+.session-button-container .button-legend-container:nth-child(3) {
+  left:60%;
+  transform:translateX(-50%);
+}
+.session-button-container .button-legend {
+  color:#AFACAC;
+  font-size:10px;
 }
 .session-button-container .session-button {
   width:100px;
@@ -53,8 +85,6 @@
 .session-button-container button.session-button.return {
   width: 28px;
   height: 28px;
-  align-self: flex-start;
-  margin-top: 40px;
   box-shadow:none;
   border:1px solid #AFACAC;
   display:flex;
@@ -69,10 +99,16 @@
 .session-button-container button.session-button.more-info {
   width:28px;
   height:28px;
-  align-self:flex-start;
-  margin-top:40px;
   text-align:center;
   color:#AFACAC;
   border:1px solid #AFACAC;
   box-shadow:none;
+}
+@media only screen and (min-width:1024px) {
+  .session-button-container .button-legend-container:nth-child(3) {
+    display:none;
+  }
+  .session-button-container .button-legend-container:nth-child(2) {
+    left:50%;
+  }
 }

@@ -75,7 +75,7 @@
   height:30px;
   display: flex;
   align-items: center;
-  font-size:14px;
+  font-size:13px;
   margin-bottom:0;
 }
 .drawer-container .drawer-movie-all-info-container .button .drawer-play-icon  {
@@ -192,6 +192,7 @@
     background-color:transparent;
     transition:all 0.2s ease-in-out;
     border-radius:var(--radius);
+    box-shadow:var(--shadow);
 }
 .drawer-container .drawer-movie-all-info-container .drawer-movie-casting .drawer-actor::after {
     content:'+';

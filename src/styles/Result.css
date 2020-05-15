@@ -137,8 +137,14 @@
   margin-top:50px;
   padding-bottom:50px;
 }
+.result .button-back-home-container .button-legend-container {
+  width:250px;
+}
 .result .button-back-home-container a {
   text-decoration:none;
+  width:250px;
+  display:block;
+  margin:auto;
 }
 .result .button-back-home-container .button {
   width:250px;

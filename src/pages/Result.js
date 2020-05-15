@@ -46,7 +46,7 @@ class Result extends React.Component {
               matchList={this.state.matchList}
             />
             <div className='centered'>
-              <HeaderSmall />
+              <HeaderSmall resetAppState={this.props.resetAppState} />
               <h2 className='subtitle'>Oh non, vous n’avez aucun match !</h2>
               {
                 Object.keys(this.props.currentList).length !== 0 ? (
@@ -80,7 +80,7 @@ class Result extends React.Component {
               user2={this.props.user2}
             />
             <div className='centered'>
-              <HeaderSmall />
+              <HeaderSmall resetAppState={this.props.resetAppState} />
               <h2 className='title'>
                 <span className='result-match-stars' />
                 {this.state.matchList.length === 1
@@ -96,7 +96,7 @@ class Result extends React.Component {
                 })}
               </div>
               <div className='button-back-home-container'>
-                <Link to='/'><Button className='button back-home' content="Retour à la page d'accueil" /></Link>
+                <Link to='/'><Button className='button back-home' content="Retour à la page d'accueil" onClick={() => this.props.resetAppState()} /></Link>
               </div>
               {this.state.renderedDrawer && <Drawer matchList={this.state.matchList} getInfo={this.state.getInfo} handleCloseDrawer={this.closeDrawer} filmId={this.state.filmId} />}
             </div>

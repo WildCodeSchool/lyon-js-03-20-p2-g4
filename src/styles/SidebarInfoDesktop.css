@@ -156,6 +156,7 @@
         background-color:transparent;
         transition:all 0.2s ease-in-out;
         border-radius:var(--radius);
+        box-shadow:var(--shadow);
     }
     .sidebar-info-container .sidebar-info-movie-all-info-container .sidebar-info-movie-casting .sidebar-info-actor::after {
         content:'+';
